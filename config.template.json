@@ -1,0 +1,8 @@
+{
+  "projectRoot": "/path/to/your/project",
+  "frontendPath": "/path/to/your/project/frontend",
+  "backendPath": "/path/to/your/project/backend",
+  "pmPath": "/path/to/your/project/.pm",
+  "createdAt": "YYYY-MM-DD",
+  "projectName": "Your Project Name"
+}

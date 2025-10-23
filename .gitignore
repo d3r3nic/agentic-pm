@@ -1,0 +1,65 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# User-specific configuration files (created from templates during setup)
+config.json
+
+# Configured agent onboarding files (user-specific, not templates)
+agents/onboarding/fe-agent.md
+agents/onboarding/be-agent.md
+agents/onboarding/auditor-guidelines.md
+
+# Project-specific operational docs (created from templates)
+docs/NOW.md
+docs/ROADMAP.md
+docs/integration.md
+
+# Task files (user-generated during work)
+agents/tasks/**/*.md
+!agents/tasks/.gitkeep
+
+# Logs (optional - some projects may want to track these)
+logs/weeks/*.md
+logs/decisions/*.md
+logs/milestones/*.md
+!logs/**/.gitkeep
+
+# Build outputs
+dist/
+build/
+*.js.map
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test outputs
+test-output/
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+
+# Sessions (SDK)
+sessions.json
+
+# Update checker (if user opts out)
+.no-update-checks
+UPDATE-LOG.md

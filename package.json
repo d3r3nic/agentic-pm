@@ -1,0 +1,36 @@
+{
+  "name": "agentic-pm",
+  "version": "2.0.0",
+  "description": "Agentic project management - AI agents that ship features autonomously",
+  "main": "sdk/manager.js",
+  "type": "module",
+  "scripts": {
+    "onboard": "npx tsx sdk/onboard.ts",
+    "spawn": "npx tsx sdk/spawn-agent-simple.ts",
+    "spawn:multiple": "npx tsx sdk/spawn-multiple.ts",
+    "manager:standalone": "npx tsx sdk/automation/manager-standalone.ts",
+    "build": "tsc"
+  },
+  "keywords": [
+    "ai",
+    "project-management",
+    "claude",
+    "agent-sdk",
+    "automation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "latest",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
