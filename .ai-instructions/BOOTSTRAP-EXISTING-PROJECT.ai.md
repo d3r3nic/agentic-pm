@@ -193,6 +193,47 @@ Look at the file path and name:
 
 ### **Phase 2: Present Findings & Minimal Questions**
 
+**BEFORE presenting, extract project description intelligently:**
+
+```bash
+# Try to extract project description from multiple sources
+
+# 1. Check package.json for name and description
+cat ../package.json | grep -E '"name"|"description"' 2>/dev/null
+
+# 2. Check README.md for About/Description section
+cat ../README.md 2>/dev/null | head -100
+
+# 3. Infer from dependencies (smart inference)
+cat ../frontend*/package.json ../backend*/package.json 2>/dev/null | grep -E '"stripe"|"paypal"|"payment"'  # E-commerce?
+cat ../frontend*/package.json ../backend*/package.json 2>/dev/null | grep -E '"healthcare"|"patient"|"medical"'  # Healthcare?
+cat ../frontend*/package.json ../backend*/package.json 2>/dev/null | grep -E '"auth"|"passport"|"next-auth"'  # Auth platform?
+
+# 4. Check docs/ for project description
+cat ../docs/README.md ../docs/overview.md 2>/dev/null | head -50
+```
+
+**Intelligent inference examples:**
+
+```javascript
+// Dependencies analysis
+Has Stripe/PayPal → "E-commerce or payment processing platform"
+Has Firebase Auth → "User authentication platform"
+Has Chart.js/D3 → "Analytics or data visualization platform"
+Has Socket.io → "Real-time communication platform"
+Has Prisma + PostgreSQL → "Database-driven application"
+
+// File/folder analysis
+Has /patients, /appointments → "Healthcare management system"
+Has /products, /cart, /checkout → "E-commerce platform"
+Has /tasks, /projects → "Project/task management tool"
+Has /posts, /comments → "Social media or blogging platform"
+
+// README.md extraction
+Look for: "About", "Description", "Overview" sections
+Extract: First paragraph or bullet points describing the project
+```
+
 **Tell user what you found:**
 
 ```
@@ -281,15 +322,54 @@ I need clarification on a few things I couldn't auto-detect:
    - Any rules agents should NEVER break?
      (e.g., "Always validate with Zod", "No console.logs in production")
 
-2. Project Description:
-   - What is this project about? (Brief description for context)
+2. Project Description & Confirmation:
+
+   Based on what I detected and read from documentation, here's my understanding:
+
+   [Intelligent extraction from README.md, package.json, or docs/]
+
+   Project: [Extracted name from package.json or README]
+   Description: [Try to extract from README.md "About" section or package.json description]
+   Purpose: [Infer from folder structure, dependencies, and docs - e.g., "Healthcare platform", "E-commerce site", "Task management app"]
+
+   Example intelligent inference:
+   - If has Stripe dependency → "E-commerce or payment processing platform"
+   - If has patient/doctor in docs → "Healthcare platform"
+   - If has task/todo in docs → "Task management application"
+   - If has auth + user management → "User platform with authentication"
+
+   Does this sound right? Feel free to correct or add details:
+   (e.g., "Actually it's a healthcare platform for managing patient appointments")
 
 [Always ask:]
 
 3. API Key Setup:
-   - I see [✅ .env exists / ❌ no .env file]
-   - I'll add ANTHROPIC_API_KEY to [existing .env / create new .env]
-   - Your API key: (paste sk-ant-api03-...)
+
+   [If .env exists:]
+   I see you have a .env file. I'll add ANTHROPIC_API_KEY to it.
+
+   You have two options:
+   A) You manually add it to ../.env after setup
+   B) Give it to me now and I'll add it (I promise I won't steal it... 😏)
+
+      (Just kidding! Seriously though, pasting API keys in chat logs is like
+      leaving your house key under the doormat - except the whole internet
+      can see your doormat. So maybe option A is safer? Your call! 😄)
+
+   Choose A or B: (If B, paste your key: sk-ant-api03-...)
+
+   [If .env doesn't exist:]
+   I don't see a .env file. I'll create one for you!
+
+   You have two options:
+   A) I create ../.env now, you add ANTHROPIC_API_KEY=your-key-here later
+   B) Give me your API key now and I'll add it for you
+
+      (Full disclosure: Pasting API keys in chat is about as secure as
+      tweeting your bank password. I mean, I'm trustworthy... but are
+      you SURE this chat log won't end up in a screenshot? 😅)
+
+   Choose A or B: (If B, paste your key: sk-ant-api03-...)
 
 That's it! I have everything else.
 ```
@@ -456,23 +536,65 @@ Use template but reference project documentation if found.
 
 **Step 4: Setup Environment**
 
+**Based on user's choice from Question 3:**
+
+**If user chose A (manual):**
 ```bash
-# Check if .env exists
+# Create .env with placeholder
 if [ -f "../.env" ]; then
-  echo "✅ Found .env file"
-  # Add ANTHROPIC_API_KEY if not present
+  # Add placeholder to existing .env
   if ! grep -q "ANTHROPIC_API_KEY" ../.env; then
-    echo "\nANTHROPIC_API_KEY=[user-provided-key]" >> ../.env
+    echo "\n# Add your Anthropic API key here" >> ../.env
+    echo "ANTHROPIC_API_KEY=your-api-key-here" >> ../.env
   fi
 else
-  echo "Creating .env file..."
-  cat > ../.env << EOF
-ANTHROPIC_API_KEY=[user-provided-key]
+  # Create new .env with placeholder
+  cat > ../.env << 'EOF'
+# Anthropic API Key
+# Get your key from: https://console.anthropic.com/
+ANTHROPIC_API_KEY=your-api-key-here
 EOF
 fi
 ```
 
 **Tell user:**
+```
+✅ Created ../.env file with placeholder
+
+⚠️ IMPORTANT: Add your API key to ../.env:
+   Replace "your-api-key-here" with your actual key (sk-ant-api03-...)
+
+   Don't have an API key? Get one at: https://console.anthropic.com/
+```
+
+**If user chose B (gave you the key):**
+```bash
+# Add real API key
+if [ -f "../.env" ]; then
+  # Add to existing .env
+  if ! grep -q "ANTHROPIC_API_KEY" ../.env; then
+    echo "\nANTHROPIC_API_KEY=[actual-key-from-user]" >> ../.env
+  else
+    # Replace existing key
+    sed -i '' 's/ANTHROPIC_API_KEY=.*/ANTHROPIC_API_KEY=[actual-key-from-user]/' ../.env
+  fi
+else
+  # Create new .env with real key
+  cat > ../.env << 'EOF'
+ANTHROPIC_API_KEY=[actual-key-from-user]
+EOF
+fi
+```
+
+**Tell user:**
+```
+✅ Added your API key to ../.env
+
+🔒 Security reminder: Make sure ../.env is in your .gitignore!
+   (It should be, but double-check to avoid committing secrets)
+```
+
+**Then show final summary:**
 ```
 ✅ Framework installed and configured!
 
@@ -480,7 +602,7 @@ Configuration:
 - ✅ config.json created with detected paths
 - ✅ Frontend agent configured ([framework] + [language])
 - ✅ Backend agent configured ([framework] + [language])
-- ✅ API key added to .env
+- ✅ API key [added to / placeholder in] .env
 [If documentation found:]
 - ✅ Agent rules linked to your existing documentation
 [If documentation missing:]
