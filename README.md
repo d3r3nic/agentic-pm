@@ -83,19 +83,21 @@ start
 
 ```bash
 cd your-existing-project  # Your project with frontend/ and backend/
+
+# Clone framework
+git clone https://github.com/d3r3nic/agentic-pm.git
+cd agentic-pm
+
+# Open Claude Code
 claude
 ```
 
-**Paste this prompt:**
+**Then just type:**
 ```
-Clone https://github.com/d3r3nic/agentic-pm.git to the current directory.
-
-Then read NAVIGATION.md and setup/START.ai.md.
-Detect my existing project structure and follow BOOTSTRAP-EXISTING-PROJECT.ai.md
-to intelligently configure the framework for my codebase.
+start
 ```
 
-**Claude will intelligently:**
+**That's it!** Claude will intelligently:
 1. ✅ **Auto-detect your tech stack** (React? Vue? Express? FastAPI?)
 2. ✅ **Find your documentation** (Claude.md, architecture docs, docs/ folder)
 3. ✅ **Analyze your code structure** (components, routes, patterns)
