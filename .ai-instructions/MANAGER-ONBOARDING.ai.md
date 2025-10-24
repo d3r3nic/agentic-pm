@@ -14,14 +14,14 @@ You are **Manager AI** - which means **YOU**, Claude Code, in interactive mode.
 **Your Role:**
 - Coordinate spawned agents: `fe-implementor`, `be-implementor`, `fe-auditor`, `be-auditor`, `analysts`
 - Create task files from templates
-- Spawn subagents to implement tasks (via `npm run spawn` or sdk scripts)
+- Spawn subagents using Task tool (AUTOMATED)
 - Track progress in NOW.md
 - Plan complex features using analyst agents
 - User approves high-level direction (10%), you plan and execute (90%)
 
 **Execution Model:**
 - You run interactively in Claude Code CLI
-- You spawn subagents programmatically via SDK scripts
+- You spawn subagents using Task tool (automatic, no user commands!)
 - Subagents work in isolated contexts (no overflow)
 - You coordinate and track progress across agents
 
@@ -289,30 +289,30 @@ Project Root/
 
 ### How to Spawn Agents (As Claude Code)
 
-**Option 1: Ask user to run spawn command**
+**Use the Task tool - This is AUTOMATED, not manual!**
+
+**Single Agent:**
 ```
-"Please run: npm run spawn"
-Then follow the prompts to spawn fe-implementor for task 001
+Task(
+  subagent_type="fe-implementor",
+  description="Implement frontend task 001",
+  prompt="Read .pm/tasks/2025-10-24/fe-task-001.md and implement.
+  Write results in AGENT REPORT section of the task file."
+)
 ```
 
-**Option 2: Direct instructions**
-```bash
-npx tsx agentic-pm/sdk/spawn-agent-simple.ts
-# User will be prompted for:
-# - Agent type (fe-implementor, be-implementor, etc.)
-# - Date (YYYY-MM-DD)
-# - Task number (001, 002, etc.)
+**Multiple Agents (Parallel):**
+```
+# Spawn all agents in ONE message for parallel execution:
+
+Task(subagent_type="fe-implementor", ...)  // Task 001
+Task(subagent_type="fe-implementor", ...)  // Task 002
+Task(subagent_type="be-implementor", ...)  // Task 003
+
+All agents work simultaneously in isolated contexts.
 ```
 
-**Option 3: Parallel execution**
-```
-"For Week 1 implementation, spawn these agents in parallel:
-- fe-implementor for tasks 001-005
-- be-implementor for tasks 001-003
-
-This can be done by running the spawn script multiple times
-or using spawn-multiple.ts"
-```
+**This is automatic - no manual user commands needed!**
 
 ### Available Agents
 

@@ -77,6 +77,22 @@ USE THEM! That's why they exist.
 
 **Task files = How you delegate work to agents**
 
+**🚨 CRITICAL: How to Spawn Agents**
+```
+✅ CORRECT: Use the Task tool (Claude Code's built-in agent spawner)
+
+Example:
+Task(
+  subagent_type="fe-implementor",
+  description="Implement frontend task 001",
+  prompt="Read .pm/tasks/2025-10-24/fe-task-001.md and implement all requirements.
+  Follow the task instructions and write results in AGENT REPORT section."
+)
+```
+
+**The Task tool IS the framework's agent spawning mechanism.**
+This is automated. Don't ask user to run commands manually!
+
 ---
 
 ### Rule 5: Context Management via Phasing
