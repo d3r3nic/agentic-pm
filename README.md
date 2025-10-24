@@ -282,6 +282,18 @@ Manager AI Aggregates Results
 
 ---
 
+## 🔮 Future Enhancements
+
+Planned features and improvements are documented in the **[`.future/`](.future/)** folder:
+
+- **[Usage Analytics](.future/USAGE-ANALYTICS.md)** - Optional anonymous telemetry to understand how people use the framework
+- **[Community Features](.future/COMMUNITY-FEATURES.md)** - Showcase projects, GitHub Discussions, recognition program
+- **[Distribution Strategy](.future/DISTRIBUTION-STRATEGY.md)** - Growth plan, marketing channels, launch strategy
+
+These are detailed specifications ready for implementation when needed. Check them out to see what's coming!
+
+---
+
 ## 🤔 FAQ
 
 ### Q: How is this different from just using Claude Code?
