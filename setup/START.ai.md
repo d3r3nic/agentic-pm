@@ -1,27 +1,44 @@
 # 🚀 START - Auto-Bootstrap Guide for Claude Code
 
-> **For:** Claude Code when user pastes the magic command from README
+> **For:** Claude Code when user says "start" or clones framework
 > **Purpose:** Automatically bootstrap full-stack project from scratch
-> **Trigger:** User runs `claude "Clone https://github.com/d3r3nic/task-driven-pm-framework..."`
-> **Or:** User types "start" in empty folder
+> **Trigger:** User says "start", "let's start", "begin", "setup", or framework is freshly cloned
+> **Auto-Activation:** This file detects simple start commands
+
+---
+
+## 🚨 TRIGGER DETECTION - READ THIS FIRST
+
+**If user says ANY of these:**
+- "start"
+- "let's start"
+- "begin"
+- "setup"
+- "initialize"
+- "get started"
+- "onboard"
+- "bootstrap"
+
+**OR user ran:**
+- `git clone` command for this framework
+- Framework is in their directory and they're ready to begin
+
+**THEN:**
+You are reading the right file! Proceed with the bootstrap flow below.
+
+**The full bootstrap prompt is saved in:**
+`.ai-instructions/AUTO-START.ai.md` (so user doesn't have to type it)
 
 ---
 
 ## 🎯 What Just Happened
 
-The user pasted the command from the README.
+The user triggered framework setup (by saying "start" or cloning the repo).
 
 **Expected state:**
-- This repository should be cloned to their current directory
-- If not cloned yet, clone it now: `git clone https://github.com/d3r3nic/task-driven-pm-framework.git .`
-
-**Their goal:**
-1. **Use this framework** (they want all the guides, templates, and SDK tools)
-2. **Set up a complete full-stack project** in their current directory
-3. **Configure the PM Framework** for their specific project
-4. **Build their first feature with AI agents**
-
-They want **zero manual work** - you do everything.
+- Framework is cloned to their directory (agentic-pm folder exists)
+- User wants to set up a project
+- User wants **zero manual work** - you do everything
 
 **Important:** They want the framework cloned so they can:
 - Reference guides locally

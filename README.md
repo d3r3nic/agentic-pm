@@ -45,7 +45,7 @@
 
 ---
 
-## 🚀 Quick Start - ONE Command
+## 🚀 Quick Start - TWO Simple Steps!
 
 **Works with BOTH new AND existing projects!**
 
@@ -54,27 +54,24 @@
 **From nothing → working full-stack app in 5 minutes:**
 
 ```bash
-mkdir my-awesome-project
-cd my-awesome-project
+# Step 1: Clone the framework
+git clone https://github.com/d3r3nic/agentic-pm.git
+cd agentic-pm
+
+# Step 2: Open Claude Code and say:
 claude
 ```
 
-**Paste this prompt:**
+**Then just type:**
 ```
-Clone https://github.com/d3r3nic/agentic-pm.git to the current directory.
-
-Then read NAVIGATION.md to understand the documentation structure.
-Then read setup/START.ai.md and .ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md
-and follow all steps to set up a new full-stack project here.
-Ask me questions and build everything.
+start
 ```
 
-**Claude will:**
-1. ✅ Clone this repository
-2. ✅ Ask you 4 questions (what to build, tech stack, first feature, git strategy)
-3. ✅ Create frontend + backend boilerplate
-4. ✅ Configure the framework for your project
-5. ✅ Implement your first feature with AI agents
+**That's it!** Claude will automatically:
+1. ✅ Ask you 4 questions (what to build, tech stack, first feature, git strategy)
+2. ✅ Create frontend + backend boilerplate
+3. ✅ Configure the framework for your project
+4. ✅ Implement your first feature with AI agents
 
 **Time:** 5-10 minutes from empty folder to working app.
 
