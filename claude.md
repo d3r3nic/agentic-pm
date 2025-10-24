@@ -84,15 +84,48 @@ USE THEM! That's why they exist.
 
 ---
 
-### Rule 4: Task Files Are Your Communication Tool
+### Rule 4: ALWAYS Read Project Rules Before Creating Tasks
 ```
-1. You create task file with AGENT INSTRUCTIONS
-2. You spawn agent (tell user to run spawn command)
-3. Agent reads task file
-4. Agent implements
-5. Agent writes AGENT REPORT
-6. You read AGENT REPORT
-7. You move to next task
+BEFORE creating ANY task file:
+
+For Backend Tasks:
+  1. Read: backend/Claude.md (project's backend rules)
+  2. Read: backend/README.md (if exists)
+  3. Understand: Tech stack, patterns, conventions
+
+For Frontend Tasks:
+  1. Read: frontend/Claude.md (project's frontend rules)
+  2. Read: frontend/README.md (if exists)
+  3. Understand: Component patterns, state management, styling
+
+Why this matters:
+  - Task instructions must align with project standards
+  - Agents need to know what rules to follow
+  - You reference these rules in AGENT INSTRUCTIONS
+```
+
+**❌ WRONG:**
+```
+Create task file → Spawn agent → Agent doesn't know rules
+```
+
+**✅ RIGHT:**
+```
+Read backend/Claude.md → Understand rules → Create task file (reference rules) → Spawn agent
+```
+
+---
+
+### Rule 5: Task Files Are Your Communication Tool
+```
+1. Read project Claude.md rules (backend/ or frontend/)
+2. Create task file with AGENT INSTRUCTIONS (reference rules!)
+3. Spawn agent using Task tool
+4. Agent reads task file
+5. Agent implements (following rules you referenced)
+6. Agent writes AGENT REPORT
+7. You read AGENT REPORT
+8. You move to next task
 ```
 
 **Task files = How you delegate work to agents**
@@ -115,7 +148,7 @@ This is automated. Don't ask user to run commands manually!
 
 ---
 
-### Rule 5: Context Management via Phasing
+### Rule 6: Context Management via Phasing
 ```
 Don't try to do everything in one go.
 
@@ -183,11 +216,13 @@ You: Create implementation plan
   ↓
 User: Approves plan
   ↓
-You: Create task files for Phase 1
+You: READ project Claude.md rules (backend/ or frontend/)  ⭐ NEW!
+  ↓
+You: Create task files for Phase 1 (reference rules in task!)
   ↓
 You: Spawn implementation agents
   ↓
-Agents: Do the actual coding
+Agents: Do the actual coding (following rules you referenced)
   ↓
 You: Read AGENT REPORTS
   ↓
@@ -211,13 +246,16 @@ Repeat for Phase 2, 3, etc.
 1. "Am I about to edit project code myself?"
    → If YES: STOP! Spawn an agent instead.
 
-2. "Am I creating tasks without analyst reports?"
+2. "Am I creating tasks without reading project Claude.md rules?"
+   → If YES: STOP! Read backend/Claude.md or frontend/Claude.md first!
+
+3. "Am I creating tasks without analyst reports?"
    → If YES: STOP! Spawn analysts first.
 
-3. "Am I implementing without a master plan?"
+4. "Am I implementing without a master plan?"
    → If YES: STOP! Create plan first.
 
-4. "Did I forget to get user approval?"
+5. "Did I forget to get user approval?"
    → If YES: STOP! Ask for approval.
 
 ---
