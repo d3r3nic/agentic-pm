@@ -1,36 +1,14 @@
+# Agentic PM - Project .gitignore
+# This gitignore is designed for PROJECT repos using the framework
+# Track everything except dependencies, secrets, and build outputs
+
 # Dependencies
 node_modules/
-package-lock.json
 
-# Environment variables
+# Secrets (NEVER commit these!)
 .env
 .env.local
 .env.*.local
-
-# User-specific configuration files (created from templates during setup)
-config.json
-
-# Configured agent onboarding files (user-specific, not templates)
-agents/onboarding/fe-agent.md
-agents/onboarding/be-agent.md
-agents/onboarding/auditor-guidelines.md
-
-# Project-specific operational docs (created from templates)
-docs/NOW.md
-docs/ROADMAP.md
-docs/integration.md
-
-# Task files (user-generated during work)
-agents/tasks/**/*.md
-!agents/tasks/.gitkeep
-
-# Logs (optional - some projects may want to track these)
-logs/weeks/*.md
-logs/decisions/*.md
-logs/milestones/*.md
-logs/00-GENESIS.md
-!logs/**/.gitkeep
-!logs/*.template.md
 
 # Build outputs
 dist/
@@ -59,9 +37,17 @@ coverage/
 *.log
 *.bak
 
-# Sessions (SDK)
+# Sessions (SDK runtime)
 sessions.json
 
-# Update checker (if user opts out)
-.no-update-checks
-UPDATE-LOG.md
+# EVERYTHING ELSE IS TRACKED:
+# ✅ config.json - Project configuration
+# ✅ agents/onboarding/*.md - Agent setups (created from templates)
+# ✅ agents/tasks/**/*.md - Task history
+# ✅ docs/NOW.md, ROADMAP.md, integration.md - Project docs (created from templates)
+# ✅ logs/ - Project logs and decisions
+#
+# The .template.md system protects your work:
+# - Framework provides: NOW.template.md, fe-agent.template.md, etc.
+# - You create: NOW.md, fe-agent.md (from templates)
+# - Framework updates templates → Your actual files are safe!
