@@ -1,7 +1,3 @@
-# Agentic PM - Project .gitignore
-# This gitignore is designed for PROJECT repos using the framework
-# Track everything except dependencies, secrets, and build outputs
-
 # Dependencies
 node_modules/
 
