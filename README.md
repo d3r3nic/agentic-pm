@@ -100,21 +100,31 @@ to intelligently configure the framework for my codebase.
 
 **Claude will intelligently:**
 1. ✅ **Auto-detect your tech stack** (React? Vue? Express? FastAPI?)
-2. ✅ **Find your documentation** (claude.md, ARCHITECTURE.md, docs/ folder)
+2. ✅ **Find your documentation** (Claude.md, architecture docs, docs/ folder)
 3. ✅ **Analyze your code structure** (components, routes, patterns)
 4. ✅ **Infer your project purpose** (E-commerce? Healthcare? Analytics?)
 5. ✅ **Extract coding conventions** (from docs, eslint, prettier)
-6. ✅ **Configure agents for YOUR stack** (specific to your setup)
-7. ✅ **Ask only what it can't detect** (2-3 questions max)
+6. ✅ **Synthesize architecture understanding** (reads multiple docs, builds mental model)
+7. ✅ **Create backlog for missing docs** (gaps become tasks, not blockers!)
+8. ✅ **Ask only what it can't detect** (2-3 questions max)
 
 **What makes it intelligent:**
-- 🧠 Reads `frontend/claude.md` and `backend/claude.md` if they exist
+- 🧠 Reads `frontend/Claude.md` and `backend/Claude.md` if they exist
 - 🧠 Analyzes dependencies to infer project type (Stripe → E-commerce)
 - 🧠 Smart doc filtering (reads architecture, skips user guides)
+- 🧠 **Infers architecture** from existing docs (no rigid ARCHITECTURE.md requirement)
+- 🧠 **Logs missing docs as tasks** in `agents/backlog/documentation-tasks.md`
 - 🧠 Presents findings and asks you to confirm
 - 🧠 No redundant questions about things in package.json
 
-**Time:** 5 minutes from existing code to AI-ready framework.
+**The Onboarding-as-Discovery approach:**
+- 📋 Onboarding itself is the first PM task
+- 📋 Analyzes project, identifies gaps, creates actionable backlog
+- 📋 Missing Claude.md files? → Logged as tasks with effort estimates
+- 📋 Incomplete architecture docs? → Logged as tasks for later
+- 📋 **Nothing blocks progress** - you decide: "docs first" or "build first"
+
+**Time:** 5 minutes from existing code to AI-ready framework + prioritized backlog.
 
 ---
 
