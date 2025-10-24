@@ -37,13 +37,23 @@ Follow these steps in order.
 
 ### **Phase 1: Detect Context & Confirm with User**
 
-**Step 1: Check what's in the current folder**
+**IMPORTANT:** The framework is cloned INSIDE the project folder as `agentic-pm/`.
+You need to check the PARENT directory to see the actual project structure!
+
+**Step 1: Check the PROJECT folder (parent directory)**
 ```bash
+# Go to parent directory (the actual project folder)
+cd ..
+
+# Check what's in the project folder
 ls -la
+
+# Come back to framework folder
+cd agentic-pm
 ```
 
-**Step 2: Analyze the folder contents**
-- **Empty or near-empty** (only .git, README.md, .gitignore, or similar) → Likely NEW project
+**Step 2: Analyze the PROJECT folder contents (from parent directory)**
+- **Empty or near-empty** (only .git, README.md, .gitignore, agentic-pm/) → Likely NEW project
 - **Has code folders** (frontend/, backend/, src/, app/, components/, etc.) → Likely EXISTING project
 
 **Step 3: Ask user to confirm (ALWAYS ASK, even if obvious)**

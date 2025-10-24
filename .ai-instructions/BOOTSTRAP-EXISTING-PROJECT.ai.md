@@ -25,81 +25,89 @@ When a user chooses "Add framework to EXISTING project," you will:
 
 ### **Phase 1: Intelligent Detection & Analysis**
 
-**Step 1: Analyze Project Structure**
+**CRITICAL:** You are running inside `agentic-pm/` folder!
+The actual project files are in the PARENT directory (`..`).
+Always use `..` prefix or `cd ..` to check the real project structure.
+
+**Step 1: Analyze Project Structure (in PARENT directory)**
 
 ```bash
-# Detect project folders
-ls -la
+# Check the PARENT directory (the actual project folder)
+ls -la ..
 
-# Look for frontend
-ls -la | grep -E "frontend|client|web|app|dashboard|ui"
+# Look for frontend in parent directory
+ls -la .. | grep -E "frontend|client|web|app|dashboard|ui"
 
-# Look for backend
-ls -la | grep -E "backend|server|api|services"
+# Look for backend in parent directory
+ls -la .. | grep -E "backend|server|api|services"
 
-# Look for monorepo structure
-ls -la | grep -E "packages|apps|libs"
+# Look for monorepo structure in parent directory
+ls -la .. | grep -E "packages|apps|libs"
 ```
 
 **Step 2: Detect Tech Stack (Frontend)**
 
-If frontend folder found:
+If frontend folder found in parent directory:
 
 ```bash
-# Check package.json
-cat frontend*/package.json 2>/dev/null || cat client*/package.json 2>/dev/null
+# Check package.json in PARENT directory
+cat ../frontend*/package.json 2>/dev/null || cat ../client*/package.json 2>/dev/null
 
 # Detect framework
-grep -E "react|vue|svelte|angular|next|nuxt|gatsby" frontend*/package.json
+grep -E "react|vue|svelte|angular|next|nuxt|gatsby" ../frontend*/package.json
 
 # Detect TypeScript
-ls frontend*/tsconfig.json 2>/dev/null
+ls ../frontend*/tsconfig.json 2>/dev/null
 
 # Detect state management
-grep -E "redux|zustand|pinia|mobx|jotai|recoil" frontend*/package.json
+grep -E "redux|zustand|pinia|mobx|jotai|recoil" ../frontend*/package.json
 
 # Detect UI libraries
-grep -E "mui|chakra|antd|tailwind|bootstrap|shadcn" frontend*/package.json
+grep -E "mui|chakra|antd|tailwind|bootstrap|shadcn" ../frontend*/package.json
 ```
 
 **Step 3: Detect Tech Stack (Backend)**
 
-If backend folder found:
+If backend folder found in parent directory:
 
 ```bash
-# Check package.json or requirements.txt
-cat backend*/package.json 2>/dev/null || cat server*/package.json 2>/dev/null
-cat backend*/requirements.txt 2>/dev/null
+# Check package.json or requirements.txt in PARENT directory
+cat ../backend*/package.json 2>/dev/null || cat ../server*/package.json 2>/dev/null
+cat ../backend*/requirements.txt 2>/dev/null
 
 # Detect framework
-grep -E "express|fastify|nest|koa|hapi" backend*/package.json  # Node.js
-grep -E "fastapi|django|flask" backend*/requirements.txt        # Python
+grep -E "express|fastify|nest|koa|hapi" ../backend*/package.json  # Node.js
+grep -E "fastapi|django|flask" ../backend*/requirements.txt        # Python
 
 # Detect database
-grep -E "prisma|typeorm|sequelize|mongoose|pg|mysql" backend*/package.json
-grep -E "sqlalchemy|psycopg2|pymongo" backend*/requirements.txt
+grep -E "prisma|typeorm|sequelize|mongoose|pg|mysql" ../backend*/package.json
+grep -E "sqlalchemy|psycopg2|pymongo" ../backend*/requirements.txt
 
 # Detect TypeScript
-ls backend*/tsconfig.json 2>/dev/null
+ls ../backend*/tsconfig.json 2>/dev/null
 ```
 
-**Step 4: Search for Existing Documentation**
+**Step 4: Search for Existing Documentation (in PARENT directory)**
 
 ```bash
-# Look for project documentation
-find . -name "README.md" -o -name "ARCHITECTURE.md" -o -name "CONTRIBUTING.md" -maxdepth 3
+# Look for project documentation in PARENT directory
+find .. -name "README.md" -o -name "ARCHITECTURE.md" -o -name "CONTRIBUTING.md" -maxdepth 3
 
-# Look for Claude-specific docs (IMPORTANT!)
-find . -name "claude.md" -o -name ".claude.md" -o -name "CLAUDE.md" -maxdepth 3
+# Look for Claude-specific docs (IMPORTANT!) in PARENT directory
+find .. -name "claude.md" -o -name ".claude.md" -o -name "CLAUDE.md" -maxdepth 3
+
+# Specifically check for frontend/claude.md and backend/claude.md
+ls ../frontend*/claude.md ../frontend*/.claude.md 2>/dev/null
+ls ../backend*/claude.md ../backend*/.claude.md 2>/dev/null
 
 # Look for API documentation
-find . -name "API.md" -o -name "api-docs.md" -o -name "openapi.yaml" -maxdepth 3
+find .. -name "API.md" -o -name "api-docs.md" -o -name "openapi.yaml" -maxdepth 3
 
 # Look for coding standards
-find . -name "STANDARDS.md" -o -name "CONVENTIONS.md" -o -name ".eslintrc*" -maxdepth 3
+find .. -name "STANDARDS.md" -o -name "CONVENTIONS.md" -o -name ".eslintrc*" -maxdepth 3
 
 # Look for architecture docs
-find . -path "*/docs/*" -name "*.md" 2>/dev/null | head -20
+find .. -path "*/docs/*" -name "*.md" 2>/dev/null | head -20
 ```
 
 **Step 5: Analyze Documentation (if found)**
@@ -111,11 +119,11 @@ If you found documentation files, **read them** to extract:
 - Code style preferences
 - Critical rules and constraints
 
-**Special attention to:**
-- `frontend/claude.md` or `frontend/.claude.md` → Frontend agent rules
-- `backend/claude.md` or `backend/.claude.md` → Backend agent rules
-- Root `ARCHITECTURE.md` → Overall system design
-- `CONTRIBUTING.md` → Coding standards
+**Special attention to (all in PARENT directory):**
+- `../frontend/claude.md` or `../frontend/.claude.md` → Frontend agent rules
+- `../backend/claude.md` or `../backend/.claude.md` → Backend agent rules
+- `../ARCHITECTURE.md` → Overall system design
+- `../CONTRIBUTING.md` → Coding standards
 
 ---
 
@@ -151,14 +159,14 @@ Backend:
 
 [If documentation found:]
 I found the following documentation:
-- frontend/claude.md (I'll use this for frontend agent rules)
-- ARCHITECTURE.md (I'll use this for system understanding)
+- ../frontend/claude.md (I'll use this for frontend agent rules)
+- ../ARCHITECTURE.md (I'll use this for system understanding)
 - [list other relevant docs]
 
 [If no documentation found:]
 ⚠️ I didn't find any architecture documentation or coding standards.
 
-I recommend creating:
+I recommend creating (in your project root):
 1. frontend/claude.md - Frontend coding rules for AI agents
 2. backend/claude.md - Backend coding rules for AI agents
 3. ARCHITECTURE.md - Overall system architecture
@@ -192,7 +200,7 @@ I need clarification on a few things I couldn't auto-detect:
 That's it! I have everything else.
 ```
 
-**Note:** If you found `frontend/claude.md` and `backend/claude.md` with coding rules, **skip question 1 entirely!**
+**Note:** If you found `../frontend/claude.md` and `../backend/claude.md` with coding rules, **skip question 1 entirely!**
 
 ---
 
@@ -246,7 +254,7 @@ EOF
 
 Create by combining:
 - **Auto-detected info:** Framework, TypeScript, libraries
-- **Documentation found:** If `frontend/claude.md` exists, reference or include it
+- **Documentation found:** If `../frontend/claude.md` exists, reference or include it
 - **User-provided rules:** From question 1 (if asked)
 
 ```markdown
@@ -264,18 +272,18 @@ Create by combining:
 - **Key Dependencies:** [list from package.json]
 
 ## Project Documentation References
-[If found, create links:]
-- **Architecture:** See `/ARCHITECTURE.md` for system design
-- **Coding Standards:** See `/frontend/claude.md` for detailed rules
-- **API Integration:** See `/docs/API.md` for backend contracts
+[If found, create links to parent directory:]
+- **Architecture:** See `../ARCHITECTURE.md` for system design
+- **Coding Standards:** See `../frontend/claude.md` for detailed rules
+- **API Integration:** See `../docs/API.md` for backend contracts
 
-[If frontend/claude.md exists:]
-**IMPORTANT:** Read `/frontend/claude.md` for complete frontend coding rules.
+[If ../frontend/claude.md exists:]
+**IMPORTANT:** Read `../frontend/claude.md` for complete frontend coding rules.
 The rules below supplement those guidelines.
 
 ## Critical Rules (From Documentation & User)
 [Combine rules from:]
-1. frontend/claude.md (if exists)
+1. ../frontend/claude.md (if exists)
 2. User-provided rules
 3. Auto-detected patterns (from code analysis)
 
@@ -320,16 +328,16 @@ Similar approach - combine auto-detected + documentation + user rules:
 - **Key Dependencies:** [list from package.json/requirements.txt]
 
 ## Project Documentation References
-[If found:]
-- **Architecture:** See `/ARCHITECTURE.md`
-- **Coding Standards:** See `/backend/claude.md`
-- **Database Schema:** See `/backend/prisma/schema.prisma` [or equivalent]
+[If found in parent directory:]
+- **Architecture:** See `../ARCHITECTURE.md`
+- **Coding Standards:** See `../backend/claude.md`
+- **Database Schema:** See `../backend/prisma/schema.prisma` [or equivalent]
 
-[If backend/claude.md exists:]
-**IMPORTANT:** Read `/backend/claude.md` for complete backend coding rules.
+[If ../backend/claude.md exists:]
+**IMPORTANT:** Read `../backend/claude.md` for complete backend coding rules.
 
 ## Critical Rules
-[Combine from backend/claude.md + user input]
+[Combine from ../backend/claude.md + user input]
 
 ## File Structure (Auto-Detected)
 ```
