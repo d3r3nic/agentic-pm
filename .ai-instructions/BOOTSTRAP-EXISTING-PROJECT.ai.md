@@ -89,11 +89,16 @@ ls ../backend*/tsconfig.json 2>/dev/null
 
 **Step 4: Search for Existing Documentation (in PARENT directory)**
 
+**IMPORTANT: claude.md capitalization**
+- The framework convention is **lowercase**: `claude.md`
+- Some users may have `Claude.md` (capitalized) - check both!
+- If you find either, use it (don't be picky about capitalization)
+
 ```bash
-# Look for Claude-specific docs (IMPORTANT!) - exact filename: claude.md
-ls ../frontend*/claude.md 2>/dev/null
-ls ../backend*/claude.md 2>/dev/null
-ls ../claude.md 2>/dev/null  # Root level claude.md
+# Look for Claude-specific docs (IMPORTANT!) - check both capitalizations
+ls ../frontend*/claude.md ../frontend*/Claude.md 2>/dev/null
+ls ../backend*/claude.md ../backend*/Claude.md 2>/dev/null
+ls ../claude.md ../Claude.md 2>/dev/null  # Root level
 
 # Look for standard project documentation
 find .. -maxdepth 2 -name "README.md" -o -name "ARCHITECTURE.md" -o -name "CONTRIBUTING.md" 2>/dev/null
@@ -258,22 +263,23 @@ Backend:
 
 📚 Documentation Found:
 
-[Priority 1: claude.md files]
-- [✅/❌] frontend/claude.md - Frontend agent rules
-- [✅/❌] backend/claude.md - Backend agent rules
-- [✅/❌] claude.md (root) - General project rules
+[Priority 1: claude.md files (AI-specific)]
+- [✅/❌] frontend/claude.md or Claude.md - Frontend agent rules
+- [✅/❌] backend/claude.md or Claude.md - Backend agent rules
+- [✅/❌] claude.md or Claude.md (root) - General project rules
 
-[Priority 2: Standard docs]
-- [✅/❌] ARCHITECTURE.md - System design
-- [✅/❌] CONTRIBUTING.md - Coding standards
+[Priority 2: Technical documentation]
+- [✅/❌] docs/ folder with technical docs
+  [If found, list RELEVANT docs you identified with their purpose:]
+  - ../docs/architecture-overview.md (system architecture)
+  - ../docs/api-patterns.md (API integration patterns)
+  - ../backend/ENDPOINT_CREATION_GUIDE.md (backend patterns)
+  - [etc. - only list technical docs that AI agents should read]
+
+[Priority 3: Standard files (if relevant)]
 - [✅/❌] README.md - Project overview
-
-[Priority 3: docs/ folder]
-- [✅/❌] docs/ folder found
-  [If found, list RELEVANT docs you identified:]
-  - ../docs/architecture/system-design.md
-  - ../docs/api/endpoints.md
-  - [etc. - only list technical docs, not user guides]
+- [✅/❌] CONTRIBUTING.md - Coding standards
+- [Only mention these if they contain useful architecture/pattern info]
 
 [If claude.md files found:]
 🎯 Excellent! I found claude.md files with AI agent rules:
@@ -295,16 +301,36 @@ for clearer AI agent instructions:
 
 Would you like me to help create these after setup? (Yes/No)
 
-[If NO documentation found:]
-⚠️ I didn't find any documentation (no claude.md, ARCHITECTURE.md, or docs/ folder).
+[If NO claude.md but HAS other technical docs:]
+📝 I found project documentation:
+- ../docs/architecture-overview.md (architecture)
+- ../backend/ENDPOINT_CREATION_GUIDE.md (patterns)
+- [list other relevant docs]
+
+This is excellent documentation! However, for optimal AI agent performance, I recommend
+creating claude.md files that consolidate the key rules AI agents need to know:
+
+1. **frontend/claude.md** (optional but recommended)
+   - Consolidates frontend rules from your docs/ folder
+   - Quick reference for AI agents building frontend features
+
+2. **backend/claude.md** (optional but recommended)
+   - Consolidates backend patterns from your guides
+   - Quick reference for AI agents building APIs
+
+These are OPTIONAL - your existing docs are great! Claude.md files just make it faster
+for AI agents to find the critical rules without reading multiple documentation files.
+
+Would you like me to help create these after setup? (Yes/No/Skip - your docs are enough)
+
+[If NO documentation at all:]
+⚠️ I didn't find any documentation (no claude.md, architecture docs, or docs/ folder).
 
 For best AI agent performance, I strongly recommend creating:
 1. **frontend/claude.md** - Frontend coding rules for AI agents
    (Component patterns, state management, styling conventions)
 2. **backend/claude.md** - Backend coding rules for AI agents
    (API patterns, error handling, database access)
-3. **ARCHITECTURE.md** - Overall system design
-   (How frontend ↔ backend communicate, key design decisions)
 
 Would you like me to help create these after setup? (Yes/No)
 ```
@@ -324,13 +350,22 @@ I need clarification on a few things I couldn't auto-detect:
 
 2. Project Description & Confirmation:
 
-   Based on what I detected and read from documentation, here's my understanding:
+   [If you extracted a CLEAR description from README or docs:]
 
-   [Intelligent extraction from README.md, package.json, or docs/]
-
+   Based on your documentation:
    Project: [Extracted name from package.json or README]
-   Description: [Try to extract from README.md "About" section or package.json description]
-   Purpose: [Infer from folder structure, dependencies, and docs - e.g., "Healthcare platform", "E-commerce site", "Task management app"]
+   Description: [Extracted from README.md]
+   Purpose: [Clear purpose from docs]
+
+   This looks clear from your documentation - I'll use this understanding.
+   (If you want to add or correct anything, let me know!)
+
+   [If description is UNCLEAR or missing:]
+
+   I tried to infer from your setup:
+   Project: [Extracted name or "Unknown"]
+   Stack: [Tech detected: React + Express + PostgreSQL]
+   Likely Purpose: [Infer from dependencies and structure]
 
    Example intelligent inference:
    - If has Stripe dependency → "E-commerce or payment processing platform"
@@ -338,8 +373,8 @@ I need clarification on a few things I couldn't auto-detect:
    - If has task/todo in docs → "Task management application"
    - If has auth + user management → "User platform with authentication"
 
-   Does this sound right? Feel free to correct or add details:
-   (e.g., "Actually it's a healthcare platform for managing patient appointments")
+   Can you confirm or provide a brief description?
+   (e.g., "Healthcare platform for managing patient appointments")
 
 [Always ask:]
 
