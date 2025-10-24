@@ -128,6 +128,41 @@ to intelligently configure the framework for my codebase.
 
 ---
 
+## 🔄 Getting Framework Updates
+
+After cloning the framework, set up dual remotes to pull future updates:
+
+```bash
+# 1. Change origin to YOUR project repo
+git remote rename origin framework
+git remote add origin git@github.com:YOUR-USERNAME/your-project.git
+
+# 2. Verify setup
+git remote -v
+# framework → agentic-pm.git (pull updates from here)
+# origin    → your-project.git (push your changes here)
+
+# 3. Push to your repo
+git push -u origin main
+```
+
+**When framework updates are released:**
+
+```bash
+# Pull framework improvements
+git pull framework main
+
+# Push to your project
+git push origin main
+```
+
+**The `.template.md` system protects your work:**
+- Framework updates: `NOW.template.md`, `fe-agent.template.md` (templates)
+- Your configs: `NOW.md`, `fe-agent.md` (created from templates)
+- Framework updates templates → Your files stay safe!
+
+---
+
 ## 🎯 What You Get
 
 ### New Project Setup
