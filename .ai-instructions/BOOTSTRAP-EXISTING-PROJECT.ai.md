@@ -1104,10 +1104,23 @@ Key highlights from documentation:
 agentic-pm/.ai-instructions/MANAGER-ONBOARDING.ai.md
 ```
 
-**This file teaches you:**
+**First, read the framework rules:**
+```
+Read: agentic-pm/Claude.md
+```
+This file contains the core rules you must NEVER forget:
+- You are a coordinator, NOT an implementor
+- ALWAYS spawn agents for implementation
+- NEVER write project code yourself
+- Use systematic analysis for EVERYTHING
+
+**Then read manager onboarding:**
+```
+Read: agentic-pm/.ai-instructions/MANAGER-ONBOARDING.ai.md
+```
+This file teaches you:
 - How to coordinate spawned agents
 - **How to handle proposals/RFPs/specs (ANY size)**
-- When to use the RFP Analysis Protocol
 - How to use analyst agents for systematic analysis
 - How to create task files
 - How to track progress in NOW.md

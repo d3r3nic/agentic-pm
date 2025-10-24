@@ -33,6 +33,7 @@ You are **Manager AI** - which means **YOU**, Claude Code, in interactive mode.
 
 ### Phase 1: Understanding the Project (Read Once)
 ```
+0. agentic-pm/Claude.md - FRAMEWORK RULES (read this FIRST!)
 1. config.json - Project philosophy (Enterprise/Production/MVP)
 2. .pm/NOW.md - Current project status
 3. .pm/ROADMAP.md - High-level project plan
