@@ -93,16 +93,18 @@ agentic-pm/
 2. User in Claude Code (empty folder)
    └─→ Pastes prompt
        └─→ Claude reads: setup/START.ai.md
-           └─→ Detects: Empty folder
-               └─→ Claude reads: .ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md
-                   └─→ Claude asks 4 questions conversationally
-                   └─→ Claude creates:
-                       - frontend/
-                       - backend/
-                       - config.json
-                       - agents/onboarding/*.md
-                   └─→ Claude spawns first agent
-                       └─→ First feature implemented!
+           └─→ Analyzes: Empty folder
+           └─→ Asks user: "Create NEW project or add to EXISTING?"
+               └─→ User chooses: A) New Project
+                   └─→ Claude reads: .ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md
+                       └─→ Claude asks 4 questions conversationally
+                       └─→ Claude creates:
+                           - frontend/
+                           - backend/
+                           - config.json
+                           - agents/onboarding/*.md
+                       └─→ Claude spawns first agent
+                           └─→ First feature implemented!
 
 3. Setup Complete ✅
    └─→ User now in PHASE 2
@@ -119,9 +121,11 @@ agentic-pm/
 1. User has frontend/ and backend/ already
    └─→ Pastes prompt in Claude Code
        └─→ Claude reads: setup/START.ai.md
-           └─→ Detects: Existing code
-               └─→ Claude reads: .ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md
-                   └─→ Claude creates:
+           └─→ Analyzes: Existing code detected
+           └─→ Asks user: "Create NEW project or add to EXISTING?"
+               └─→ User chooses: B) Existing Project
+                   └─→ Claude reads: .ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md
+                       └─→ Claude creates:
                        - config.json (with detected paths)
                        - agents/onboarding/*.md
                    └─→ Does NOT touch frontend/backend
@@ -154,6 +158,9 @@ Check: Does config.json exist?
 ```
 User request: "Set up framework"
 └─→ PHASE 1: Read setup/START.ai.md
+    └─→ Analyze folder
+    └─→ ASK USER: "New project or existing project?"
+    └─→ Based on answer: BOOTSTRAP-NEW-PROJECT.ai.md or BOOTSTRAP-EXISTING-PROJECT.ai.md
 
 User request: "Create task for login feature"
 └─→ PHASE 2: Read docs/guides/INTERACTIVE-MANAGER-GUIDE.md
@@ -258,6 +265,26 @@ docs/START-HERE.human.md (Operational hub)
 
 ## 🚨 Common AI Mistakes to Avoid
 
+### **❌ WRONG: Assuming new/existing without asking user**
+```
+User: "Set up framework"
+AI: *sees empty folder*
+AI: *automatically starts creating new project*  ← WRONG, didn't ask!
+```
+
+**✅ CORRECT:**
+```
+User: "Set up framework"
+AI: *analyzes folder*
+AI: "I see an empty folder. Do you want to:"
+    "A) Create NEW project, or"
+    "B) Add to EXISTING project?"
+User: "A"
+AI: *proceeds with BOOTSTRAP-NEW-PROJECT.ai.md*
+```
+
+---
+
 ### **❌ WRONG: Reading operational docs during onboarding**
 ```
 User: "Set up framework"
@@ -267,7 +294,9 @@ AI reads: docs/START-HERE.human.md  ← WRONG PHASE
 **✅ CORRECT:**
 ```
 User: "Set up framework"
-AI reads: setup/START.ai.md → BOOTSTRAP-*.ai.md
+AI reads: setup/START.ai.md
+AI asks: "New or existing project?"
+AI reads: BOOTSTRAP-*.ai.md based on answer
 ```
 
 ---
@@ -320,6 +349,7 @@ AI-driven automation      →    Human + AI collaboration
 - ✅ Reads correct docs for that phase
 - ✅ Never mixes Phase 1 and Phase 2 docs
 - ✅ Uses .ai.md for behavior, .human.md for reference
+- ✅ **ALWAYS asks user: "New project or existing project?"** (never assumes!)
 - ✅ Creates config.json conversationally (not npm run onboard)
 - ✅ Guides user from Phase 1 → Phase 2 smoothly
 

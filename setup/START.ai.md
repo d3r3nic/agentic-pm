@@ -33,23 +33,51 @@ They want **zero manual work** - you do everything.
 
 ## 📋 Your Checklist
 
-Follow these steps in order. **Read `.ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md` for detailed implementation.**
+Follow these steps in order.
 
-### **Phase 1: Detect Context**
+### **Phase 1: Detect Context & Confirm with User**
 
-Check what's in the current folder:
+**Step 1: Check what's in the current folder**
 ```bash
 ls -la
 ```
 
-**If empty or near-empty:**
-- ✅ Proceed with full bootstrap (new project from scratch)
-- Read and follow `.ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md`
+**Step 2: Analyze the folder contents**
+- **Empty or near-empty** (only .git, README.md, .gitignore, or similar) → Likely NEW project
+- **Has code folders** (frontend/, backend/, src/, app/, components/, etc.) → Likely EXISTING project
 
-**If existing code detected (frontend/, backend/, src/, etc.):**
+**Step 3: Ask user to confirm (ALWAYS ASK, even if obvious)**
+```
+I'm analyzing your current directory...
+
+I see: [describe what you found - e.g., "an empty folder" or "existing code with frontend/ and backend/ folders"]
+
+What would you like to do?
+
+A) Create a NEW full-stack project from scratch
+   - I'll build frontend + backend boilerplate
+   - Configure the framework
+   - Implement your first feature
+
+B) Add framework to my EXISTING project
+   - I'll install the framework only
+   - Won't touch your existing code
+   - Configure for your current setup
+
+Please choose: A or B?
+```
+
+**Step 4: Based on user's answer:**
+
+**If user chooses A (New Project):**
+- ✅ Proceed with full bootstrap
+- Read and follow `.ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md`
+- Create frontend/backend from scratch
+
+**If user chooses B (Existing Project):**
 - ✅ Proceed with framework installation only
 - Read and follow `.ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md`
-- Skip project creation, just add agentic-pm/
+- Skip project creation, just add framework
 
 ---
 
