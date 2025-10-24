@@ -2,13 +2,12 @@
   "name": "agentic-pm",
   "version": "2.0.0",
   "description": "Agentic project management - AI agents that ship features autonomously",
-  "main": "sdk/manager.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "onboard:manual": "npx tsx sdk/onboard-manual.ts",
     "spawn": "npx tsx sdk/spawn-agent-simple.ts",
     "spawn:multiple": "npx tsx sdk/spawn-multiple.ts",
-    "manager:standalone": "npx tsx sdk/automation/manager-standalone.ts",
     "build": "tsc"
   },
   "keywords": [

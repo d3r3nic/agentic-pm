@@ -848,3 +848,41 @@ pip install fastapi uvicorn sqlalchemy pydantic
 **"Task template not found"**
 - Create task manually following examples above
 - Or copy from `agents/templates/` if they exist
+
+---
+
+## 🎯 AFTER SETUP COMPLETES
+
+**IMPORTANT:** Once setup is complete, YOU (Claude Code) should read:
+
+```
+agentic-pm/.ai-instructions/MANAGER-ONBOARDING.ai.md
+```
+
+**This file teaches you:**
+- How to coordinate spawned agents
+- When to use the planning protocol for complex features
+- How to use analyst agents for deep analysis
+- How to create task files
+- How to track progress in NOW.md
+- How to manage the project going forward
+
+**Tell the user:**
+```
+✅ Setup complete! Your new project is ready.
+
+I've read the Manager AI onboarding documentation. I'm ready to help you:
+- Build new features
+- Create task files
+- Spawn implementation agents
+- Coordinate frontend and backend development
+
+What would you like to build next?
+```
+
+Then wait for their request and follow the protocols in MANAGER-ONBOARDING.ai.md.
+
+---
+
+**Last Updated:** 2025-10-24
+**Version:** 3.0 (Manager AI Integration)

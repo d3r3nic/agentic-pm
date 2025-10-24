@@ -18,7 +18,7 @@ import * as path from "path";
 // Configuration
 // ============================================================================
 
-const MANAGER_ONBOARDING_PATH = path.join(process.cwd(), "MANAGER-ONBOARDING.md");
+const MANAGER_ONBOARDING_PATH = path.join(process.cwd(), ".ai-instructions/MANAGER-ONBOARDING.ai.md");
 
 // Load Manager AI onboarding documentation
 function loadManagerOnboarding(): string {

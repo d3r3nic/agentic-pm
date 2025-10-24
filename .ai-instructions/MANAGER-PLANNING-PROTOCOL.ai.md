@@ -1,8 +1,9 @@
 # 🎯 Manager AI Planning Protocol
 
-> **For:** Manager AI when receiving new feature requests
+> **For:** Claude Code (YOU as Manager AI) when receiving complex feature requests
 > **Purpose:** Systematic planning that prevents overwhelming contexts and missed requirements
-> **Status:** MANDATORY - Cannot skip steps
+> **Status:** MANDATORY for complex features - Cannot skip steps
+> **Read:** After MANAGER-ONBOARDING.ai.md when user requests complex feature
 
 ---
 
@@ -166,16 +167,38 @@ If Multi-Phase:
 - Security Analyst: For auth/permission features
 - Performance Analyst: For high-load features
 
-**Spawn Command:**
-```bash
-# Spawn analysts in parallel
-npx tsx sdk/spawn-analyst.ts frontend [feature-name] [docs-path]
-npx tsx sdk/spawn-analyst.ts backend [feature-name] [docs-path]
-npx tsx sdk/spawn-analyst.ts integration [feature-name] [docs-path]
+**How to Spawn Analysts (As Manager AI / Claude Code):**
+
+**Option 1: Use Claude Code Task Tool**
+```
+You (Claude Code) can use the Task tool to spawn analyst agents:
+
+Task(
+  subagent_type="Explore",
+  description="Analyze frontend architecture",
+  prompt="Read agents/onboarding/frontend-analyst.template.md and [feature-docs].
+  Analyze the frontend architecture and produce a report following the template.
+  Save analysis to .pm/planning/[feature-name]/analysis/frontend-analysis.md"
+)
+```
+
+**Option 2: Create Analysis Task Files**
+```
+1. Create task files for analysts:
+   - .pm/tasks/[DATE]/analyst-fe-[feature].md
+   - .pm/tasks/[DATE]/analyst-be-[feature].md
+   - .pm/tasks/[DATE]/analyst-int-[feature].md
+
+2. Ask user to spawn analysts:
+   "Please spawn these analysis agents:
+    - npx tsx agentic-pm/sdk/spawn-agent-simple.ts
+      (Select analyst agent type when prompted)"
 ```
 
 **Each analyst creates:**
-`.pm/planning/[feature-name]/analysis/[domain]-analysis.md`
+- `.pm/planning/[feature-name]/analysis/frontend-analysis.md` (~5-8k tokens)
+- `.pm/planning/[feature-name]/analysis/backend-analysis.md` (~5-8k tokens)
+- `.pm/planning/[feature-name]/analysis/integration-plan.md` (~5-8k tokens)
 
 **Checkpoint:**
 - ✅ All analyst agents spawned
