@@ -60,7 +60,8 @@ claude
 ```
 Clone https://github.com/d3r3nic/agentic-pm.git to the current directory.
 
-Then read setup/START.md and .ai-instructions/BOOTSTRAP-NEW-PROJECT.md
+Then read NAVIGATION.md to understand the documentation structure.
+Then read setup/START.ai.md and .ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md
 and follow all steps to set up a new full-stack project here.
 Ask me questions and build everything.
 ```
@@ -99,21 +100,27 @@ my-awesome-project/
 
 ## 📚 Documentation
 
-### **Getting Started**
-- **[setup/START.md](setup/START.md)** - Auto-bootstrap guide
-- **[setup/QUICKSTART-AI.md](setup/QUICKSTART-AI.md)** - Quick reference
+### **🧭 Start Here**
+- **[NAVIGATION.md](NAVIGATION.md)** - Master documentation map (AI reads this first!)
 
-### **For Users**
-- **[docs/START-HERE.md](docs/START-HERE.md)** - Main navigation hub
+### **Getting Started (Phase 1: Onboarding)**
+- **[setup/START.ai.md](setup/START.ai.md)** - Auto-bootstrap guide (for AI)
+- **[setup/QUICKSTART.human.md](setup/QUICKSTART.human.md)** - Quick reference (for humans)
+- **[setup/README.human.md](setup/README.human.md)** - Setup folder guide
+
+### **Daily Operations (Phase 2: After Setup)**
+- **[docs/START-HERE.human.md](docs/START-HERE.human.md)** - Main navigation hub
 - **[docs/guides/](docs/guides/)** - How-to guides
 - **[docs/reference/](docs/reference/)** - Technical reference
 
 ### **For AI Agents**
-- **[.ai-instructions/](ai-instructions/)** - AI reads these (not for users)
-- **[agents/onboarding/](agents/onboarding/)** - Project-specific config
+- **[.ai-instructions/README.ai.md](.ai-instructions/README.ai.md)** - What AI instructions are
+- **[.ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md](.ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md)** - Create new projects
+- **[.ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md](.ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md)** - Add to existing projects
+- **[.ai-instructions/MANAGER-ONBOARDING.ai.md](.ai-instructions/MANAGER-ONBOARDING.ai.md)** - Manager AI behavior
 
 ### **For Developers**
-- **[.dev/](dev/)** - Framework development docs
+- **[.dev/](.dev/)** - Framework development docs
 
 ---
 
@@ -279,7 +286,8 @@ Inspired by: The need for AI agents that actually ship features end-to-end.
 ```bash
 git clone https://github.com/d3r3nic/agentic-pm.git
 cd agentic-pm
-cat setup/START.md  # Read setup guide
+cat NAVIGATION.md  # Read navigation guide
+cat setup/START.ai.md  # Read setup guide
 ```
 
 **Ship features 12x faster. Start now.**

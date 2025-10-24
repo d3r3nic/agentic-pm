@@ -6,19 +6,19 @@
 
 ## 🆕 First Time Here?
 
-### **Setting up for a NEW project?**
-→ Read [`BOOTSTRAP.md`](BOOTSTRAP.md) - 10-minute setup guide
+**STOP!** If you haven't set up the framework yet:
+→ Go to: [`../setup/START.ai.md`](../setup/START.ai.md) (for AI-assisted setup)
+→ Or: [`../setup/QUICKSTART.human.md`](../setup/QUICKSTART.human.md) (for quick reference)
 
-### **Forked this for a different project?**
-→ Read [`BOOTSTRAP.md`](BOOTSTRAP.md) - Configure paths and create agents
+**Already set up?** Great! You're in the right place. This is your operational hub.
 
 ---
 
 ## 🚀 Quick Navigation
 
 ### **Getting Started**
-- **New Manager AI (replacement)?** → Read [`MANAGER-ONBOARDING.md`](MANAGER-ONBOARDING.md)
-- **Want to understand the agent system?** → Read [`agents/README.md`](agents/README.md)
+- **New Manager AI (replacement)?** → Read [`../.ai-instructions/MANAGER-ONBOARDING.ai.md`](../.ai-instructions/MANAGER-ONBOARDING.ai.md)
+- **Want to understand the agent system?** → Read [`../agents/README.human.md`](../agents/README.human.md)
 
 ### **Current Status (Always Start Here!)**
 - **📍 Where are we right now?** → [`NOW.md`](NOW.md)
@@ -105,22 +105,22 @@
 
 ### See current status
 ```bash
-cat /Users/d3r3nic/Development3/docs/NOW.template.md
+cat docs/NOW.md
 ```
 
 ### See full roadmap
 ```bash
-cat /Users/d3r3nic/Development3/docs/ROADMAP.template.md
+cat docs/ROADMAP.md
 ```
 
 ### Check what APIs exist
 ```bash
-cat /Users/d3r3nic/Development3/docs/integration.template.md
+cat docs/integration.md
 ```
 
 ### Review genesis (why this exists)
 ```bash
-cat /Users/d3r3nic/Development3/logs/00-GENESIS.md
+cat logs/00-GENESIS.md
 ```
 
 ---

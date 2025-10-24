@@ -5,7 +5,7 @@
   "main": "sdk/manager.js",
   "type": "module",
   "scripts": {
-    "onboard": "npx tsx sdk/onboard.ts",
+    "onboard:manual": "npx tsx sdk/onboard-manual.ts",
     "spawn": "npx tsx sdk/spawn-agent-simple.ts",
     "spawn:multiple": "npx tsx sdk/spawn-multiple.ts",
     "manager:standalone": "npx tsx sdk/automation/manager-standalone.ts",

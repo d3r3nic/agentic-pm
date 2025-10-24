@@ -1,0 +1,8 @@
+{
+  "disabledMcpjsonServers": [
+    "awslabs-core-mcp-server",
+    "awslabs-aws-documentation",
+    "awslabs-aws-cloud-control-api",
+    "awslabs-aws-cdk"
+  ]
+}

@@ -115,8 +115,8 @@ Progress: [X%]
 
 - [Full Roadmap](ROADMAP.md)
 - [API Contracts](integration.md)
-- [Agent System](agents/README.md)
-- [Why PM Exists](logs/00-GENESIS.md)
+- [Agent System](../agents/README.human.md)
+- [Why PM Exists](../logs/00-GENESIS.md)
 
 ---
 

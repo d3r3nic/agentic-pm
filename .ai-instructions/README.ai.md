@@ -16,25 +16,25 @@ Think of this as the "backend" of the framework - users interact with the fronte
 
 ## 📁 Files in This Folder
 
-### **AI-ASSISTANT-ONBOARDING.md**
+### **AI-ASSISTANT-ONBOARDING.ai.md**
 - **For:** Claude Code when helping users set up the framework
-- **Purpose:** Step-by-step instructions on how to onboard a user
+- **Purpose:** General onboarding instructions and helper behaviors
 - **Contains:** Question flow, configuration steps, verification checks
-- **When used:** User pastes onboarding prompt in Claude Code
+- **When used:** Referenced by other bootstrap files for common patterns
 
-### **BOOTSTRAP-NEW-PROJECT.md**
+### **BOOTSTRAP-NEW-PROJECT.ai.md**
 - **For:** Claude Code creating new projects from scratch
 - **Purpose:** How to create frontend + backend + framework in one flow
 - **Contains:** Boilerplate creation, tech stack options, first feature implementation
 - **When used:** User wants new project in empty folder
 
-### **BOOTSTRAP-EXISTING-PROJECT.md**
+### **BOOTSTRAP-EXISTING-PROJECT.ai.md**
 - **For:** Claude Code adding framework to existing projects
 - **Purpose:** How to install framework without disrupting existing code
 - **Contains:** Detection logic, path configuration, integration steps
 - **When used:** User has existing frontend/backend and wants to add framework
 
-### **MANAGER-ONBOARDING.md**
+### **MANAGER-ONBOARDING.ai.md**
 - **For:** Manager AI agent (coordinates other agents)
 - **Purpose:** How Manager AI should behave, create tasks, track progress
 - **Contains:** Task creation protocol, agent spawning, progress tracking
@@ -85,8 +85,9 @@ Users pull updates via `git pull` and AI agents automatically use the new instru
 
 ## 📚 See Also
 
-- **setup/README.md** - User-facing onboarding docs
-- **docs/START-HERE.md** - Operational framework docs
+- **NAVIGATION.md** - Master documentation map
+- **setup/README.human.md** - User-facing onboarding docs
+- **docs/START-HERE.human.md** - Operational framework docs
 - **agents/onboarding/*.md** - User configuration files
 
 ---

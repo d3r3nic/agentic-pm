@@ -462,16 +462,48 @@ git push -u origin main
 
 ### **Phase 4: Configure PM Framework**
 
-#### **4.1: Run Onboarding**
+#### **4.1: Create config.json**
 
-```bash
-npm run onboard
+**IMPORTANT:** You (Claude) create config.json directly. Do NOT run `npm run onboard`.
+
+**Detect paths:**
+```typescript
+// From project root, detect:
+const projectRoot = path.dirname(process.cwd()); // Parent of agentic-pm/
+const frontendPath = projectRoot + '/frontend';  // if exists
+const backendPath = projectRoot + '/backend';    // if exists
 ```
 
-**Answer prompts with detected values:**
-- Frontend path: `../frontend` (if exists)
-- Backend path: `../backend` (if exists)
-- Project name: `{projectName}`
+**Create config.json:**
+```bash
+cat > config.json << 'EOF'
+{
+  "projectRoot": "{detected projectRoot}",
+  "frontendPath": "{detected frontendPath or empty string}",
+  "backendPath": "{detected backendPath or empty string}",
+  "pmPath": "{current directory - the agentic-pm folder}",
+  "createdAt": "{today's date YYYY-MM-DD}",
+  "projectName": "{projectName from user}"
+}
+EOF
+```
+
+**Example config.json:**
+```json
+{
+  "projectRoot": "/Users/username/my-awesome-project",
+  "frontendPath": "/Users/username/my-awesome-project/frontend",
+  "backendPath": "/Users/username/my-awesome-project/backend",
+  "pmPath": "/Users/username/my-awesome-project/agentic-pm",
+  "createdAt": "2025-10-23",
+  "projectName": "My Awesome Project"
+}
+```
+
+**Tell user:**
+```
+✅ Created config.json with detected paths
+```
 
 #### **4.2: Configure Frontend Agent**
 

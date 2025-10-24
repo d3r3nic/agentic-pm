@@ -8,29 +8,36 @@
 
 ## 📁 Files in This Folder
 
-### **START.md**
-- **For:** Users starting new projects with AI assistance
+### **START.ai.md**
+- **For:** AI (Claude Code) starting new projects
 - **Purpose:** Master guide that Claude Code reads to bootstrap everything
 - **Flow:** Clone framework → create boilerplate → configure → build first feature
 
-### **QUICKSTART-AI.md**
-- **For:** Users who want the quickest possible setup
-- **Purpose:** Single magic prompt that does everything
-- **Time:** 5-10 minutes from empty folder to working app
+### **QUICKSTART.human.md**
+- **For:** Humans who want a quick reference
+- **Purpose:** Quick setup guide for manual setup
+- **Time:** 10-15 minutes to understand and configure
 
 ---
 
 ## 🎯 Which File Should I Use?
 
 ### **New Project (Empty Folder)**
-Use: **START.md**
+Use: **START.ai.md**
 - Claude Code will read this and create your entire project
 - Asks 4 questions, then builds frontend + backend + framework
+- Automated by AI!
 
 ### **Existing Project**
 Use: **AI instructions** (not in this folder)
-- See `.ai-instructions/BOOTSTRAP-EXISTING-PROJECT.md`
+- See `.ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md`
 - Adds framework to your existing code without touching your app
+
+### **Want Manual Control?**
+Use: **QUICKSTART.human.md**
+- Read the guide yourself
+- Run `npm run onboard:manual` for CLI setup
+- More control, more work
 
 ---
 
@@ -47,7 +54,7 @@ Once your framework is configured:
 
 ## 🔄 Next Steps After Setup
 
-1. Read `docs/START-HERE.md` - Main navigation hub
+1. Read `docs/START-HERE.human.md` - Main navigation hub
 2. Update `docs/NOW.template.md` → `docs/NOW.md` with your project status
 3. Update `docs/ROADMAP.template.md` → `docs/ROADMAP.md` with your plan
 4. Start building!

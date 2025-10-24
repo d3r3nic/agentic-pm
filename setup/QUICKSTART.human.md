@@ -34,7 +34,7 @@ I want to set up the Task-Driven PM Framework for my project. Please:
 2. Copy the framework to my project root
 3. Copy .gitignore.example to my project root as .gitignore
 4. Navigate to .pm/ and run npm install
-5. Run npm run onboard and help me answer the questions
+5. Either run npm run onboard:manual OR create config.json conversationally
 6. Configure the agent onboarding files by asking me about:
    - My frontend stack (framework, state management, UI library)
    - My backend stack (language, database, API style)
@@ -84,7 +84,7 @@ Claude Code handles 100% of setup:
 2. ✅ **Copies files** - Moves root directory to your project
 3. ✅ **Sets up gitignore** - Configures two-level strategy
 4. ✅ **Installs dependencies** - Runs `npm install` in root directory
-5. ✅ **Runs onboarding** - Executes `npm run onboard` script
+5. ✅ **Creates config** - Either runs `npm run onboard:manual` OR creates config.json conversationally
 6. ✅ **Creates config.json** - With your actual project paths
 7. ✅ **Configures agents** - Updates 3 onboarding files:
    - `agents/onboarding/fe-agent.md` (your frontend stack)
@@ -127,8 +127,8 @@ Navigate to .pm/ and run npm install
 
 ### **Phase 3: Configuration**
 ```
-Run npm run onboard in the framework and help me answer the questions about
-my project structure.
+Create config.json for me by asking about my project structure.
+Or if I prefer, run npm run onboard:manual for terminal prompts.
 ```
 
 ### **Phase 4: Agent Setup**

@@ -33,7 +33,7 @@ They want **zero manual work** - you do everything.
 
 ## 📋 Your Checklist
 
-Follow these steps in order. **Read `.ai-instructions/BOOTSTRAP-NEW-PROJECT.md` for detailed implementation.**
+Follow these steps in order. **Read `.ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md` for detailed implementation.**
 
 ### **Phase 1: Detect Context**
 
@@ -44,12 +44,12 @@ ls -la
 
 **If empty or near-empty:**
 - ✅ Proceed with full bootstrap (new project from scratch)
-- Read and follow `BOOTSTRAP-NEW-PROJECT.md`
+- Read and follow `.ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md`
 
 **If existing code detected (frontend/, backend/, src/, etc.):**
 - ✅ Proceed with framework installation only
-- Read and follow `AI-ASSISTANT-ONBOARDING.md`
-- Skip project creation, just add .pm/
+- Read and follow `.ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md`
+- Skip project creation, just add agentic-pm/
 
 ---
 
@@ -245,7 +245,7 @@ the Task-Driven PM Framework for your existing project.
 Let me ask a few questions about your setup...
 ```
 
-Then follow `.ai-instructions/AI-ASSISTANT-ONBOARDING.md` instead of BOOTSTRAP-NEW-PROJECT.md.
+Then follow `.ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md` instead of BOOTSTRAP-NEW-PROJECT.ai.md.
 
 ---
 
