@@ -28,7 +28,9 @@ agents/tasks/**/*.md
 logs/weeks/*.md
 logs/decisions/*.md
 logs/milestones/*.md
+logs/00-GENESIS.md
 !logs/**/.gitkeep
+!logs/*.template.md
 
 # Build outputs
 dist/
