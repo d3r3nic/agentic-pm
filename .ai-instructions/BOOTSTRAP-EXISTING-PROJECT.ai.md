@@ -378,7 +378,36 @@ I need clarification on a few things I couldn't auto-detect:
 
 [Always ask:]
 
-3. API Key Setup:
+3. Project Philosophy (ONE-TIME DECISION):
+
+   This determines how ALL future features will be implemented.
+
+   What's your development approach?
+
+   A) **MVP / Rapid Prototyping**
+      - Fast iterations, validate ideas quickly
+      - Acceptable: Code duplication, inline styles, basic components
+      - Refactor later if needed
+      - Timeline: Days per feature
+
+   B) **Production-Ready / Professional**
+      - Balanced: Good quality with reasonable speed
+      - Reusable components, clean structure, documented
+      - Maintainable without major refactoring
+      - Timeline: 1-2 weeks per medium feature
+
+   C) **Enterprise-Grade / Robust**
+      - Highest quality, designed for scale
+      - Modular architecture, design systems, strict typing
+      - Zero hardcoding, comprehensive documentation
+      - Phased planning before implementation
+      - Timeline: 2-4 weeks per medium feature
+
+   Your choice: (A / B / C)
+
+   [Store this in config.json as "developmentPhilosophy"]
+
+4. API Key Setup:
 
    [If .env exists:]
    I see you have a .env file. I'll add ANTHROPIC_API_KEY to it.
@@ -464,7 +493,8 @@ cat > config.json << EOF
   "backendPath": "$(pwd | sed 's|/agentic-pm||')/[detected-backend-folder]",
   "pmPath": "$(pwd)",
   "createdAt": "$(date +%Y-%m-%d)",
-  "projectName": "[from user description]"
+  "projectName": "[from user description]",
+  "developmentPhilosophy": "[mvp / production-ready / enterprise-grade from user's choice]"
 }
 EOF
 ```
@@ -477,7 +507,8 @@ EOF
   "backendPath": "/Users/username/my-awesome-project/backend",
   "pmPath": "/Users/username/my-awesome-project/agentic-pm",
   "createdAt": "2025-10-23",
-  "projectName": "Healthcare Platform"
+  "projectName": "Healthcare Platform",
+  "developmentPhilosophy": "enterprise-grade"
 }
 ```
 
