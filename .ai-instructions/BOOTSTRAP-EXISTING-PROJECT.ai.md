@@ -90,40 +90,104 @@ ls ../backend*/tsconfig.json 2>/dev/null
 **Step 4: Search for Existing Documentation (in PARENT directory)**
 
 ```bash
-# Look for project documentation in PARENT directory
-find .. -name "README.md" -o -name "ARCHITECTURE.md" -o -name "CONTRIBUTING.md" -maxdepth 3
+# Look for Claude-specific docs (IMPORTANT!) - exact filename: claude.md
+ls ../frontend*/claude.md 2>/dev/null
+ls ../backend*/claude.md 2>/dev/null
+ls ../claude.md 2>/dev/null  # Root level claude.md
 
-# Look for Claude-specific docs (IMPORTANT!) in PARENT directory
-find .. -name "claude.md" -o -name ".claude.md" -o -name "CLAUDE.md" -maxdepth 3
+# Look for standard project documentation
+find .. -maxdepth 2 -name "README.md" -o -name "ARCHITECTURE.md" -o -name "CONTRIBUTING.md" 2>/dev/null
 
-# Specifically check for frontend/claude.md and backend/claude.md
-ls ../frontend*/claude.md ../frontend*/.claude.md 2>/dev/null
-ls ../backend*/claude.md ../backend*/.claude.md 2>/dev/null
+# Look for docs/ or documentation/ folders
+find .. -maxdepth 2 -type d -name "docs" -o -name "documentation" -o -name "doc" 2>/dev/null
+
+# If docs folder found, get all .md files
+if [ -d "../docs" ] || [ -d "../documentation" ]; then
+  find ../docs ../documentation -name "*.md" 2>/dev/null | head -30
+fi
 
 # Look for API documentation
-find .. -name "API.md" -o -name "api-docs.md" -o -name "openapi.yaml" -maxdepth 3
+find .. -maxdepth 3 -name "API.md" -o -name "api.md" -o -name "api-docs.md" -o -name "openapi.yaml" -o -name "swagger.yaml" 2>/dev/null
 
-# Look for coding standards
-find .. -name "STANDARDS.md" -o -name "CONVENTIONS.md" -o -name ".eslintrc*" -maxdepth 3
-
-# Look for architecture docs
-find .. -path "*/docs/*" -name "*.md" 2>/dev/null | head -20
+# Look for coding standards indicators
+find .. -maxdepth 2 -name "STANDARDS.md" -o -name "CONVENTIONS.md" -o -name ".eslintrc*" -o -name ".prettierrc*" 2>/dev/null
 ```
 
 **Step 5: Analyze Documentation (if found)**
 
-If you found documentation files, **read them** to extract:
-- Architecture patterns (MVC, clean architecture, etc.)
-- Folder structure conventions
-- Naming conventions
-- Code style preferences
-- Critical rules and constraints
+**Priority 1: claude.md files (MOST IMPORTANT)**
 
-**Special attention to (all in PARENT directory):**
-- `../frontend/claude.md` or `../frontend/.claude.md` → Frontend agent rules
-- `../backend/claude.md` or `../backend/.claude.md` → Backend agent rules
-- `../ARCHITECTURE.md` → Overall system design
-- `../CONTRIBUTING.md` → Coding standards
+If you found `claude.md` files, **read them first**:
+- `../frontend/claude.md` → Frontend agent rules (highest priority for FE)
+- `../backend/claude.md` → Backend agent rules (highest priority for BE)
+- `../claude.md` → General project rules (applies to both)
+
+These files are specifically written for AI agents and contain the most important rules.
+
+**Priority 2: Standard Project Documentation**
+
+Read these to understand the project:
+- `../ARCHITECTURE.md` → System design, how components connect
+- `../CONTRIBUTING.md` → Coding standards, PR process, conventions
+- `../README.md` → Project overview (check for setup, tech stack, architecture sections)
+
+**Priority 3: docs/ folder - Smart Analysis Required**
+
+If you found a `docs/` or `documentation/` folder with .md files:
+
+**IMPORTANT: Intelligently filter which docs to read!**
+
+**Read these types of files:**
+- Architecture docs: `architecture.md`, `design.md`, `system-design.md`
+- API docs: `api.md`, `endpoints.md`, `api-reference.md`
+- Coding standards: `conventions.md`, `standards.md`, `style-guide.md`
+- Component guides: `components.md`, `ui-guidelines.md`
+- Database docs: `database.md`, `schema.md`, `data-model.md`
+
+**SKIP these types of files (not relevant for AI agents):**
+- User documentation: `user-guide.md`, `tutorial.md`, `getting-started.md`
+- Marketing content: `features.md`, `roadmap.md` (unless it contains technical architecture)
+- Meeting notes: `notes/*.md`, `meetings/*.md`
+- Changelogs: `CHANGELOG.md`, `history.md`
+- License/legal: `LICENSE.md`, `TERMS.md`
+- Package READMEs: `node_modules/**/README.md`
+
+**How to determine if a doc is relevant:**
+
+Look at the file path and name:
+```bash
+../docs/architecture/system-design.md  ✅ READ (architecture)
+../docs/api/endpoints.md               ✅ READ (API documentation)
+../docs/components/button.md           ✅ READ (component specs)
+../docs/user-guide/how-to-login.md     ❌ SKIP (user guide)
+../docs/marketing/features.md          ❌ SKIP (marketing)
+../docs/meetings/2024-01-15.md         ❌ SKIP (meeting notes)
+```
+
+**Quick smart analysis:**
+
+1. **Read the first 50 lines** of each .md file in docs/
+2. **Look for these indicators** that it's RELEVANT:
+   - Contains code examples or snippets
+   - Mentions "API", "endpoint", "component", "architecture", "database"
+   - Has technical diagrams or schemas
+   - Discusses coding patterns or conventions
+
+3. **Skip if you see these indicators** that it's NOT RELEVANT:
+   - Written in user-facing language ("How to...", "Getting Started")
+   - Contains screenshots or UI walkthrough instructions
+   - Marketing language ("Amazing features", "Best-in-class")
+   - Meeting agendas or discussion notes
+
+**Extract from relevant docs:**
+- Architecture patterns (MVC, microservices, clean architecture, etc.)
+- Folder structure conventions
+- Naming conventions (camelCase, kebab-case, etc.)
+- Code style preferences (functional vs OOP, etc.)
+- Critical rules and constraints
+- API design patterns (REST conventions, response formats)
+- Component structure patterns
+- Database access patterns
 
 ---
 
@@ -152,24 +216,54 @@ Backend:
 - ORM: [Prisma/TypeORM/Sequelize/detected or "Not detected"]
 
 📚 Documentation Found:
-- [✅/❌] Architecture documentation
-- [✅/❌] Frontend coding standards (claude.md)
-- [✅/❌] Backend coding standards (claude.md)
-- [✅/❌] API documentation
 
-[If documentation found:]
-I found the following documentation:
-- ../frontend/claude.md (I'll use this for frontend agent rules)
-- ../ARCHITECTURE.md (I'll use this for system understanding)
+[Priority 1: claude.md files]
+- [✅/❌] frontend/claude.md - Frontend agent rules
+- [✅/❌] backend/claude.md - Backend agent rules
+- [✅/❌] claude.md (root) - General project rules
+
+[Priority 2: Standard docs]
+- [✅/❌] ARCHITECTURE.md - System design
+- [✅/❌] CONTRIBUTING.md - Coding standards
+- [✅/❌] README.md - Project overview
+
+[Priority 3: docs/ folder]
+- [✅/❌] docs/ folder found
+  [If found, list RELEVANT docs you identified:]
+  - ../docs/architecture/system-design.md
+  - ../docs/api/endpoints.md
+  - [etc. - only list technical docs, not user guides]
+
+[If claude.md files found:]
+🎯 Excellent! I found claude.md files with AI agent rules:
+- ../frontend/claude.md ✅ (I'll use this for frontend agent configuration)
+- ../backend/claude.md ✅ (I'll use this for backend agent configuration)
+
+These contain your coding standards and patterns. I'll reference them in agent onboarding files.
+
+[If SOME documentation found but NO claude.md:]
+📝 I found project documentation:
+- ../ARCHITECTURE.md (system design)
+- ../docs/api/endpoints.md (API documentation)
 - [list other relevant docs]
 
-[If no documentation found:]
-⚠️ I didn't find any architecture documentation or coding standards.
+I'll use these to understand your project, but I recommend creating claude.md files
+for clearer AI agent instructions:
+1. frontend/claude.md - Frontend coding rules specifically for AI
+2. backend/claude.md - Backend coding rules specifically for AI
 
-I recommend creating (in your project root):
-1. frontend/claude.md - Frontend coding rules for AI agents
-2. backend/claude.md - Backend coding rules for AI agents
-3. ARCHITECTURE.md - Overall system architecture
+Would you like me to help create these after setup? (Yes/No)
+
+[If NO documentation found:]
+⚠️ I didn't find any documentation (no claude.md, ARCHITECTURE.md, or docs/ folder).
+
+For best AI agent performance, I strongly recommend creating:
+1. **frontend/claude.md** - Frontend coding rules for AI agents
+   (Component patterns, state management, styling conventions)
+2. **backend/claude.md** - Backend coding rules for AI agents
+   (API patterns, error handling, database access)
+3. **ARCHITECTURE.md** - Overall system design
+   (How frontend ↔ backend communicate, key design decisions)
 
 Would you like me to help create these after setup? (Yes/No)
 ```
@@ -531,11 +625,28 @@ Choose one, or tell me a different demo idea.
 - ✅ Search for documentation files
 - ❌ Don't ask what you can detect
 
-### **2. Respect Existing Documentation**
-- ✅ If `frontend/claude.md` exists → use it, don't override
-- ✅ If `ARCHITECTURE.md` exists → reference it
-- ✅ If `.eslintrc` exists → note it in agent files
+### **2. Respect Existing Documentation (Priority Order)**
+
+**Priority 1: claude.md (highest priority)**
+- ✅ `frontend/claude.md` exists → use it for FE agent rules, don't override
+- ✅ `backend/claude.md` exists → use it for BE agent rules, don't override
+- ✅ Root `claude.md` exists → use for general rules
+- ❌ NEVER override or ignore claude.md files
+
+**Priority 2: Standard project docs**
+- ✅ `ARCHITECTURE.md` exists → reference it, extract patterns
+- ✅ `CONTRIBUTING.md` exists → extract coding conventions
+- ✅ `README.md` exists → check for architecture/setup sections
+
+**Priority 3: docs/ folder**
+- ✅ Smart analysis: Read technical docs, skip user guides
+- ✅ Extract from architecture, API, component docs
+- ❌ Don't read user guides, marketing, meeting notes
+
+**General Rules:**
 - ❌ Don't create redundant documentation
+- ❌ Don't ask questions answered in claude.md
+- ✅ Reference existing docs in agent onboarding files
 
 ### **3. Be Intelligent About Stack**
 ```
