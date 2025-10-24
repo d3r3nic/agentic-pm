@@ -141,19 +141,25 @@ If Multi-Phase:
 **Analyst Types:**
 
 **Frontend Analyst Agent:**
+- **Template:** `agents/onboarding/frontend-analyst.template.md`
 - Reads: Frontend docs + Component patterns + State management
 - Analyzes: How feature fits in existing FE architecture
 - Outputs: Frontend Implementation Strategy (~5-8k tokens)
+- Saves to: `.pm/analysis/frontend-[feature-name]-analysis.md`
 
 **Backend Analyst Agent:**
+- **Template:** `agents/onboarding/backend-analyst.template.md`
 - Reads: Backend docs + API patterns + Database patterns
 - Analyzes: Database changes + API design + Security
 - Outputs: Backend Implementation Strategy (~5-8k tokens)
+- Saves to: `.pm/analysis/backend-[feature-name]-analysis.md`
 
 **Integration Analyst Agent:**
+- **Template:** `agents/onboarding/integration-analyst.template.md`
 - Reads: Both FE/BE analyses + API contracts
 - Analyzes: How pieces connect, dependencies, handoffs
 - Outputs: Integration Plan (~5-8k tokens)
+- Saves to: `.pm/analysis/integration-[feature-name]-plan.md`
 
 **Optional Specialists:**
 - Database Analyst: For complex schema changes

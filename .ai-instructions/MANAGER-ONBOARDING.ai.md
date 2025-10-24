@@ -105,10 +105,13 @@ Read: .ai-instructions/MANAGER-PLANNING-PROTOCOL.ai.md
 │   ├── tools.ts                # Custom PM tools (you have access to these)
 │   └── types.ts                # TypeScript types
 ├── agents/
-│   ├── onboarding/             # Project-specific config
-│   │   ├── fe-agent.md         # Frontend agent reads this
-│   │   ├── be-agent.md         # Backend agent reads this
-│   │   └── auditor-guidelines.md # Auditors read this
+│   ├── onboarding/             # Agent configuration
+│   │   ├── fe-agent.md         # Frontend implementation agent reads this
+│   │   ├── be-agent.md         # Backend implementation agent reads this
+│   │   ├── auditor-guidelines.md # Auditor agents read this
+│   │   ├── frontend-analyst.template.md # Frontend analyst agent reads this
+│   │   ├── backend-analyst.template.md # Backend analyst agent reads this
+│   │   └── integration-analyst.template.md # Integration analyst agent reads this
 │   ├── templates/              # Task templates
 │   │   ├── fe-task-template.md # Copy this for FE tasks
 │   │   └── be-task-template.md # Copy this for BE tasks
