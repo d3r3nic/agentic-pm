@@ -34,84 +34,103 @@ You are **Manager AI** - which means **YOU**, Claude Code, in interactive mode.
 ### Phase 1: Understanding the Project (Read Once)
 ```
 1. config.json - Project philosophy (Enterprise/Production/MVP)
-2. docs/NOW.md - Current project status
-3. docs/ROADMAP.md - High-level project plan
-4. docs/integration.md - API contracts between FE/BE
+2. .pm/NOW.md - Current project status
+3. .pm/ROADMAP.md - High-level project plan
+4. .pm/integration.md - API contracts between FE/BE
 ```
 
-### Phase 2: Complex Feature Planning (Read When Needed)
+### Phase 2: Proposal & RFP Handling (ALWAYS USE FOR ANY PROPOSAL)
 ```
-5. .ai-instructions/MANAGER-PLANNING-PROTOCOL.ai.md
-   └─→ 7-step systematic planning for complex features
+5. .ai-instructions/PROPOSAL-HANDLING-START.ai.md
+   └─→ Entry point when user has proposal/RFP/spec
+   └─→ Triggers automatically when user mentions proposal
+   └─→ Works for ANY size (1 page to 1000+ pages)
+   └─→ Directs you to RFP-ANALYSIS-PROTOCOL
+
+6. .ai-instructions/RFP-ANALYSIS-PROTOCOL.ai.md
+   └─→ 7-step systematic analysis protocol
+   └─→ UNIVERSAL - Use for ALL proposals (no size limits)
    └─→ Prevents context overflow, missed requirements
-   └─→ Use when: Feature > 10 pages OR Enterprise-grade
+   └─→ Spawns analyst agents for deep dives
 
-6. Analyst Templates (for deep analysis):
+7. Analyst Templates (specialists read these, not you):
    ├─→ agents/onboarding/frontend-analyst.template.md
    ├─→ agents/onboarding/backend-analyst.template.md
    └─→ agents/onboarding/integration-analyst.template.md
 
-7. Planning Templates:
+8. Planning Templates:
    └─→ templates/MASTER-PLAN.template.md
 ```
 
 ### Phase 3: Implementation (Daily Operations)
 ```
-8. Agent Templates:
+9. Agent Templates:
    ├─→ agents/onboarding/fe-agent.template.md
    ├─→ agents/onboarding/be-agent.template.md
    └─→ agents/onboarding/auditor-guidelines.md
 
-9. Task Templates:
-   ├─→ agents/templates/fe-task.template.md
-   └─→ agents/templates/be-task.template.md
+10. Task Templates:
+    ├─→ agents/templates/fe-task.template.md
+    └─→ agents/templates/be-task.template.md
 ```
 
 ---
 
-## 🚨 NEW FEATURE REQUEST PROTOCOL
+## 🚨 PROPOSAL & RFP HANDLING PROTOCOL
 
-**Decision Tree - ALWAYS FOLLOW:**
+**AUTOMATIC TRIGGER - ALWAYS FOLLOW:**
 
-### Step 1: Check Feature Complexity
+### When User Mentions Proposals/RFPs/Specs
 
 ```
-IF user provides documentation folder (e.g., /tasks/feature-name/)
-   OR feature description is >10 pages
-   OR feature spans multiple domains (FE + BE + DB)
-   OR project philosophy is "Enterprise-Grade"
-   THEN:
-      → Use MANAGER-PLANNING-PROTOCOL.ai.md (7-step systematic planning)
-      → Read: .ai-instructions/MANAGER-PLANNING-PROTOCOL.ai.md
-      → Follow ALL 7 steps sequentially
+IF user says ANY of these:
+   ✅ "I have a proposal/RFP"
+   ✅ "Here's a feature specification"
+   ✅ "Can you analyze this documentation?"
+   ✅ "Read these docs and create a plan"
+   ✅ Provides documentation folder
 
-ELSE IF simple feature (<5 pages, single domain):
-   → Use standard task creation (current workflow)
-   → Create task file directly
-   → Spawn appropriate agent
+THEN:
+   → Read: .ai-instructions/PROPOSAL-HANDLING-START.ai.md
+   → This activates the RFP Analysis Protocol
+   → ALWAYS use this (no size limits - works for 1 page to 1000+ pages)
 ```
 
-### Step 2: When Using Planning Protocol
+### The Proposal Handling Flow
 
+**Step 1: Recognize the Trigger**
+- User mentions proposal, RFP, spec, or provides documentation
+- Activate proposal handling (regardless of size!)
+
+**Step 2: Read Entry Point**
+```
+Read: .ai-instructions/PROPOSAL-HANDLING-START.ai.md
+```
+This file tells you how to proceed
+
+**Step 3: Follow RFP Analysis Protocol**
+```
+Read: .ai-instructions/RFP-ANALYSIS-PROTOCOL.ai.md
+```
 **YOU MUST:**
-1. Read `.ai-instructions/MANAGER-PLANNING-PROTOCOL.ai.md`
-2. Follow ALL 7 steps (cannot skip!)
-3. Spawn analyst agents for deep domain analysis
-4. Create master plan before implementation
-5. Get user approval at checkpoints
-6. Stay within context budgets
+1. Follow ALL 7 steps (cannot skip!)
+2. Spawn analyst agents for ANY proposal (even small ones)
+3. Create master plan before implementation
+4. Get user approval at checkpoints
+5. Execute in phases
 
-**The planning protocol prevents:**
-- ❌ Context overflow
+**The RFP protocol prevents:**
+- ❌ Context overflow (even with 1000-page docs)
 - ❌ Missed requirements
 - ❌ Jumping into coding without understanding
 - ❌ Losing progress across context resets
 
-**The planning protocol ensures:**
-- ✅ Systematic analysis of complex features
+**The RFP protocol ensures:**
+- ✅ Systematic analysis using specialist agents
 - ✅ Phased implementation within context budgets
 - ✅ Seamless integration across multiple contexts
 - ✅ Zero information loss on context reset
+- ✅ Consistent approach for all proposal sizes
 
 ---
 
@@ -122,7 +141,8 @@ Project Root/
 ├── agentic-pm/                 # Framework submodule (THIS FOLDER)
 │   ├── .ai-instructions/
 │   │   ├── MANAGER-ONBOARDING.ai.md          ← YOU ARE HERE
-│   │   ├── MANAGER-PLANNING-PROTOCOL.ai.md   ← Complex feature planning
+│   │   ├── PROPOSAL-HANDLING-START.ai.md     ← Entry point for proposals/RFPs
+│   │   ├── RFP-ANALYSIS-PROTOCOL.ai.md       ← 7-step proposal analysis
 │   │   ├── BOOTSTRAP-*.ai.md                 ← Onboarding flows
 │   │   └── README.ai.md
 │   │
@@ -243,19 +263,20 @@ Project Root/
 **When:** >10 pages docs, multiple domains, Enterprise mode
 
 **Process:**
-1. Read: `.ai-instructions/MANAGER-PLANNING-PROTOCOL.ai.md`
-2. Follow 7-step protocol:
-   - Step 1: Feature Intake
+1. Read: `.ai-instructions/PROPOSAL-HANDLING-START.ai.md`
+2. Then read: `.ai-instructions/RFP-ANALYSIS-PROTOCOL.ai.md`
+3. Follow 7-step protocol:
+   - Step 1: Proposal Intake
    - Step 2: Context Budget Assessment
    - Step 3: Specialized Analysis (spawn analysts)
    - Step 4: Master Plan Creation
    - Step 5: Phase Execution
    - Step 6: Integration & Testing
    - Step 7: Completion & Documentation
-3. Create master plan: `.pm/planning/[feature]/MASTER-PLAN.md`
-4. Break into phases
-5. Create task files per phase
-6. Execute phases sequentially with user approval
+4. Create master plan: `.pm/planning/[feature]/MASTER-PLAN.md`
+5. Break into phases
+6. Create task files per phase
+7. Execute phases sequentially with user approval
 
 ---
 
@@ -389,18 +410,23 @@ or using spawn-multiple.ts"
 
 ## ⚡ Quick Decision Matrix
 
-### User says: "Build [simple feature]"
+### User says: "I have a proposal/RFP/spec"
+→ Read PROPOSAL-HANDLING-START.ai.md
+→ Activate RFP Analysis Protocol
+→ Follow 7-step process
+→ Spawn analyst agents (ANY size)
+→ Create master plan
+→ Get user approval
+→ Execute in phases
+
+### User says: "Build [simple feature]" (no docs provided)
 → Create task file directly
 → Spawn appropriate agent
 → Update NOW.md when done
 
-### User says: "Build [complex feature]" OR provides docs folder
-→ Read MANAGER-PLANNING-PROTOCOL.ai.md
-→ Follow 7-step process
-→ Spawn analyst agents
-→ Create master plan
-→ Get user approval
-→ Execute in phases
+### User provides documentation folder
+→ Read PROPOSAL-HANDLING-START.ai.md
+→ Treat as proposal (use RFP protocol)
 
 ### User says: "What's the project status?"
 → Read .pm/NOW.md
@@ -443,9 +469,9 @@ or using spawn-multiple.ts"
 **Then ask user:**
 "What would you like to work on today?"
 
-**If they request complex feature:**
-- Read `MANAGER-PLANNING-PROTOCOL.ai.md`
-- Follow 7-step process
+**If they mention proposal/RFP/spec:**
+- Read `PROPOSAL-HANDLING-START.ai.md`
+- Follow RFP Analysis Protocol (7 steps)
 - Spawn analyst agents
 - Create master plan
 

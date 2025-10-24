@@ -1106,8 +1106,9 @@ agentic-pm/.ai-instructions/MANAGER-ONBOARDING.ai.md
 
 **This file teaches you:**
 - How to coordinate spawned agents
-- When to use the planning protocol for complex features
-- How to use analyst agents for deep analysis
+- **How to handle proposals/RFPs/specs (ANY size)**
+- When to use the RFP Analysis Protocol
+- How to use analyst agents for systematic analysis
 - How to create task files
 - How to track progress in NOW.md
 - How to manage the project going forward
@@ -1117,15 +1118,28 @@ agentic-pm/.ai-instructions/MANAGER-ONBOARDING.ai.md
 ✅ Setup complete! Framework is now configured for your project.
 
 I've read the Manager AI onboarding documentation. I'm ready to help you:
-- Build new features
-- Create task files
-- Spawn implementation agents
-- Coordinate frontend and backend development
 
-What would you like to build first?
+**For Proposals/RFPs/Specs:**
+- I can analyze ANY proposal (1 page to 1000+ pages)
+- I'll use specialist analyst agents for systematic analysis
+- Creates phased implementation plans with checkpoints
+
+**For Features:**
+- Build new features with task-driven agents
+- Spawn implementation agents (FE/BE)
+- Coordinate frontend and backend development
+- Track progress in NOW.md
+
+What would you like to work on?
+- "I have a proposal/RFP" → I'll use systematic analysis protocol
+- "Build [feature]" → I'll create tasks and implement
 ```
 
 Then wait for their request and follow the protocols in MANAGER-ONBOARDING.ai.md.
+
+**If they mention proposal/RFP/spec:**
+- Immediately read: PROPOSAL-HANDLING-START.ai.md
+- Follow the RFP Analysis Protocol
 
 ---
 

@@ -1,51 +1,65 @@
-# 🎯 Manager AI Planning Protocol
+# 🎯 RFP Analysis Protocol
 
-> **For:** Claude Code (YOU as Manager AI) when receiving complex feature requests
-> **Purpose:** Systematic planning that prevents overwhelming contexts and missed requirements
-> **Status:** MANDATORY for complex features - Cannot skip steps
-> **Read:** After MANAGER-ONBOARDING.ai.md when user requests complex feature
-
----
-
-## 🚨 CRITICAL: When to Use This Protocol
-
-**Use this protocol when:**
-- Feature has extensive documentation (>10 pages)
-- Feature spans multiple domains (FE + BE + Integration)
-- Feature will require multiple context windows
-- User provides documentation folder (e.g., `/tasks/feature-name/`)
-- Project philosophy is "Enterprise-Grade" or "Production-Ready"
-
-**Skip this protocol when:**
-- Simple, single-domain feature (<5 pages docs)
-- Quick bug fix or minor change
-- User explicitly requests "fast implementation"
-- Project philosophy is "MVP/Slop Mode"
+> **For:** Claude Code when user provides ANY proposal, RFP, spec, or feature documentation
+> **Purpose:** Systematic analysis using specialist agents - prevents context overflow and missed requirements
+> **Status:** MANDATORY for ALL proposals - Use for any size (1 page to 1000+ pages)
+> **Trigger:** User mentions proposal/RFP/spec or provides documentation
+> **Read:** Automatically when PROPOSAL-HANDLING-START.ai.md directs you here
 
 ---
 
-## 📋 The 7-Step Planning Protocol
+## 🚨 WHEN TO USE THIS PROTOCOL
+
+**ALWAYS use this protocol when user provides:**
+- ✅ Proposals or RFPs (any size)
+- ✅ Feature specifications (any length)
+- ✅ Documentation folders
+- ✅ Requirements documents
+- ✅ System design docs
+- ✅ Implementation specs
+
+**Why use for ALL sizes:**
+- ✅ Consistent systematic approach
+- ✅ Analyst agents catch details you'd miss
+- ✅ Creates context-proof master plan
+- ✅ Enables phased execution with checkpoints
+- ✅ Same workflow for 1-page spec or 1000-page RFP
+
+**No exceptions:** This protocol is universal - don't skip it
+
+---
+
+## 📋 The 7-Step Analysis Protocol
+
+**UNIVERSAL PROCESS:** Use these steps for EVERY proposal (small or large)
 
 **IMPORTANT:** These steps are SEQUENTIAL. Complete each step before moving to the next.
 Each step has a CHECKPOINT that must be satisfied before proceeding.
 
+**Why 7 steps for all sizes:**
+- Small proposals: Steps go quickly, analysts produce 1-2k reports
+- Large proposals: Steps take longer, analysts produce 5-8k reports
+- Same process, different depth - consistency is key
+
 ---
 
-### **Step 1: Feature Intake & Scope Understanding**
+### **Step 1: Proposal Intake & Scope Understanding**
 
-**Goal:** Understand what the user wants at a high level
+**Goal:** Understand what the proposal/RFP is about at a high level
 
 **Actions:**
-1. User provides feature request + documentation
-2. Read ONLY overview/summary documents first (not deep docs yet)
-3. Identify feature domains (Frontend, Backend, Database, Integration, etc.)
-4. Estimate complexity: SMALL / MEDIUM / LARGE / EXTRA-LARGE
+1. User provides proposal/RFP/spec + documentation
+2. Read ONLY overview/summary documents first (README, START-HERE, executive summary)
+3. Identify domains (Frontend, Backend, Database, Integration, DevOps, etc.)
+4. Estimate scope: SMALL / MEDIUM / LARGE / EXTRA-LARGE
 
-**Complexity Guide:**
-- SMALL: 1-3 tasks, single domain, <1 week
-- MEDIUM: 4-8 tasks, 2 domains, 1-2 weeks
-- LARGE: 9-20 tasks, 3+ domains, 2-4 weeks
-- EXTRA-LARGE: 20+ tasks, multiple domains, 1-3 months
+**Scope Guide (doesn't affect process, just timeline):**
+- SMALL: 1-3 tasks, single domain, <1 week, 1-10 pages docs
+- MEDIUM: 4-8 tasks, 2 domains, 1-2 weeks, 10-50 pages docs
+- LARGE: 9-20 tasks, 3+ domains, 2-4 weeks, 50-200 pages docs
+- EXTRA-LARGE: 20+ tasks, multiple domains, 1-3 months, 200+ pages docs
+
+**NOTE:** You use the same 7 steps regardless of scope!
 
 **Output:**
 ```markdown
