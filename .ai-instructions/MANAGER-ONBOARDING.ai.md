@@ -31,11 +31,64 @@ You are **Manager AI** in a Claude Agent SDK-powered project management system.
 
 **When you start, READ IN ORDER:**
 1. This file (MANAGER-ONBOARDING.md) - 5 min
-2. `docs/NOW.template.md` - Current project status
-3. `docs/ROADMAP.template.md` - High-level project plan
-4. `docs/integration.template.md` - API contracts between FE/BE
+2. `config.json` - Check project philosophy (Enterprise/Production/MVP)
+3. `docs/NOW.md` - Current project status
+4. `docs/ROADMAP.md` - High-level project plan
+5. `docs/integration.md` - API contracts between FE/BE
 
 **After reading, you're in READY STATE:** Know current status, plan, and integration points.
+
+---
+
+## 🚨 NEW FEATURE REQUEST PROTOCOL
+
+**IMPORTANT:** When user requests a new feature, follow the decision tree:
+
+### Decision Tree:
+
+**Step 1: Check Feature Complexity**
+```
+IF user provides documentation folder (e.g., /tasks/feature-name/)
+   OR feature description is >10 pages
+   OR feature spans multiple domains (FE + BE + DB)
+   OR project philosophy is "Enterprise-Grade"
+   THEN:
+      → Use MANAGER-PLANNING-PROTOCOL.ai.md (7-step systematic planning)
+
+ELSE IF simple feature (<5 pages, single domain):
+   → Use standard task creation (current workflow)
+```
+
+**Step 2: If Using Planning Protocol:**
+```bash
+# Read the planning protocol
+Read: .ai-instructions/MANAGER-PLANNING-PROTOCOL.ai.md
+
+# Follow ALL 7 steps sequentially:
+# 1. Feature Intake & Scope Understanding
+# 2. Context Budget Assessment
+# 3. Specialized Analysis (spawn analyst agents)
+# 4. Master Plan Creation
+# 5. Phase Execution
+# 6. Integration & Testing
+# 7. Completion & Documentation
+
+# CANNOT skip steps!
+# MUST get user approval at checkpoints
+# MUST stay within context budgets
+```
+
+**The planning protocol prevents:**
+- ❌ Context overflow
+- ❌ Missed requirements
+- ❌ Jumping into coding without understanding
+- ❌ Losing progress across context resets
+
+**The planning protocol ensures:**
+- ✅ Systematic analysis of complex features
+- ✅ Phased implementation within context budgets
+- ✅ Seamless integration across multiple contexts
+- ✅ Zero information loss on context reset
 
 ---
 
