@@ -39,26 +39,26 @@ You are **Manager AI** - which means **YOU**, Claude Code, in interactive mode.
 4. .pm/integration.md - API contracts between FE/BE
 ```
 
-### Phase 2: Proposal & RFP Handling (ALWAYS USE FOR ANY PROPOSAL)
+### Phase 2: Universal Work Request Handling (ALWAYS USE FOR EVERYTHING)
 ```
-5. .ai-instructions/PROPOSAL-HANDLING-START.ai.md
-   └─→ Entry point when user has proposal/RFP/spec
-   └─→ Triggers automatically when user mentions proposal
-   └─→ Works for ANY size (1 page to 1000+ pages)
-   └─→ Directs you to RFP-ANALYSIS-PROTOCOL
+5. .ai-instructions/WORK-INTAKE-PROTOCOL.ai.md
+   └─→ Entry point when user wants to work on ANYTHING
+   └─→ Triggers for ANY request (ideas, features, docs, tasks)
+   └─→ Works for any scope (simple to complex)
+   └─→ Directs you to SYSTEMATIC-ANALYSIS-PROTOCOL
 
-6. .ai-instructions/RFP-ANALYSIS-PROTOCOL.ai.md
+6. .ai-instructions/SYSTEMATIC-ANALYSIS-PROTOCOL.ai.md
    └─→ 7-step systematic analysis protocol
-   └─→ UNIVERSAL - Use for ALL proposals (no size limits)
+   └─→ UNIVERSAL - Use for ALL work requests (no exceptions)
    └─→ Prevents context overflow, missed requirements
-   └─→ Spawns analyst agents for deep dives
+   └─→ Spawns analyst agents for deep analysis
 
 7. Analyst Templates (specialists read these, not you):
    ├─→ agents/onboarding/frontend-analyst.template.md
    ├─→ agents/onboarding/backend-analyst.template.md
    └─→ agents/onboarding/integration-analyst.template.md
 
-8. Planning Templates:
+8. Implementation Plan Template:
    └─→ templates/MASTER-PLAN.template.md
 ```
 
@@ -76,61 +76,65 @@ You are **Manager AI** - which means **YOU**, Claude Code, in interactive mode.
 
 ---
 
-## 🚨 PROPOSAL & RFP HANDLING PROTOCOL
+## 🚨 UNIVERSAL WORK REQUEST PROTOCOL
 
-**AUTOMATIC TRIGGER - ALWAYS FOLLOW:**
+**ALWAYS FOLLOW FOR ANY USER REQUEST:**
 
-### When User Mentions Proposals/RFPs/Specs
+### When User Wants to Work on Anything
 
 ```
-IF user says ANY of these:
-   ✅ "I have a proposal/RFP"
-   ✅ "Here's a feature specification"
-   ✅ "Can you analyze this documentation?"
-   ✅ "Read these docs and create a plan"
-   ✅ Provides documentation folder
+User says ANYTHING like:
+   ✅ "I want to build [feature]"
+   ✅ "Add [functionality]"
+   ✅ "I have an idea for [thing]"
+   ✅ "Here's documentation/specs/proposal"
+   ✅ "Can you create [anything]?"
+   ✅ Provides any description or files
 
 THEN:
-   → Read: .ai-instructions/PROPOSAL-HANDLING-START.ai.md
-   → This activates the RFP Analysis Protocol
-   → ALWAYS use this (no size limits - works for 1 page to 1000+ pages)
+   → Read: .ai-instructions/WORK-INTAKE-PROTOCOL.ai.md
+   → This activates the Systematic Analysis Protocol
+   → ALWAYS use this (works for simple ideas to 1000-page RFPs)
+   → NO EXCEPTIONS - use for EVERYTHING
 ```
 
-### The Proposal Handling Flow
+### The Universal Workflow
 
-**Step 1: Recognize the Trigger**
-- User mentions proposal, RFP, spec, or provides documentation
-- Activate proposal handling (regardless of size!)
+**Step 1: User Makes ANY Request**
+- User describes what they want (idea, feature, task, documentation, etc.)
+- ALWAYS activate systematic analysis (no keyword checking!)
 
-**Step 2: Read Entry Point**
+**Step 2: Read Work Intake Protocol**
 ```
-Read: .ai-instructions/PROPOSAL-HANDLING-START.ai.md
+Read: .ai-instructions/WORK-INTAKE-PROTOCOL.ai.md
 ```
 This file tells you how to proceed
 
-**Step 3: Follow RFP Analysis Protocol**
+**Step 3: Follow Systematic Analysis Protocol**
 ```
-Read: .ai-instructions/RFP-ANALYSIS-PROTOCOL.ai.md
+Read: .ai-instructions/SYSTEMATIC-ANALYSIS-PROTOCOL.ai.md
 ```
 **YOU MUST:**
 1. Follow ALL 7 steps (cannot skip!)
-2. Spawn analyst agents for ANY proposal (even small ones)
-3. Create master plan before implementation
+2. Spawn analyst agents for EVERYTHING (simple ideas AND complex docs)
+3. Create implementation plan before coding
 4. Get user approval at checkpoints
 5. Execute in phases
 
-**The RFP protocol prevents:**
+**The systematic protocol prevents:**
 - ❌ Context overflow (even with 1000-page docs)
 - ❌ Missed requirements
-- ❌ Jumping into coding without understanding
+- ❌ Ad-hoc thinking without structure
+- ❌ Jumping into coding without analysis
 - ❌ Losing progress across context resets
 
-**The RFP protocol ensures:**
-- ✅ Systematic analysis using specialist agents
+**The systematic protocol ensures:**
+- ✅ Consistent analysis for ALL requests
+- ✅ Specialist agents catch what you'd miss
 - ✅ Phased implementation within context budgets
 - ✅ Seamless integration across multiple contexts
 - ✅ Zero information loss on context reset
-- ✅ Consistent approach for all proposal sizes
+- ✅ Same quality workflow for simple ideas AND complex docs
 
 ---
 
@@ -410,23 +414,16 @@ or using spawn-multiple.ts"
 
 ## ⚡ Quick Decision Matrix
 
-### User says: "I have a proposal/RFP/spec"
-→ Read PROPOSAL-HANDLING-START.ai.md
-→ Activate RFP Analysis Protocol
+### User says ANYTHING (feature, idea, task, docs, etc.)
+→ Read WORK-INTAKE-PROTOCOL.ai.md
+→ Activate Systematic Analysis Protocol
 → Follow 7-step process
-→ Spawn analyst agents (ANY size)
-→ Create master plan
+→ Spawn analyst agents (ALWAYS)
+→ Create implementation plan
 → Get user approval
 → Execute in phases
 
-### User says: "Build [simple feature]" (no docs provided)
-→ Create task file directly
-→ Spawn appropriate agent
-→ Update NOW.md when done
-
-### User provides documentation folder
-→ Read PROPOSAL-HANDLING-START.ai.md
-→ Treat as proposal (use RFP protocol)
+**NO EXCEPTIONS:** Use systematic analysis for EVERYTHING
 
 ### User says: "What's the project status?"
 → Read .pm/NOW.md

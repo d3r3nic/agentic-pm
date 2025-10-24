@@ -1,31 +1,33 @@
-# 🎯 RFP Analysis Protocol
+# 🎯 Systematic Analysis Protocol
 
-> **For:** Claude Code when user provides ANY proposal, RFP, spec, or feature documentation
+> **For:** Claude Code when user wants to work on ANYTHING
 > **Purpose:** Systematic analysis using specialist agents - prevents context overflow and missed requirements
-> **Status:** MANDATORY for ALL proposals - Use for any size (1 page to 1000+ pages)
-> **Trigger:** User mentions proposal/RFP/spec or provides documentation
-> **Read:** Automatically when PROPOSAL-HANDLING-START.ai.md directs you here
+> **Status:** MANDATORY for ALL work requests - Use for any request (simple idea to 1000-page docs)
+> **Trigger:** User says what they want to build/work on
+> **Read:** Automatically when WORK-INTAKE-PROTOCOL.ai.md directs you here
 
 ---
 
 ## 🚨 WHEN TO USE THIS PROTOCOL
 
-**ALWAYS use this protocol when user provides:**
+**ALWAYS use this protocol for EVERYTHING user wants to work on:**
+- ✅ Simple feature ideas ("build user login")
+- ✅ Complex features with documentation
 - ✅ Proposals or RFPs (any size)
-- ✅ Feature specifications (any length)
+- ✅ Feature specifications
+- ✅ Bug fixes or refactors
+- ✅ New functionality requests
 - ✅ Documentation folders
-- ✅ Requirements documents
-- ✅ System design docs
-- ✅ Implementation specs
+- ✅ ANY work request
 
-**Why use for ALL sizes:**
-- ✅ Consistent systematic approach
-- ✅ Analyst agents catch details you'd miss
-- ✅ Creates context-proof master plan
+**Why use for ALL requests:**
+- ✅ Consistent systematic approach (no ad-hoc thinking)
+- ✅ Analyst agents catch requirements you'd miss
+- ✅ Creates context-proof implementation plan
 - ✅ Enables phased execution with checkpoints
-- ✅ Same workflow for 1-page spec or 1000-page RFP
+- ✅ Scales from simple ideas to 1000-page RFPs
 
-**No exceptions:** This protocol is universal - don't skip it
+**No exceptions:** This protocol is universal - use it for EVERYTHING
 
 ---
 

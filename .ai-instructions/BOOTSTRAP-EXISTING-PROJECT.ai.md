@@ -1117,29 +1117,42 @@ agentic-pm/.ai-instructions/MANAGER-ONBOARDING.ai.md
 ```
 ✅ Setup complete! Framework is now configured for your project.
 
-I've read the Manager AI onboarding documentation. I'm ready to help you:
+I've read the Manager AI onboarding documentation. I'm ready to help you build anything.
 
-**For Proposals/RFPs/Specs:**
-- I can analyze ANY proposal (1 page to 1000+ pages)
-- I'll use specialist analyst agents for systematic analysis
-- Creates phased implementation plans with checkpoints
+**How This Works:**
+For ANY request you make (simple idea, complex proposal, feature, task, etc.),
+I'll use a systematic approach:
 
-**For Features:**
-- Build new features with task-driven agents
-- Spawn implementation agents (FE/BE)
-- Coordinate frontend and backend development
-- Track progress in NOW.md
+1. I'll spawn specialist analyst agents to examine:
+   - Frontend requirements
+   - Backend architecture
+   - How they integrate
 
-What would you like to work on?
-- "I have a proposal/RFP" → I'll use systematic analysis protocol
-- "Build [feature]" → I'll create tasks and implement
+2. They'll produce focused analysis reports
+
+3. I'll synthesize into a phased implementation plan
+
+4. You approve the plan
+
+5. I execute with checkpoints for your approval
+
+This gives you:
+- Thorough analysis (nothing missed)
+- Clear phased execution
+- Approval checkpoints
+- Context-proof plans (survives restarts)
+
+**What would you like to work on?**
+
+Just tell me what you want to build - any idea, feature, or functionality.
+I'll handle the systematic analysis and implementation.
 ```
 
 Then wait for their request and follow the protocols in MANAGER-ONBOARDING.ai.md.
 
-**If they mention proposal/RFP/spec:**
-- Immediately read: PROPOSAL-HANDLING-START.ai.md
-- Follow the RFP Analysis Protocol
+**For ANY user request:**
+- Immediately read: WORK-INTAKE-PROTOCOL.ai.md
+- Follow the Systematic Analysis Protocol
 
 ---
 
