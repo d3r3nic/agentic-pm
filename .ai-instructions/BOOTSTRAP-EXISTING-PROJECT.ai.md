@@ -415,22 +415,46 @@ That's it! I have everything else.
 
 ### **Phase 3: Install Framework**
 
+**IMPORTANT: Narrate what you're doing so user understands!**
+
 **Tell user:**
 ```
-✅ Got it! Installing framework now...
+✅ Perfect! Let me set up the framework now.
+
+I'll do this in 5 steps:
+1. 📦 Install dependencies (framework tools)
+2. 📁 Configure paths (so agents know where your code is)
+3. 📝 Create agent instructions (frontend, backend, auditor)
+4. 🔒 Set up API key (for spawning agents)
+5. 📋 Analyze documentation gaps (optional improvements)
+
+This will take about 30 seconds...
 ```
 
-**Step 1: Install framework in project root**
+**Step 1: Install framework dependencies**
+
+**Tell user BEFORE installing:**
+```
+📦 Installing framework dependencies...
+```
 
 ```bash
 # Install dependencies
 npm install
+```
 
-# Or if framework is being cloned
-# (depends on setup - might already be in current directory)
+**Tell user AFTER installing:**
+```
+✅ Dependencies installed (Agent SDK, Zod validation, TypeScript tools)
 ```
 
 **Step 2: Create config.json**
+
+**Tell user BEFORE creating:**
+```
+📁 Configuring project paths...
+   (This tells agents where your frontend and backend code lives)
+```
 
 ```bash
 cat > config.json << EOF
@@ -457,7 +481,31 @@ EOF
 }
 ```
 
+**Tell user AFTER creating:**
+```
+✅ Paths configured (agents will use these to navigate your codebase)
+```
+
 **Step 3: Configure Agent Onboarding Files**
+
+**Tell user BEFORE creating:**
+```
+📝 Creating agent instructions based on your project...
+
+Frontend Agent:
+- Detected: [React 18.2 + TypeScript + Redux Toolkit + Material-UI]
+- Using rules from: [../frontend/Claude.md or detected patterns]
+- Adding security rules from: [detected documentation]
+
+Backend Agent:
+- Detected: [Express + TypeScript + Prisma + PostgreSQL]
+- Using rules from: [../backend/Claude.md or detected patterns]
+- Adding validation rules from: [detected Zod usage]
+
+Auditor:
+- Configuring quality checks based on your stack
+- Adding security validation rules
+```
 
 **For `agents/onboarding/fe-agent.md`:**
 
@@ -465,6 +513,7 @@ Create by combining:
 - **Auto-detected info:** Framework, TypeScript, libraries
 - **Documentation found:** If `../frontend/Claude.md` exists, reference or include it
 - **User-provided rules:** From question 1 (if asked)
+- **Security rules:** Extract from documentation (e.g., "Always validate inputs", "Use MUI theming")
 
 ```markdown
 # Frontend Agent Onboarding
