@@ -47,16 +47,19 @@
 
 ## 🚀 Quick Start - ONE Command
 
+**Works with BOTH new AND existing projects!**
+
+### For New Projects (Empty Folder)
+
 **From nothing → working full-stack app in 5 minutes:**
 
-### Step 1: Open Claude Code
 ```bash
 mkdir my-awesome-project
 cd my-awesome-project
 claude
 ```
 
-### Step 2: Paste This Prompt
+**Paste this prompt:**
 ```
 Clone https://github.com/d3r3nic/agentic-pm.git to the current directory.
 
@@ -66,20 +69,58 @@ and follow all steps to set up a new full-stack project here.
 Ask me questions and build everything.
 ```
 
-**That's it!** Claude will:
+**Claude will:**
 1. ✅ Clone this repository
 2. ✅ Ask you 4 questions (what to build, tech stack, first feature, git strategy)
 3. ✅ Create frontend + backend boilerplate
 4. ✅ Configure the framework for your project
 5. ✅ Implement your first feature with AI agents
 
-**Time:** 5-10 minutes from empty folder to working app with first feature implemented.
+**Time:** 5-10 minutes from empty folder to working app.
+
+---
+
+### For Existing Projects (You Already Have Code)
+
+**Add AI superpowers to your existing codebase:**
+
+```bash
+cd your-existing-project  # Your project with frontend/ and backend/
+claude
+```
+
+**Paste this prompt:**
+```
+Clone https://github.com/d3r3nic/agentic-pm.git to the current directory.
+
+Then read NAVIGATION.md and setup/START.ai.md.
+Detect my existing project structure and follow BOOTSTRAP-EXISTING-PROJECT.ai.md
+to intelligently configure the framework for my codebase.
+```
+
+**Claude will intelligently:**
+1. ✅ **Auto-detect your tech stack** (React? Vue? Express? FastAPI?)
+2. ✅ **Find your documentation** (claude.md, ARCHITECTURE.md, docs/ folder)
+3. ✅ **Analyze your code structure** (components, routes, patterns)
+4. ✅ **Infer your project purpose** (E-commerce? Healthcare? Analytics?)
+5. ✅ **Extract coding conventions** (from docs, eslint, prettier)
+6. ✅ **Configure agents for YOUR stack** (specific to your setup)
+7. ✅ **Ask only what it can't detect** (2-3 questions max)
+
+**What makes it intelligent:**
+- 🧠 Reads `frontend/claude.md` and `backend/claude.md` if they exist
+- 🧠 Analyzes dependencies to infer project type (Stripe → E-commerce)
+- 🧠 Smart doc filtering (reads architecture, skips user guides)
+- 🧠 Presents findings and asks you to confirm
+- 🧠 No redundant questions about things in package.json
+
+**Time:** 5 minutes from existing code to AI-ready framework.
 
 ---
 
 ## 🎯 What You Get
 
-After setup completes:
+### New Project Setup
 
 ```
 my-awesome-project/
@@ -89,11 +130,33 @@ my-awesome-project/
 ├── backend/                      ← YOUR API (Express/Fastify/NestJS)
 │   └── src/routes/
 │       └── yourRoute.ts          ← ✅ AI built this!
-├── agents/                       ← Agent system (configured)
-│   ├── onboarding/               ← Your project rules
-│   └── tasks/                    ← Completed tasks
-├── sdk/                          ← SDK tools
-└── docs/                         ← Project tracking
+├── agentic-pm/                   ← Framework (configured for your stack)
+│   ├── agents/onboarding/        ← Your project rules
+│   ├── agents/tasks/             ← Completed tasks
+│   ├── docs/                     ← Project tracking
+│   └── sdk/                      ← SDK tools
+└── .env                          ← API key configured
+```
+
+### Existing Project Setup
+
+```
+your-existing-project/
+├── frontend-dashboard/           ← YOUR existing React app
+│   ├── src/                      ← Unchanged (AI analyzed it!)
+│   └── claude.md                 ← AI found and read this!
+├── backend/                      ← YOUR existing Express API
+│   ├── src/                      ← Unchanged (AI analyzed it!)
+│   └── claude.md                 ← AI found and read this!
+├── docs/                         ← AI read architecture docs!
+│   └── architecture.md
+├── agentic-pm/                   ← Framework (NEW - configured to YOUR codebase)
+│   ├── agents/onboarding/
+│   │   ├── fe-agent.md           ← Configured with YOUR React patterns
+│   │   └── be-agent.md           ← Configured with YOUR Express patterns
+│   ├── config.json               ← Points to YOUR frontend/ and backend/
+│   └── docs/                     ← NOW.md, ROADMAP.md for YOUR project
+└── .env                          ← ANTHROPIC_API_KEY added
 ```
 
 ---
