@@ -12,7 +12,7 @@ When a user chooses "Add framework to EXISTING project," you will:
 
 1. **Auto-detect everything** (tech stack, structure, documentation)
 2. **Ask only what you can't detect** (coding rules, preferences)
-3. **Find existing documentation** (architecture, patterns, claude.md files)
+3. **Find existing documentation** (architecture, patterns, Claude.md files)
 4. **Configure framework intelligently** (use detected information)
 5. **Suggest documentation creation** (if gaps found)
 6. **Ask about tasks at the end** (not before setup!)
@@ -89,16 +89,16 @@ ls ../backend*/tsconfig.json 2>/dev/null
 
 **Step 4: Search for Existing Documentation (in PARENT directory)**
 
-**IMPORTANT: claude.md capitalization**
-- The framework convention is **lowercase**: `claude.md`
-- Some users may have `Claude.md` (capitalized) - check both!
-- If you find either, use it (don't be picky about capitalization)
+**IMPORTANT: Claude.md naming convention**
+- The framework convention is **capitalized**: `Claude.md` (named after Claude AI)
+- Some projects may have lowercase `Claude.md` - check both for compatibility
+- Prefer `Claude.md` when creating new files
 
 ```bash
 # Look for Claude-specific docs (IMPORTANT!) - check both capitalizations
-ls ../frontend*/claude.md ../frontend*/Claude.md 2>/dev/null
-ls ../backend*/claude.md ../backend*/Claude.md 2>/dev/null
-ls ../claude.md ../Claude.md 2>/dev/null  # Root level
+ls ../frontend*/Claude.md ../frontend*/claude.md 2>/dev/null
+ls ../backend*/Claude.md ../backend*/claude.md 2>/dev/null
+ls ../Claude.md ../claude.md 2>/dev/null  # Root level
 
 # Look for standard project documentation
 find .. -maxdepth 2 -name "README.md" -o -name "ARCHITECTURE.md" -o -name "CONTRIBUTING.md" 2>/dev/null
@@ -120,11 +120,11 @@ find .. -maxdepth 2 -name "STANDARDS.md" -o -name "CONVENTIONS.md" -o -name ".es
 
 **Step 5: Analyze Documentation (if found)**
 
-**Priority 1: claude.md files (MOST IMPORTANT)**
+**Priority 1: Claude.md files (MOST IMPORTANT)**
 
-If you found `claude.md` files, **read them first**:
-- `../frontend/claude.md` → Frontend agent rules (highest priority for FE)
-- `../backend/claude.md` → Backend agent rules (highest priority for BE)
+If you found `Claude.md` files, **read them first**:
+- `../frontend/Claude.md` → Frontend agent rules (highest priority for FE)
+- `../backend/Claude.md` → Backend agent rules (highest priority for BE)
 - `../claude.md` → General project rules (applies to both)
 
 These files are specifically written for AI agents and contain the most important rules.
@@ -263,9 +263,9 @@ Backend:
 
 📚 Documentation Found:
 
-[Priority 1: claude.md files (AI-specific)]
-- [✅/❌] frontend/claude.md or Claude.md - Frontend agent rules
-- [✅/❌] backend/claude.md or Claude.md - Backend agent rules
+[Priority 1: Claude.md files (AI-specific)]
+- [✅/❌] frontend/Claude.md or Claude.md - Frontend agent rules
+- [✅/❌] backend/Claude.md or Claude.md - Backend agent rules
 - [✅/❌] claude.md or Claude.md (root) - General project rules
 
 [Priority 2: Technical documentation]
@@ -281,10 +281,10 @@ Backend:
 - [✅/❌] CONTRIBUTING.md - Coding standards
 - [Only mention these if they contain useful architecture/pattern info]
 
-[If claude.md files found:]
-🎯 Excellent! I found claude.md files with AI agent rules:
-- ../frontend/claude.md ✅ (I'll use this for frontend agent configuration)
-- ../backend/claude.md ✅ (I'll use this for backend agent configuration)
+[If Claude.md files found:]
+🎯 Excellent! I found Claude.md files with AI agent rules:
+- ../frontend/Claude.md ✅ (I'll use this for frontend agent configuration)
+- ../backend/Claude.md ✅ (I'll use this for backend agent configuration)
 
 These contain your coding standards and patterns. I'll reference them in agent onboarding files.
 
@@ -294,10 +294,10 @@ These contain your coding standards and patterns. I'll reference them in agent o
 - ../docs/api/endpoints.md (API documentation)
 - [list other relevant docs]
 
-I'll use these to understand your project, but I recommend creating claude.md files
+I'll use these to understand your project, but I recommend creating Claude.md files
 for clearer AI agent instructions:
-1. frontend/claude.md - Frontend coding rules specifically for AI
-2. backend/claude.md - Backend coding rules specifically for AI
+1. frontend/Claude.md - Frontend coding rules specifically for AI
+2. backend/Claude.md - Backend coding rules specifically for AI
 
 Would you like me to help create these after setup? (Yes/No)
 
@@ -308,13 +308,13 @@ Would you like me to help create these after setup? (Yes/No)
 - [list other relevant docs]
 
 This is excellent documentation! However, for optimal AI agent performance, I recommend
-creating claude.md files that consolidate the key rules AI agents need to know:
+creating Claude.md files that consolidate the key rules AI agents need to know:
 
-1. **frontend/claude.md** (optional but recommended)
+1. **frontend/Claude.md** (optional but recommended)
    - Consolidates frontend rules from your docs/ folder
    - Quick reference for AI agents building frontend features
 
-2. **backend/claude.md** (optional but recommended)
+2. **backend/Claude.md** (optional but recommended)
    - Consolidates backend patterns from your guides
    - Quick reference for AI agents building APIs
 
@@ -327,9 +327,9 @@ Would you like me to help create these after setup? (Yes/No/Skip - your docs are
 ⚠️ I didn't find any documentation (no claude.md, architecture docs, or docs/ folder).
 
 For best AI agent performance, I strongly recommend creating:
-1. **frontend/claude.md** - Frontend coding rules for AI agents
+1. **frontend/Claude.md** - Frontend coding rules for AI agents
    (Component patterns, state management, styling conventions)
-2. **backend/claude.md** - Backend coding rules for AI agents
+2. **backend/Claude.md** - Backend coding rules for AI agents
    (API patterns, error handling, database access)
 
 Would you like me to help create these after setup? (Yes/No)
@@ -409,7 +409,7 @@ I need clarification on a few things I couldn't auto-detect:
 That's it! I have everything else.
 ```
 
-**Note:** If you found `../frontend/claude.md` and `../backend/claude.md` with coding rules, **skip question 1 entirely!**
+**Note:** If you found `../frontend/Claude.md` and `../backend/Claude.md` with coding rules, **skip question 1 entirely!**
 
 ---
 
@@ -463,7 +463,7 @@ EOF
 
 Create by combining:
 - **Auto-detected info:** Framework, TypeScript, libraries
-- **Documentation found:** If `../frontend/claude.md` exists, reference or include it
+- **Documentation found:** If `../frontend/Claude.md` exists, reference or include it
 - **User-provided rules:** From question 1 (if asked)
 
 ```markdown
@@ -483,16 +483,16 @@ Create by combining:
 ## Project Documentation References
 [If found, create links to parent directory:]
 - **Architecture:** See `../ARCHITECTURE.md` for system design
-- **Coding Standards:** See `../frontend/claude.md` for detailed rules
+- **Coding Standards:** See `../frontend/Claude.md` for detailed rules
 - **API Integration:** See `../docs/API.md` for backend contracts
 
-[If ../frontend/claude.md exists:]
-**IMPORTANT:** Read `../frontend/claude.md` for complete frontend coding rules.
+[If ../frontend/Claude.md exists:]
+**IMPORTANT:** Read `../frontend/Claude.md` for complete frontend coding rules.
 The rules below supplement those guidelines.
 
 ## Critical Rules (From Documentation & User)
 [Combine rules from:]
-1. ../frontend/claude.md (if exists)
+1. ../frontend/Claude.md (if exists)
 2. User-provided rules
 3. Auto-detected patterns (from code analysis)
 
@@ -539,14 +539,14 @@ Similar approach - combine auto-detected + documentation + user rules:
 ## Project Documentation References
 [If found in parent directory:]
 - **Architecture:** See `../ARCHITECTURE.md`
-- **Coding Standards:** See `../backend/claude.md`
+- **Coding Standards:** See `../backend/Claude.md`
 - **Database Schema:** See `../backend/prisma/schema.prisma` [or equivalent]
 
-[If ../backend/claude.md exists:]
-**IMPORTANT:** Read `../backend/claude.md` for complete backend coding rules.
+[If ../backend/Claude.md exists:]
+**IMPORTANT:** Read `../backend/Claude.md` for complete backend coding rules.
 
 ## Critical Rules
-[Combine from ../backend/claude.md + user input]
+[Combine from ../backend/Claude.md + user input]
 
 ## File Structure (Auto-Detected)
 ```
@@ -646,45 +646,142 @@ Configuration:
 
 ---
 
-### **Phase 4: Suggest Documentation Creation (If Needed)**
+### **Phase 4: Analyze Documentation Gaps & Create Tasks**
 
-**If no architecture/coding docs were found:**
+**IMPORTANT: Don't stop onboarding to create docs! Log gaps as TASKS instead.**
 
+**Step 1: Analyze what documentation exists**
+
+From Phase 1, you already know:
+- ✅/❌ Frontend Claude.md exists?
+- ✅/❌ Backend Claude.md exists?
+- ✅/❌ Architecture documentation exists (any form)?
+- ✅/❌ API documentation exists?
+
+**Step 2: Infer architecture understanding**
+
+[If architecture docs found in ANY form:]
+Read them and synthesize understanding:
+- How does frontend authenticate with backend?
+- What's the API structure?
+- How do they deploy?
+- What's the data flow?
+
+Create mental model from documentation. You DON'T need a file called "ARCHITECTURE.md"
+if the information exists across multiple docs!
+
+[If NO architecture docs found:]
+Note: "Architecture understanding incomplete - will need clarification during implementation"
+
+**Step 3: Create task backlog for missing documentation**
+
+```bash
+# Create initial backlog folder
+mkdir -p agents/backlog
+
+# Create backlog.md for documentation tasks
+cat > agents/backlog/documentation-tasks.md << 'EOF'
+# Documentation Backlog
+
+**Created during onboarding:** [date]
+**Priority:** Medium (recommended before starting feature development)
+
+---
+
+## Missing Documentation Tasks
+
+[Based on what you found missing:]
+
+[If no frontend/Claude.md:]
+### Task: Create Frontend Claude.md
+**File:** frontend/Claude.md
+**Purpose:** Consolidate frontend coding standards for AI agents
+**Content needed:**
+- Component structure patterns (detected: [framework])
+- State management rules (detected: [state library or none])
+- Styling conventions (detected: [UI library])
+- Testing requirements
+- Critical "never break" rules
+
+**Why:** Helps AI agents build consistent frontend features
+**Estimated effort:** 1-2 hours
+**Can be done by:** Project lead or senior frontend developer
+
+---
+
+[If no backend/Claude.md:]
+### Task: Create Backend Claude.md
+**File:** backend/Claude.md
+**Purpose:** Consolidate backend coding standards for AI agents
+**Content needed:**
+- API endpoint patterns (detected: [framework])
+- Error handling conventions
+- Database access patterns (detected: [ORM])
+- Validation rules
+- Security requirements
+
+**Why:** Helps AI agents build consistent backend features
+**Estimated effort:** 1-2 hours
+**Can be done by:** Project lead or senior backend developer
+
+---
+
+[If architecture docs incomplete:]
+### Task: Document System Integration
+**File:** (Flexible - could be added to existing docs or new file)
+**Purpose:** Clarify how frontend and backend integrate
+**Content needed:**
+- Authentication flow (detected: [auth system])
+- API Gateway/endpoint structure
+- Deployment strategy
+- Data flow diagram
+
+**Why:** Helps AI agents understand the full system
+**Estimated effort:** 2-3 hours
+**Can be done by:** Tech lead or architect
+
+---
+
+## Existing Documentation (Good!)
+
+[List what WAS found:]
+- ✅ [path/to/doc.md] - [purpose]
+- ✅ [path/to/guide.md] - [purpose]
+
+These provide good foundation! The tasks above would complement them.
+
+EOF
 ```
-📝 Recommendation: Create Documentation for AI Agents
 
-I noticed you don't have architecture or coding standards documentation.
-For best AI agent performance, I recommend creating:
+**Tell user:**
+```
+✅ Framework installed and configured!
 
-1. **ARCHITECTURE.md** (Root level)
-   - Overall system design
-   - How frontend ↔ backend communicate
-   - Key design decisions
-   - Data flow diagrams
+📋 Documentation Analysis:
 
-2. **frontend/claude.md** (Frontend folder)
-   - React/Vue/Svelte patterns to follow
-   - Component structure conventions
-   - State management rules
-   - Styling approach (CSS modules, Tailwind, etc.)
-   - Testing requirements
+[If found good docs:]
+Found Documentation:
+- ✅ [list what was found]
 
-3. **backend/claude.md** (Backend folder)
-   - API endpoint conventions
-   - Error handling patterns
-   - Database access patterns
-   - Security requirements
-   - Testing requirements
+[If missing some docs:]
+Missing Documentation (logged as tasks):
+- 📝 frontend/Claude.md - Created task in agents/backlog/documentation-tasks.md
+- 📝 backend/Claude.md - Created task in agents/backlog/documentation-tasks.md
+- 📝 [other gaps] - Logged in backlog
 
-Would you like me to help create these now, or skip for later? (Create now / Skip)
+[IMPORTANT message:]
+⚠️ I've logged missing documentation as TASKS in the backlog.
 
-[If user says "Create now":]
-I'll create template documentation files that you can customize.
-[Use Write tool to create the files with intelligent templates based on detected stack]
+You have two options:
+A) Complete these documentation tasks first (recommended)
+   - Ensures AI agents have clear guidelines
+   - Prevents inconsistent code generation
 
-[If user says "Skip":]
-No problem! You can create them later. Agents will still work, but might need
-more guidance on your specific coding patterns.
+B) Start building features now, document later
+   - AI will work but may need more guidance during tasks
+   - You can create Claude.md files anytime
+
+The backlog is ready for the PM agent to schedule!
 ```
 
 ---
@@ -785,10 +882,10 @@ Choose one, or tell me a different demo idea.
 ### **2. Respect Existing Documentation (Priority Order)**
 
 **Priority 1: claude.md (highest priority)**
-- ✅ `frontend/claude.md` exists → use it for FE agent rules, don't override
-- ✅ `backend/claude.md` exists → use it for BE agent rules, don't override
-- ✅ Root `claude.md` exists → use for general rules
-- ❌ NEVER override or ignore claude.md files
+- ✅ `frontend/Claude.md` exists → use it for FE agent rules, don't override
+- ✅ `backend/Claude.md` exists → use it for BE agent rules, don't override
+- ✅ Root `Claude.md` exists → use for general rules
+- ❌ NEVER override or ignore Claude.md files
 
 **Priority 2: Standard project docs**
 - ✅ `ARCHITECTURE.md` exists → reference it, extract patterns
@@ -863,10 +960,10 @@ Not just "You have React" - be SPECIFIC with detected versions and patterns.
 - Functional components only (React 18 best practice)
 ```
 
-### **Example 2: Found frontend/claude.md**
+### **Example 2: Found frontend/Claude.md**
 
 ```bash
-$ cat frontend/claude.md
+$ cat frontend/Claude.md
 
 # Frontend Coding Standards
 
@@ -894,7 +991,7 @@ $ cat frontend/claude.md
 **Action:** Reference this in agent onboarding:
 ```markdown
 ## Coding Standards
-**IMPORTANT:** Read `/frontend/claude.md` for complete coding rules.
+**IMPORTANT:** Read `/frontend/Claude.md` for complete coding rules.
 
 Key highlights from documentation:
 - Component structure: One component per file, named exports
