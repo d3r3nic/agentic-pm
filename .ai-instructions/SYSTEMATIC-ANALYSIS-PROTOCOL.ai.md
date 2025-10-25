@@ -31,17 +31,18 @@
 
 ---
 
-## 📋 The 7-Step Analysis Protocol
+## 📋 The 8-Step Analysis Protocol (7 + Frontend Context Loading)
 
 **UNIVERSAL PROCESS:** Use these steps for EVERY proposal (small or large)
 
 **IMPORTANT:** These steps are SEQUENTIAL. Complete each step before moving to the next.
 Each step has a CHECKPOINT that must be satisfied before proceeding.
 
-**Why 7 steps for all sizes:**
+**Why 8 steps for all sizes:**
 - Small proposals: Steps go quickly, analysts produce 1-2k reports
 - Large proposals: Steps take longer, analysts produce 5-8k reports
 - Same process, different depth - consistency is key
+- Step 1.5 is CONDITIONAL (only for frontend work, but always do it then!)
 
 ---
 
@@ -93,6 +94,106 @@ Domains: [List]
 Estimated: [Timeline]
 
 Is this understanding correct? Any clarifications needed?
+```
+
+---
+
+### **Step 1.5: Frontend Context Loading** (IF Frontend Work)
+
+**Goal:** Understand CURRENT application state and complete user journeys BEFORE planning
+
+**🚨 MANDATORY for ANY frontend work! Skip at your peril!**
+
+**When to Use:**
+- ✅ Feature involves ANY frontend changes
+- ✅ Feature adds new screens or UI
+- ✅ Feature modifies existing pages
+- ✅ Basically: Always for frontend work!
+
+**Actions:**
+```
+1. Read: .ai-instructions/FRONTEND-CONTEXT-LOADING.ai.md (complete protocol)
+
+2. Audit Current Application State:
+   - What pages/routes currently exist?
+   - What's in main navigation RIGHT NOW?
+   - What does user see when they open app?
+   - What design patterns are established?
+
+3. Read UX Documentation IN ORDER:
+   - features/[name]/ux/wireframes.md (Screen 1 → 2 → 3...)
+   - features/[name]/ux/user-flows.md (Entry → Exit)
+
+4. Map Complete User Journey:
+   - Where does user START for this feature?
+   - What screen is FIRST? (Landing page!)
+   - What triggers each subsequent screen?
+   - How does this fit in existing navigation?
+
+5. Answer Product Owner Questions:
+   - Can you describe the complete user flow in one sentence?
+   - Do you know what screen comes BEFORE the modal/form?
+   - Do you understand the entry point?
+```
+
+**Output:**
+```markdown
+## Frontend Context Summary
+
+**Current State:**
+- Existing pages: [List what exists NOW]
+- Main navigation: [What's in nav menu?]
+- Design system: [Material-UI / Custom / etc.]
+
+**User Journey for [Feature]:**
+```
+Entry: [Where user starts - specific nav item or page]
+  ↓
+Screen 1: [Landing page - what user sees FIRST]
+  ↓ (triggered by [button/link])
+Screen 2: [Modal/Form/etc. - what user sees SECOND]
+  ↓
+[Continue sequence...]
+```
+
+**Task Creation Order:**
+1. FE-001: [Entry point] (where user STARTS)
+2. FE-002: [Landing page] (Screen 1)
+3. FE-003: [Action component] (Screen 2, triggered from 002)
+4. [Continue in user journey order...]
+
+**Save to:** `.pm/planning/[feature]/00-frontend-context.md`
+```
+
+**Checkpoint:**
+- ✅ Current state audited (know what exists NOW)
+- ✅ UX docs read IN ORDER (wireframes Screen 1 → 2 → 3)
+- ✅ Complete user journey mapped
+- ✅ Entry point identified
+- ✅ Can describe user flow in one sentence
+
+**❌ If ANY checkpoint fails:**
+→ STOP! You're missing critical context.
+→ Read FRONTEND-CONTEXT-LOADING.ai.md completely
+→ DO NOT proceed to analyst spawning without this!
+
+**Tell user:**
+```
+🎨 Frontend Context Loaded
+
+Current State:
+- Application has [X] existing pages
+- Main nav contains: [List items]
+- This feature needs [new nav item / integration with existing page]
+
+User Journey:
+[One sentence describing complete flow]
+Example: "User clicks 'HR' → sees dashboard → clicks 'Invite' → modal opens"
+
+Entry Point Decision:
+[Where this feature starts in the app]
+
+Moving to specialized analysis...
 ```
 
 ---
@@ -654,5 +755,5 @@ Continuing implementation...
 
 ---
 
-**Last Updated:** 2025-10-23
-**Version:** 1.0 (Initial Release)
+**Last Updated:** 2025-10-24
+**Version:** 2.0 (Product Owner Mindset - Frontend Context Loading Added)
