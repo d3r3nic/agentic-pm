@@ -160,9 +160,6 @@ Project Root/
 │   │
 │   ├── agents/
 │   │   ├── onboarding/
-│   │   │   ├── fe-agent.template.md          ← Frontend implementor agent reads
-│   │   │   ├── be-agent.template.md          ← Backend implementor agent reads
-│   │   │   ├── auditor-guidelines.md         ← Auditor agents read
 │   │   │   ├── frontend-analyst.template.md  ← Frontend analyst reads (deep analysis)
 │   │   │   ├── backend-analyst.template.md   ← Backend analyst reads (deep analysis)
 │   │   │   └── integration-analyst.template.md ← Integration analyst reads
@@ -172,12 +169,18 @@ Project Root/
 │   │       └── be-task.template.md           ← Copy for BE tasks
 │   │
 │   ├── templates/
-│   │   └── MASTER-PLAN.template.md           ← Use for complex features
+│   │   ├── MASTER-PLAN.template.md           ← Use for complex features
+│   │   └── claude-agents/                    ← Native agent templates
+│   │       ├── fe-implementor.template.md    ← FE agent definition
+│   │       └── be-implementor.template.md    ← BE agent definition
 │   │
-│   └── sdk/
-│       ├── spawn-agent-simple.ts             ← Spawn single agent
-│       ├── spawn-multiple.ts                 ← Spawn parallel agents
-│       └── onboard-manual.ts                 ← Manual CLI setup
+│   └── archive/
+│       └── sdk-approach/                     ← Old SDK code (archived)
+│
+├── .claude/                    # Claude Code configuration (CREATED BY SETUP)
+│   └── agents/                 # Native agent definitions
+│       ├── fe-implementor.md   ← Frontend agent (YOU SPAWN with Task tool)
+│       └── be-implementor.md   ← Backend agent (YOU SPAWN with Task tool)
 │
 └── .pm/                        # Project management files (CREATED BY YOU)
     ├── NOW.md                  # Current status (YOU UPDATE after each task batch)
@@ -296,14 +299,19 @@ Project Root/
 
 ### How to Spawn Agents (As Claude Code)
 
-**Use the Task tool - This is AUTOMATED, not manual!**
+**Use the Task tool - This is Claude Code's built-in agent system!**
+
+**Agent definitions are in:** `.claude/agents/fe-implementor.md` and `.claude/agents/be-implementor.md`
+- These files are created automatically during project setup
+- They contain all agent behavior and project-specific rules
+- You don't need to read them - just spawn!
 
 **Single Agent:**
 ```
 Task(
   subagent_type="fe-implementor",
   description="Implement frontend task 001",
-  prompt="Read .pm/tasks/2025-10-24/fe-task-001.md and implement.
+  prompt="Read .pm/agents/tasks/2025-10-24/fe-task-001.md and implement.
   Write results in AGENT REPORT section of the task file."
 )
 ```
@@ -319,39 +327,37 @@ Task(subagent_type="be-implementor", ...)  // Task 003
 All agents work simultaneously in isolated contexts.
 ```
 
-**This is automatic - no manual user commands needed!**
+**This is automatic - no manual commands, no SDK, no npm!**
 
 ### Available Agents
 
-**Implementation Agents:**
+**Implementation Agents (Claude Code Native):**
 - `fe-implementor` - Implements frontend features
-  - Reads: `agents/onboarding/fe-agent.template.md` + task file
+  - Definition: `.claude/agents/fe-implementor.md` (created during setup)
+  - Contains: Project rules + agent behavior + task protocol
   - Tools: Full access (Read, Write, Edit, Bash)
+  - Spawned with: Task tool
 
 - `be-implementor` - Implements backend features (APIs, database)
-  - Reads: `agents/onboarding/be-agent.template.md` + task file
-  - Tools: Full access + database
+  - Definition: `.claude/agents/be-implementor.md` (created during setup)
+  - Contains: Project rules + agent behavior + database/API patterns
+  - Tools: Full access + database commands
+  - Spawned with: Task tool
 
-**Audit Agents:**
-- `fe-auditor` - Audits frontend code quality
-  - Reads: `agents/onboarding/auditor-guidelines.md` + task file
-  - Tools: Read-only + audit reporting
-
-- `be-auditor` - Audits backend security and quality
-  - Reads: `agents/onboarding/auditor-guidelines.md` + task file
-  - Tools: Read-only + audit reporting
-
-**Analyst Agents (For Planning):**
+**Analyst Agents (For Planning - Use Explore subagent):**
 - `frontend-analyst` - Deep frontend architecture analysis
-  - Reads: `agents/onboarding/frontend-analyst.template.md` + feature docs
+  - Template: `agents/onboarding/frontend-analyst.template.md`
+  - Spawned with: Task(subagent_type="Explore", ...)
   - Output: Analysis report (~5-8k tokens)
 
 - `backend-analyst` - Deep backend architecture analysis
-  - Reads: `agents/onboarding/backend-analyst.template.md` + feature docs
+  - Template: `agents/onboarding/backend-analyst.template.md`
+  - Spawned with: Task(subagent_type="Explore", ...)
   - Output: Analysis report (~5-8k tokens)
 
 - `integration-analyst` - FE↔BE integration planning
-  - Reads: `agents/onboarding/integration-analyst.template.md` + both analyses
+  - Template: `agents/onboarding/integration-analyst.template.md`
+  - Spawned with: Task(subagent_type="Explore", ...)
   - Output: Integration plan (~5-8k tokens)
 
 ---

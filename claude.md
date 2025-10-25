@@ -132,19 +132,26 @@ Read backend/Claude.md → Understand rules → Create task file (reference rule
 
 **🚨 CRITICAL: How to Spawn Agents**
 ```
-✅ CORRECT: Use the Task tool (Claude Code's built-in agent spawner)
+✅ CORRECT: Use the Task tool (Claude Code's built-in agent system)
 
-Example:
+Agents are defined in:
+- .claude/agents/fe-implementor.md (Frontend implementation)
+- .claude/agents/be-implementor.md (Backend implementation)
+
+Example spawning:
 Task(
   subagent_type="fe-implementor",
   description="Implement frontend task 001",
-  prompt="Read .pm/tasks/2025-10-24/fe-task-001.md and implement all requirements.
+  prompt="Read .pm/agents/tasks/2025-10-24/fe-task-001.md and implement all requirements.
   Follow the task instructions and write results in AGENT REPORT section."
 )
 ```
 
 **The Task tool IS the framework's agent spawning mechanism.**
-This is automated. Don't ask user to run commands manually!
+- No SDK code needed
+- No npm commands
+- Just spawn with Task tool!
+- Agent behavior is in `.claude/agents/*.md` files (created during setup)
 
 ---
 

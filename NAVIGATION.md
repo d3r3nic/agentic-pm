@@ -72,11 +72,11 @@ agentic-pm/
 │           ├── fe-task-NNN.md
 │           └── be-task-NNN.md
 │
-├─── 📁 sdk/ ──────────────────────────── PHASE 2: SPAWNING AGENTS
-│   ├── manager.ts                         ← Manager AI SDK
-│   ├── spawn-agent-simple.ts              ← Spawn single agent
-│   ├── spawn-multiple.ts                  ← Spawn parallel agents
-│   └── onboard-manual.ts                  ← Manual CLI setup (alternative)
+├─── 📁 archive/ ──────────────────────── ARCHIVED CODE
+│   └── sdk-approach/                      ← Old SDK agent system (archived 2025-10-24)
+│       ├── spawn-agent-simple.ts          ← Replaced by Task tool
+│       ├── spawn-multiple.ts              ← Replaced by Task tool
+│       └── README.md                      ← Why archived + migration guide
 │
 └─── 📁 logs/ ─────────────────────────── PHASE 2: HISTORY
     ├── 00-GENESIS.md                      ← Why this exists (HUMAN)
@@ -175,7 +175,7 @@ User request: "Create task for login feature"
 └─→ PHASE 2: Read docs/guides/INTERACTIVE-MANAGER-GUIDE.md
 
 User request: "Spawn agent for task"
-└─→ PHASE 2: Run sdk/spawn-agent-simple.ts
+└─→ PHASE 2: Use Task tool to spawn agent
 
 User request: "What's the project status?"
 └─→ PHASE 2: Read docs/NOW.md
@@ -239,7 +239,7 @@ docs/START-HERE.human.md (Operational hub)
 ├─→ API Contracts → docs/integration.md
 ├─→ Use Manager AI → docs/guides/INTERACTIVE-MANAGER-GUIDE.md
 ├─→ Agent Config → agents/onboarding/*.md
-└─→ Spawn Agents → sdk/spawn-agent-simple.ts
+└─→ Spawn Agents → Task tool (built-in)
 ```
 
 ---
@@ -263,7 +263,7 @@ docs/START-HERE.human.md (Operational hub)
 → Create: `agents/tasks/YYYY-MM-DD/task-NNN.md`
 
 ### **"User wants to spawn an agent"**
-→ Run: `npx tsx sdk/spawn-agent-simple.ts [agent-type] [date] [task-id]`
+→ Use: `Task(subagent_type="fe-implementor", ...)` or `Task(subagent_type="be-implementor", ...)`
 
 ### **"User wants project status"**
 → Read: `docs/NOW.md`
