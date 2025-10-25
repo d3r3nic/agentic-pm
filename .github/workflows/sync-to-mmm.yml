@@ -1,0 +1,52 @@
+name: Sync to agentic-pm-mmm
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout agentic-pm (source)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for proper sync
+
+      - name: Setup Git
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+
+      - name: Sync to agentic-pm-mmm
+        env:
+          TARGET_REPO: d3r3nic/agentic-pm-mmm
+          GITHUB_TOKEN: ${{ secrets.MMM_SYNC_TOKEN }}
+        run: |
+          # Clone the target repository
+          git clone https://x-access-token:${GITHUB_TOKEN}@github.com/${TARGET_REPO}.git mmm-repo
+
+          # Navigate to target repo
+          cd mmm-repo
+
+          # Add source repo as remote
+          git remote add source https://github.com/d3r3nic/agentic-pm.git
+
+          # Fetch latest from source
+          git fetch source main
+
+          # Merge changes from source
+          git merge source/main --allow-unrelated-histories -m "Auto-sync from agentic-pm main"
+
+          # Push to target
+          git push origin main
+
+      - name: Notify on failure
+        if: failure()
+        run: echo "❌ Sync to agentic-pm-mmm failed. Check the logs above."
+
+      - name: Notify on success
+        if: success()
+        run: echo "✅ Successfully synced to agentic-pm-mmm!"
