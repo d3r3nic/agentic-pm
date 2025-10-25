@@ -35,13 +35,6 @@ These files documented various reorganizations and migrations during framework d
 - **Status:** Outdated - references SDK approach which is now replaced
 - **Useful for:** Historical reference of old SDK-based version
 
-### **update-paths.sh**
-- **Purpose:** Automated script to update path references during migration
-- **Date:** 2025-10-23
-- **Context:** One-time script to replace `.pm/` paths with new flat structure
-- **Status:** Completed - all paths updated, no longer needed
-- **Useful for:** Understanding how the migration was automated
-
 ---
 
 ## Why These Were Removed From Root
