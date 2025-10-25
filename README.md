@@ -222,8 +222,8 @@ your-existing-project/
 
 ### **For AI Agents**
 - **[.ai-instructions/README.ai.md](.ai-instructions/README.ai.md)** - What AI instructions are
-- **[.ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md](.ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md)** - Create new projects
-- **[.ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md](.ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md)** - Add to existing projects
+- **[setup/NEW-PROJECT.ai.md](setup/NEW-PROJECT.ai.md)** - Create new projects (one-time setup)
+- **[setup/EXISTING-PROJECT.ai.md](setup/EXISTING-PROJECT.ai.md)** - Add to existing projects (one-time setup)
 - **[.ai-instructions/MANAGER-ONBOARDING.ai.md](.ai-instructions/MANAGER-ONBOARDING.ai.md)** - Manager AI behavior
 
 ### **For Developers**

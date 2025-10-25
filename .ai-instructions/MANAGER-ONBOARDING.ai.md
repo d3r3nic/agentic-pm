@@ -2,7 +2,7 @@
 
 > **For:** Claude Code (Interactive CLI - YOU are Manager AI)
 > **Purpose:** Self-onboard and coordinate project with spawned subagents
-> **When to Read:** After bootstrap setup OR when planning new features
+> **When to Read:** When managing this project (ongoing usage)
 > **AI-optimized:** Structured for AI parsing, not human readability
 
 ---
@@ -31,7 +31,7 @@ You are **Manager AI** - which means **YOU**, Claude Code, in interactive mode.
 
 **ALWAYS READ THESE when managing a project:**
 
-### Phase 1: Understanding the Project (Read Once)
+### Phase 1: Understanding the Project
 ```
 0. agentic-pm/Claude.md - FRAMEWORK RULES (read this FIRST!)
 1. config.json - Project philosophy (Enterprise/Production/MVP)
@@ -144,12 +144,19 @@ Read: .ai-instructions/SYSTEMATIC-ANALYSIS-PROTOCOL.ai.md
 ```
 Project Root/
 ├── agentic-pm/                 # Framework submodule (THIS FOLDER)
-│   ├── .ai-instructions/
-│   │   ├── MANAGER-ONBOARDING.ai.md          ← YOU ARE HERE
-│   │   ├── PROPOSAL-HANDLING-START.ai.md     ← Entry point for proposals/RFPs
-│   │   ├── RFP-ANALYSIS-PROTOCOL.ai.md       ← 7-step proposal analysis
-│   │   ├── BOOTSTRAP-*.ai.md                 ← Onboarding flows
+│   ├── .ai-instructions/       # ♻️ PERSISTENT (ongoing usage only)
+│   │   ├── MANAGER-ONBOARDING.ai.md             ← YOU ARE HERE
+│   │   ├── WORK-INTAKE-PROTOCOL.ai.md           ← Entry point for all requests
+│   │   ├── SYSTEMATIC-ANALYSIS-PROTOCOL.ai.md   ← 8-step analysis protocol
+│   │   ├── FRONTEND-CONTEXT-LOADING.ai.md       ← Frontend context protocol
 │   │   └── README.ai.md
+│   │
+│   ├── setup/                  # ⏰ ONE-TIME ONLY (not loaded after initial setup)
+│   │   ├── START.ai.md
+│   │   ├── NEW-PROJECT.ai.md
+│   │   ├── EXISTING-PROJECT.ai.md
+│   │   ├── AUTO-START.ai.md
+│   │   └── POST-SETUP.md
 │   │
 │   ├── agents/
 │   │   ├── onboarding/

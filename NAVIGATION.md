@@ -10,19 +10,20 @@
 
 This framework has **TWO PHASES** with different documentation:
 
-### **Phase 1: ONBOARDING (One-Time Setup)**
+### **Phase 1: ONBOARDING (One-Time Setup)** ⏰
 - **Goal:** Get framework installed and configured
 - **Duration:** 5-10 minutes
-- **Files:** `setup/`, `.ai-instructions/`
+- **Files:** `setup/` folder ONLY
 - **User sees:** Setup questions, configuration
 - **After:** User moves to Phase 2
+- **Context:** Setup docs DON'T persist after initial setup (context efficient!)
 
-### **Phase 2: OPERATIONAL (Daily Use)**
+### **Phase 2: OPERATIONAL (Daily Use)** ♻️
 - **Goal:** Build features, manage project
 - **Duration:** Ongoing (weeks/months)
-- **Files:** `docs/`, `agents/`
+- **Files:** `.ai-instructions/`, `docs/`, `agents/`
 - **User sees:** Roadmap, tasks, progress tracking
-- **This is the actual product usage**
+- **Context:** These docs persist throughout development (always loaded)
 
 ---
 
@@ -34,17 +35,22 @@ agentic-pm/
 ├── NAVIGATION.md                          ← YOU ARE HERE (AI reads this first)
 ├── README.md                              ← GitHub landing page (HUMAN)
 │
-├─── 📁 setup/ ─────────────────────────── PHASE 1: ONBOARDING
-│   ├── README.human.md                    ← Setup folder guide (HUMAN)
+├─── 📁 setup/ ─────────────────────────── ⏰ PHASE 1: ONE-TIME SETUP ONLY
 │   ├── START.ai.md                        ← Main bootstrap entry (AI)
+│   ├── NEW-PROJECT.ai.md                  ← Create new project (AI)
+│   ├── EXISTING-PROJECT.ai.md             ← Add to existing (AI)
+│   ├── AUTO-START.ai.md                   ← Auto-trigger detection (AI)
+│   ├── ASSISTANT-ONBOARDING.ai.md         ← General onboarding (AI)
+│   ├── POST-SETUP.md                      ← After-setup advice (AI)
+│   ├── README.human.md                    ← Setup folder guide (HUMAN)
 │   └── QUICKSTART.human.md                ← Quick reference (HUMAN)
 │
-├─── 📁 .ai-instructions/ ─────────────── PHASE 1: AI BEHAVIOR
+├─── 📁 .ai-instructions/ ─────────────── ♻️ PHASE 2: PERSISTENT (ONGOING)
 │   ├── README.ai.md                       ← What this folder is (AI)
-│   ├── BOOTSTRAP-NEW-PROJECT.ai.md        ← Create new project (AI)
-│   ├── BOOTSTRAP-EXISTING-PROJECT.ai.md   ← Add to existing (AI)
-│   ├── AI-ASSISTANT-ONBOARDING.ai.md      ← General onboarding (AI)
-│   └── MANAGER-ONBOARDING.ai.md           ← Manager AI behavior (AI)
+│   ├── MANAGER-ONBOARDING.ai.md           ← Manager AI behavior (AI)
+│   ├── WORK-INTAKE-PROTOCOL.ai.md         ← Universal request handling (AI)
+│   ├── SYSTEMATIC-ANALYSIS-PROTOCOL.ai.md ← 8-step analysis (AI)
+│   └── FRONTEND-CONTEXT-LOADING.ai.md     ← Frontend awareness (AI)
 │
 ├─── 📁 docs/ ─────────────────────────── PHASE 2: OPERATIONAL
 │   ├── START-HERE.human.md                ← Main hub after setup (HUMAN)
@@ -96,7 +102,7 @@ agentic-pm/
            └─→ Analyzes: Empty folder
            └─→ Asks user: "Create NEW project or add to EXISTING?"
                └─→ User chooses: A) New Project
-                   └─→ Claude reads: .ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md
+                   └─→ Claude reads: setup/NEW-PROJECT.ai.md
                        └─→ Claude asks 4 questions conversationally
                        └─→ Claude creates:
                            - frontend/
@@ -107,6 +113,8 @@ agentic-pm/
                            └─→ First feature implemented!
 
 3. Setup Complete ✅
+   └─→ Setup docs NEVER loaded again (context efficient!)
+   └─→ Claude reads: .ai-instructions/MANAGER-ONBOARDING.ai.md
    └─→ User now in PHASE 2
        └─→ Main reference: docs/START-HERE.human.md
            └─→ Daily operations:
@@ -124,13 +132,14 @@ agentic-pm/
            └─→ Analyzes: Existing code detected
            └─→ Asks user: "Create NEW project or add to EXISTING?"
                └─→ User chooses: B) Existing Project
-                   └─→ Claude reads: .ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md
+                   └─→ Claude reads: setup/EXISTING-PROJECT.ai.md
                        └─→ Claude creates:
                        - config.json (with detected paths)
                        - agents/onboarding/*.md
                    └─→ Does NOT touch frontend/backend
 
 2. Setup Complete ✅
+   └─→ Setup docs NEVER loaded again (context efficient!)
    └─→ User moves to PHASE 2 (same as above)
 ```
 
@@ -160,7 +169,7 @@ User request: "Set up framework"
 └─→ PHASE 1: Read setup/START.ai.md
     └─→ Analyze folder
     └─→ ASK USER: "New project or existing project?"
-    └─→ Based on answer: BOOTSTRAP-NEW-PROJECT.ai.md or BOOTSTRAP-EXISTING-PROJECT.ai.md
+    └─→ Based on answer: setup/NEW-PROJECT.ai.md or setup/EXISTING-PROJECT.ai.md
 
 User request: "Create task for login feature"
 └─→ PHASE 2: Read docs/guides/INTERACTIVE-MANAGER-GUIDE.md
@@ -215,9 +224,10 @@ README.md (GitHub landing)
 
 ```
 setup/START.ai.md (AI bootstrap entry)
-├─→ New Project → .ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md
-├─→ Existing Project → .ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md
-└─→ After Setup → docs/START-HERE.human.md
+├─→ New Project → setup/NEW-PROJECT.ai.md
+├─→ Existing Project → setup/EXISTING-PROJECT.ai.md
+└─→ After Setup → .ai-instructions/MANAGER-ONBOARDING.ai.md
+                 └─→ Then: docs/START-HERE.human.md
 ```
 
 ### **From docs/START-HERE.human.md:**
@@ -243,10 +253,10 @@ docs/START-HERE.human.md (Operational hub)
 → Read: `docs/START-HERE.human.md`
 
 ### **"User wants to create new project"**
-→ Read: `.ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md`
+→ Read: `setup/NEW-PROJECT.ai.md`
 
 ### **"User wants to add framework to existing project"**
-→ Read: `.ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md`
+→ Read: `setup/EXISTING-PROJECT.ai.md`
 
 ### **"User wants to create a task"**
 → Read: `docs/guides/INTERACTIVE-MANAGER-GUIDE.md`
@@ -328,17 +338,23 @@ AI: "Great! Check docs/NOW.md for current status, then create tasks"
 
 ---
 
-## 🎓 Remember: Two Phases, Two Doc Sets
+## 🎓 Remember: Two Phases, Separate Doc Sets
 
 ```
-PHASE 1 (Onboarding)          PHASE 2 (Operational)
-─────────────────────          ─────────────────────
-setup/                    →    docs/
-.ai-instructions/         →    agents/
+PHASE 1 (Onboarding) ⏰         PHASE 2 (Operational) ♻️
+──────────────────────         ───────────────────────
+setup/                    →    .ai-instructions/
+(Setup ONLY)              →    (Ongoing usage)
+                          →    docs/
+                          →    agents/
 One-time                  →    Daily use
 5-10 minutes              →    Weeks/months
+Context: Discarded        →    Context: Persistent
 AI-driven automation      →    Human + AI collaboration
 ```
+
+**Key Insight:** Setup docs in `setup/` are NEVER loaded after initial setup!
+This keeps context clean and efficient during ongoing development.
 
 ---
 
@@ -355,5 +371,5 @@ AI-driven automation      →    Human + AI collaboration
 
 ---
 
-**Last Updated:** 2025-10-23
-**Version:** 2.0 (Post-reorganization)
+**Last Updated:** 2025-10-24
+**Version:** 3.0 (Setup/Usage Separation)

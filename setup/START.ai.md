@@ -27,7 +27,7 @@
 You are reading the right file! Proceed with the bootstrap flow below.
 
 **The full bootstrap prompt is saved in:**
-`.ai-instructions/AUTO-START.ai.md` (so user doesn't have to type it)
+`setup/AUTO-START.ai.md` (so user doesn't have to type it)
 
 ---
 
@@ -98,12 +98,12 @@ Please choose: A or B?
 
 **If user chooses A (New Project):**
 - ✅ Proceed with full bootstrap
-- Read and follow `.ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md`
+- Read and follow `setup/NEW-PROJECT.ai.md`
 - Create frontend/backend from scratch
 
 **If user chooses B (Existing Project):**
 - ✅ Proceed with framework installation only
-- Read and follow `.ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md`
+- Read and follow `setup/EXISTING-PROJECT.ai.md`
 - Skip project creation, just add framework
 
 ---
@@ -300,7 +300,7 @@ the Task-Driven PM Framework for your existing project.
 Let me ask a few questions about your setup...
 ```
 
-Then follow `.ai-instructions/BOOTSTRAP-EXISTING-PROJECT.ai.md` instead of BOOTSTRAP-NEW-PROJECT.ai.md.
+Then follow `setup/EXISTING-PROJECT.ai.md` instead of setup/NEW-PROJECT.ai.md.
 
 ---
 

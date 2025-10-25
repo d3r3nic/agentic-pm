@@ -13,7 +13,7 @@ When user triggers this (by saying "start" or any variant), execute this prompt:
 ```
 Read NAVIGATION.md to understand the documentation structure.
 
-Then read setup/START.ai.md and .ai-instructions/BOOTSTRAP-NEW-PROJECT.ai.md (or BOOTSTRAP-EXISTING-PROJECT.ai.md based on user choice) and follow all steps to set up the project.
+Then read setup/START.ai.md and setup/NEW-PROJECT.ai.md (or setup/EXISTING-PROJECT.ai.md based on user choice) and follow all steps to set up the project.
 
 Ask questions conversationally and build everything systematically.
 ```
@@ -87,7 +87,7 @@ Claude automatically executes the full bootstrap prompt!
 
 ## 🔧 Implementation
 
-**In MANAGER-ONBOARDING.ai.md or setup/START.ai.md, add:**
+**In setup/START.ai.md, add:**
 
 ```markdown
 ## 🚨 Start Trigger Detection
@@ -100,7 +100,7 @@ IF user says:
   - [any variant]
 
 THEN:
-  1. Read: .ai-instructions/AUTO-START.ai.md
+  1. Read: setup/AUTO-START.ai.md
   2. Execute the full bootstrap prompt
   3. Read: NAVIGATION.md
   4. Read: setup/START.ai.md
