@@ -56,13 +56,17 @@ Each step has a CHECKPOINT that must be satisfied before proceeding.
 3. Identify domains (Frontend, Backend, Database, Integration, DevOps, etc.)
 4. Estimate scope: SMALL / MEDIUM / LARGE / EXTRA-LARGE
 
-**Scope Guide (doesn't affect process, just timeline):**
-- SMALL: 1-3 tasks, single domain, <1 week, 1-10 pages docs
-- MEDIUM: 4-8 tasks, 2 domains, 1-2 weeks, 10-50 pages docs
-- LARGE: 9-20 tasks, 3+ domains, 2-4 weeks, 50-200 pages docs
-- EXTRA-LARGE: 20+ tasks, multiple domains, 1-3 months, 200+ pages docs
+**Scope Guide (for timeline estimation only, NOT for process changes):**
+- SMALL: 1-3 tasks, single domain, <1 week
+- MEDIUM: 4-8 tasks, 2 domains, 1-2 weeks
+- LARGE: 9-20 tasks, 3+ domains, 2-4 weeks
+- EXTRA-LARGE: 20+ tasks, multiple domains, 1-3 months
 
-**NOTE:** You use the same 7 steps regardless of scope!
+**CRITICAL:** Scope does NOT change the process:
+- ✅ ALWAYS use the same 8-step process
+- ✅ ALWAYS spawn analyst agents for documentation
+- ✅ NO token counting or size-based decisions
+- ✅ Scale intelligently through progressive analysis
 
 **Output:**
 ```markdown
@@ -71,7 +75,6 @@ Feature: [Name]
 Complexity: [SMALL/MEDIUM/LARGE/EXTRA-LARGE]
 Domains: [Frontend, Backend, Database, etc.]
 Estimated Timeline: [X weeks]
-Documentation Size: [X pages / X MB]
 
 Summary: [2-3 sentence description of what user wants]
 ```
@@ -198,52 +201,86 @@ Moving to specialized analysis...
 
 ---
 
-### **Step 2: Context Budget Assessment**
+### **Step 2: Progressive Analysis Strategy**
 
-**Goal:** Determine if feature fits in one context or needs phasing
+**Goal:** Plan smart documentation analysis - NO size limits, ALWAYS scalable
+
+**Philosophy:** We analyze ANYTHING intelligently by using specialist agents, regardless of documentation size. Never count tokens or create artificial limits.
 
 **Actions:**
-1. Check current context usage
-2. Estimate tokens needed for full feature implementation
-3. Calculate: Can fit in one context? Or needs multiple?
-4. If multiple contexts needed → Plan phase boundaries
+1. Identify documentation domains (Frontend, Backend, Integration, etc.)
+2. Plan analyst agent spawning strategy
+3. Determine natural phase boundaries (by domain/dependency, NOT size)
 
-**Token Budget:**
-- Total context: 200k tokens
-- System + Tools: ~20k tokens
-- Safe working space: 150k tokens usable
-- Per-phase budget: 40-50k tokens (leaves room for tool outputs)
+**Smart Analysis Strategy (Works for ANY Size):**
 
-**Decision Matrix:**
+**For ALL documentation sizes:**
+1. **Spawn specialist analyst agents** (one per domain)
+2. **Each agent analyzes their domain deeply** (reads full docs)
+3. **Agents produce digestible reports** (5-10k tokens each)
+4. **Manager synthesizes reports** (not original 1000-page docs)
+
+**Why this scales infinitely:**
+- 1-page doc → 1 analyst agent, quick report
+- 1000-page doc → 5 analyst agents, parallel analysis
+- Analysts handle complexity, manager gets summaries
+- No token counting needed
+- Works the same way regardless of size
+
+**Domain-Based Analysis (Not Size-Based):**
 ```
-IF documentation + implementation < 150k tokens:
-   → Single-context implementation (proceed normally)
+Domains to analyze:
+- Frontend (if UI/UX work)
+- Backend (if API/database work)
+- Integration (if connecting systems)
+- Database (if schema changes)
+- Security (if auth/permissions)
+- Infrastructure (if DevOps/deployment)
+```
 
-IF documentation + implementation > 150k tokens:
-   → Multi-phase implementation (use this protocol)
+**Phasing Strategy:**
+```
+Phase by DOMAIN + DEPENDENCIES (not token count):
+
+Phase 1: Foundation (Backend + Database)
+→ Build APIs and data layer first
+
+Phase 2: Interface (Frontend)
+→ Build UI on top of APIs
+
+Phase 3: Integration + Testing
+→ Connect everything + E2E testing
 ```
 
 **Output:**
 ```markdown
-# Context Budget Assessment
+# Progressive Analysis Plan
 
-Current Usage: [X]k tokens
-Documentation Size: [X]k tokens (estimated)
-Implementation Estimate: [X]k tokens
+**Domains Identified:**
+- [Domain 1]: [Brief scope]
+- [Domain 2]: [Brief scope]
+- [Domain 3]: [Brief scope]
 
-Decision: [SINGLE-CONTEXT / MULTI-PHASE]
+**Analyst Agents to Spawn:**
+1. Frontend Analyst → Analyzes: [specific docs]
+2. Backend Analyst → Analyzes: [specific docs]
+3. Integration Analyst → Synthesizes: [both analyses]
 
-If Multi-Phase:
-- Estimated Phases: [X] phases
-- Phase Boundaries: [Brief description of how to split]
+**Implementation Phases:**
+Phase 1: [Domain X] - [Why this first]
+Phase 2: [Domain Y] - [Why this second]
+Phase 3: [Domain Z] - [Why this third]
+
+Phasing rationale: [Dependency-based, not size-based]
 ```
 
-**Save to:** `.pm/planning/[feature-name]/02-context-budget.md`
+**Save to:** `.pm/planning/[feature-name]/02-analysis-strategy.md`
 
 **Checkpoint:**
-- ✅ Context budget calculated
-- ✅ Decision made (single vs multi-phase)
-- ✅ If multi-phase: phase boundaries identified
+- ✅ Domains identified
+- ✅ Analyst agents planned (one per domain)
+- ✅ Phase boundaries logical (dependencies, not token counts)
+- ✅ NO TOKEN MATH PERFORMED
 
 ---
 
@@ -410,21 +447,24 @@ Moving to master plan creation...
 ### Integration Tasks (Total: X)
 - INT-001: [Description] - Estimate: [time] - Phase: [X]
 
-## Context Management Strategy
+## Implementation Strategy
 
-### Context 1: Planning (Current - Complete)
+### Planning Phase (Current - Complete)
 - Purpose: Create this master plan
-- Docs Used: Analyst reports only
+- Approach: Analyst reports synthesized
 - Output: This document
 
-### Context 2: Phase 1 Implementation
+### Phase 1 Implementation
 - Purpose: [Phase 1 goal]
-- Docs Needed: [Specific small docs]
-- Token Budget: [X]k
+- Domain Focus: [Backend/Frontend/etc.]
+- Dependencies: None / [Phase X]
 - Tasks: [List]
 
-### Context 3: Phase 2 Implementation
-[Same structure]
+### Phase 2 Implementation
+- Purpose: [Phase 2 goal]
+- Domain Focus: [Backend/Frontend/etc.]
+- Dependencies: Phase 1
+- Tasks: [List]
 
 ## Progress Tracking
 
@@ -500,7 +540,7 @@ Please review the plan. Should I proceed with implementation?
 
 ### **Step 5: Phase Execution**
 
-**Goal:** Implement one phase at a time, staying within context budget
+**Goal:** Implement one phase at a time with clear focus and dependencies
 
 **Actions for EACH phase:**
 
@@ -513,8 +553,7 @@ Loading context for this phase:
 - ✅ Phase-specific analysis (loaded)
 - ✅ Required documentation (loaded)
 
-Total context: [X]k / 150k tokens (safe)
-
+Domain focus: [Backend/Frontend/Integration]
 Tasks in this phase: [List]
 ```
 
@@ -709,27 +748,28 @@ Progress:
 Resuming from Phase 3, Task 3...
 ```
 
-**Step 3: Load minimal context for current phase**
+**Step 3: Load phase-specific context**
 ```markdown
 Loading context for Phase 3:
 - ✅ Master plan excerpt (Phase 3 only)
-- ✅ Phase 3 requirements
+- ✅ Phase 3 domain focus and requirements
 - ✅ Completed work summary
+- ✅ Dependencies from previous phases
 
-Total: [X]k tokens (lean and focused)
+Focus: Domain-driven, dependency-aware
 
 Continuing implementation...
 ```
 
-**Zero information loss!**
+**Zero information loss through progressive documentation!**
 
 ---
 
 ## 📊 Success Metrics
 
 **This protocol succeeds when:**
-- ✅ No context window overflow
-- ✅ No missed requirements
+- ✅ Smart progressive analysis (analysts handle complexity)
+- ✅ No missed requirements (systematic domain coverage)
 - ✅ Seamless integration across phases
 - ✅ User approval at each checkpoint
 - ✅ Feature complete and documented
@@ -748,9 +788,9 @@ Continuing implementation...
 
 **✅ DO:**
 - Follow steps sequentially
-- Use analyst agents for deep dives
+- Use analyst agents for ALL documentation analysis
 - Get user approval at checkpoints
-- Keep context lean (40-50k per phase)
+- Phase by domain and dependencies (not size)
 - Update progress continuously
 
 ---
