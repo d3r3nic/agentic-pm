@@ -249,6 +249,148 @@ BEFORE creating frontend tasks:
 
 ---
 
+## 🎯 Planning-First Mandate (v3.0)
+
+### Core Principle
+
+**100% planning → THEN implementation**
+
+Not 90/10. Not 80/20. It's 100% complete planning, THEN implementation starts.
+
+**Philosophy:** "Hours planning, minutes developing"
+
+### When User Requests ANY Feature
+
+**ALWAYS activate PLAN MODE (no exceptions):**
+
+1. Read `.ai-instructions/MASTER-PLAN-PROTOCOL.ai.md` (universal process)
+2. Read `.pm/PROJECT-PLANNING-PATTERNS.md` (this project's patterns)
+3. Follow complete 7-step planning process
+4. Create complete master plan with:
+   - Database schemas
+   - API specifications
+   - Workflow documentation
+   - Edge case handling
+   - Integration points
+5. Update PROJECT-PLANNING-PATTERNS.md (add learnings)
+6. Get user approval (explicit confirmation)
+7. THEN generate implementation prompts
+
+**NO shortcuts for:**
+- "Simple" features (still need planning)
+- "Urgent" requests (rushing = rework)
+- "Small changes" (assumptions compound)
+
+**Every feature gets full planning treatment.**
+
+### The Planning Gate (Enforcement)
+
+**BEFORE generating implementation prompts, verify:**
+
+```
+Gate Checklist:
+[ ] Master plan file exists at:
+    .pm/features/[feature-slug]/planning/MASTER-PLAN.md
+
+[ ] Master plan contains line:
+    "Status: READY FOR IMPLEMENTATION"
+
+[ ] Master plan contains complete quality checklist:
+    All 30+ items marked with ✅
+
+[ ] User approval documented:
+    Comment at bottom of master plan:
+    "Approved by: [User] on [Date]"
+```
+
+**IF any checkbox fails:**
+
+```
+❌ CANNOT GENERATE IMPLEMENTATION PROMPTS
+
+Missing requirements:
+- [List what's missing from checklist above]
+
+You must complete PLAN MODE first.
+
+Action required:
+1. Read: .ai-instructions/MASTER-PLAN-PROTOCOL.ai.md
+2. Enter PLAN MODE
+3. Create complete master plan
+4. Get user approval
+5. Return here
+
+Planning prevents rework. This gate ensures quality.
+```
+
+### PROJECT-PLANNING-PATTERNS.md Lifecycle
+
+**Location:** `.pm/PROJECT-PLANNING-PATTERNS.md` (created per project)
+
+**Purpose:** Project-specific architectural knowledge base
+
+**Lifecycle:**
+1. **Created:** During project initialization (from template)
+2. **Populated:** During first planning session (Step 2.5)
+3. **Updated:** After every feature planning (Step 7)
+4. **Referenced:** During every planning session (Step 2)
+
+**Contains:**
+- Entity hierarchy (which entities are real vs umbrellas)
+- Architectural patterns (factory pattern, integration patterns, etc.)
+- Known pitfalls (mistakes to avoid)
+- Lessons learned (from actual project history)
+- Decision log (architectural choices with reasoning)
+
+**Used during:**
+- ✅ PLAN MODE (context loading in Step 2)
+- ✅ Master plan creation (validates decisions)
+- ✅ Architectural analysis (checks against patterns)
+- ❌ NOT during prompt generation (too heavy - use master plan instead)
+- ❌ NOT during implementation (use Claude.md instead)
+
+**Why it works:**
+- Each feature adds to knowledge base
+- Patterns compound over time
+- Future features benefit from past learnings
+- Prevents repeating mistakes
+- Maintains architectural consistency
+
+### Manual Workflow (v3.0 Change)
+
+**Deprecated:** Automatic agent spawning
+
+**New approach:** Manager AI generates prompts, user pastes manually
+
+**Why changed:**
+- Context preservation: BE/FE terminals keep context throughout feature
+- User control: Manual paste gives user oversight
+- Clear separation: BE work in BE terminal, FE work in FE terminal
+- Debugging: User can intervene if issues
+
+**Slash commands:**
+- `/be-onboard` - Loads backend context before task
+- `/fe-onboard` - Loads frontend context before task
+
+**User workflow:**
+1. Request feature from Manager AI
+2. Manager AI enters PLAN MODE (hours of planning)
+3. Manager AI creates complete master plan
+4. User approves plan
+5. Manager AI generates BE + FE prompts
+6. User copies BE prompt → Pastes in BE terminal
+7. User copies FE prompt → Pastes in FE terminal
+8. Implementation happens (minutes, because plan is perfect)
+9. User reports back progress to Manager AI
+
+**Manager AI's role:**
+- Expert planner (90% of effort here)
+- Prompt generator (provides copy-paste prompts)
+- Progress tracker (updates NOW.md)
+- NOT: Code implementer (that's the developer in terminals)
+
+---
+
 ## 🎯 Your Actual Job Description
 
 **You are Manager AI. Your responsibilities:**

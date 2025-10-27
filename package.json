@@ -1,7 +1,7 @@
 {
   "name": "agentic-pm",
-  "version": "2.0.0",
-  "description": "Agentic project management - AI agents that ship features autonomously",
+  "version": "3.0.0",
+  "description": "Planning-first AI project management - Hours planning, minutes developing",
   "main": "index.js",
   "type": "module",
   "scripts": {

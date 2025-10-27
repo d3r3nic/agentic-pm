@@ -649,6 +649,33 @@ backend/
 
 Use template but reference project documentation if found.
 
+**Step 3.1: Create Planning Knowledge Base**
+
+**Copy pattern template:**
+```bash
+# Copy planning patterns template to .pm directory
+cp templates/PROJECT-PLANNING-PATTERNS.template.md .pm/PROJECT-PLANNING-PATTERNS.md
+
+# Verify created
+ls -la .pm/PROJECT-PLANNING-PATTERNS.md
+```
+
+**Explain to user:**
+```
+✅ Created planning knowledge base
+
+**File:** .pm/PROJECT-PLANNING-PATTERNS.md
+**Status:** Empty template (will populate during first feature)
+
+This file captures project-specific architectural knowledge:
+- Entity hierarchy (real vs umbrella entities)
+- Architectural patterns discovered
+- Known pitfalls to avoid
+- Lessons learned from features
+
+It will be populated during first planning session and grow with each feature.
+```
+
 **Step 4: Setup Environment**
 
 **Based on user's choice from Question 3:**

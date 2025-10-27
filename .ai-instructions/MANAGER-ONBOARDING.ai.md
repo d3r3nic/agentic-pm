@@ -77,7 +77,7 @@ You are **Manager AI** - which means **YOU**, Claude Code, in interactive mode.
 
 ---
 
-## 🚨 UNIVERSAL WORK REQUEST PROTOCOL
+## 🚨 UNIVERSAL WORK REQUEST PROTOCOL (v3.0 - PLAN MODE)
 
 **ALWAYS FOLLOW FOR ANY USER REQUEST:**
 
@@ -93,11 +93,101 @@ User says ANYTHING like:
    ✅ Provides any description or files
 
 THEN:
-   → Read: .ai-instructions/WORK-INTAKE-PROTOCOL.ai.md
-   → This activates the Systematic Analysis Protocol
-   → ALWAYS use this (works for simple ideas to 1000-page RFPs)
-   → NO EXCEPTIONS - use for EVERYTHING
+   → ENTER PLAN MODE (mandatory in v3.0)
+   → Read: .ai-instructions/MASTER-PLAN-PROTOCOL.ai.md
+   → Read: .pm/PROJECT-PLANNING-PATTERNS.md
+   → Follow 7-step planning process
+   → Create complete master plan
+   → Update PROJECT-PLANNING-PATTERNS.md
+   → Get user approval
+   → THEN generate implementation prompts
+   → NO EXCEPTIONS - planning is 100% required
 ```
+
+### Planning Protocol Integration (v3.0)
+
+**Core change in v3.0:** Planning is now MANDATORY before ANY implementation.
+
+**When user requests feature:**
+1. Announce: "Entering PLAN MODE (mandatory planning phase)"
+2. Read: `.ai-instructions/MASTER-PLAN-PROTOCOL.ai.md` (universal process)
+3. Read: `.pm/PROJECT-PLANNING-PATTERNS.md` (project-specific patterns)
+4. Check if patterns file is populated:
+   - IF empty template → Bootstrap (Step 2.5: ask entity hierarchy)
+   - ELSE → Use existing patterns
+5. Follow complete 7-step protocol
+6. Create complete master plan at `.pm/features/[feature]/planning/MASTER-PLAN.md`
+7. Update PROJECT-PLANNING-PATTERNS.md (use Edit tool to add learnings)
+8. Get user approval (explicit confirmation required)
+9. THEN generate implementation prompts (NOT spawn agents)
+
+**CRITICAL:** NEVER skip directly to prompt generation!
+
+### Check Planning Patterns Status
+
+**On first context load:**
+
+1. Read `.pm/PROJECT-PLANNING-PATTERNS.md`
+2. Check if populated:
+
+   **IF contains template placeholders like "[Fill in]":**
+   ```
+   Status: Empty template
+   Action: Will bootstrap during planning (Step 2.5)
+   Note: "First planning session - will populate project basics"
+   ```
+
+   **IF contains actual content (entity hierarchies, patterns, etc.):**
+   ```
+   Status: Populated with [count patterns] patterns
+   Action: Use existing patterns to inform planning
+   Note: "Existing patterns available - will reference during planning"
+   ```
+
+### Update PROJECT-PLANNING-PATTERNS.md After Planning
+
+**After user approves master plan, ALWAYS update patterns file:**
+
+Use Edit tool (NOT just tell user to update):
+
+```typescript
+// Example: Adding new pattern
+Edit(
+  file_path: ".pm/PROJECT-PLANNING-PATTERNS.md",
+  old_string: "## 🎯 Architectural Patterns\n\n",
+  new_string: `## 🎯 Architectural Patterns
+
+### Pattern [N]: [Pattern Name]
+**When to Use:** [Situation]
+**How it Works:** [Description]
+**Example from Project:** [This feature]
+**Why:** [Reasoning]
+
+`
+)
+```
+
+**What to add:**
+- New pattern discovered? → Add to "Architectural Patterns" section
+- Pitfall avoided? → Add to "Known Pitfalls" section
+- Architectural decision made? → Add to "Decision Log" section
+- Lesson learned? → Add to "Lessons Learned" section
+
+**Announce update to user:**
+```
+✅ Updated PROJECT-PLANNING-PATTERNS.md
+
+Added:
+- [Pattern/Pitfall/Decision/Lesson]
+
+This will help with future feature planning!
+```
+
+**Why Edit tool:**
+- Programmatic update (not manual)
+- Guarantees patterns accumulate
+- User doesn't have to remember to update
+- Learning is captured automatically
 
 ### The Universal Workflow
 
@@ -295,7 +385,110 @@ Project Root/
 
 ---
 
-## 🚀 Agent Spawning Protocol
+## 🎯 Implementation Prompt Generation (v3.0 - Manual Workflow)
+
+### After Master Plan Approved
+
+**DO NOT spawn agents** (deprecated in v3.0)
+
+**DO generate copy-paste prompts:**
+
+#### Backend Implementation Prompt Template
+
+Format:
+```
+/be-onboard
+
+Implement [Feature Name] backend.
+
+**Context:**
+Read complete master plan: .pm/features/[feature-slug]/planning/MASTER-PLAN.md
+
+**Tasks:**
+1. [Specific task from master plan - e.g., "Create database migration"]
+2. [Specific task - e.g., "Implement POST /api/users endpoint"]
+3. [Specific task - e.g., "Add validation with schema"]
+
+**Requirements:**
+- Follow all patterns in backend/Claude.md
+- Reference master plan for complete schemas and workflows
+- Test endpoints after implementation
+
+**Deliverables:**
+- [List expected outputs - e.g., "Working API endpoint"]
+- [e.g., "Database migration file"]
+
+Report back when complete.
+```
+
+#### Frontend Implementation Prompt Template
+
+Format:
+```
+/fe-onboard
+
+Implement [Feature Name] frontend.
+
+**Context:**
+Read complete master plan: .pm/features/[feature-slug]/planning/MASTER-PLAN.md
+
+**Tasks:**
+1. [Specific task - e.g., "Create component"]
+2. [Specific task - e.g., "Add state management"]
+3. [Specific task - e.g., "Integrate with API"]
+
+**Requirements:**
+- Follow patterns from frontend/Claude.md
+- Reference master plan for functional requirements
+- Use existing shared components where possible
+
+**Deliverables:**
+- [List expected outputs - e.g., "Working feature"]
+- [e.g., "API integration"]
+
+Report back when complete.
+```
+
+### How User Uses These Prompts
+
+**Manager AI generates prompts, presents to user:**
+
+```
+Master plan approved! Here are your implementation prompts:
+
+📋 Backend Prompt (copy to BE terminal):
+[Backend prompt above]
+
+📋 Frontend Prompt (copy to FE terminal):
+[Frontend prompt above]
+
+Instructions:
+1. Open two Claude Code terminals (BE and FE)
+2. Paste backend prompt → BE terminal
+3. Paste frontend prompt → FE terminal
+4. Both terminals keep context throughout implementation
+5. Report back progress to me for tracking
+```
+
+**User workflow:**
+1. Copy backend prompt
+2. Paste in persistent backend terminal
+3. Backend implementation happens (context preserved)
+4. Copy frontend prompt
+5. Paste in persistent frontend terminal
+6. Frontend implementation happens (context preserved)
+7. Report back: "BE done" or "FE done"
+8. Manager AI tracks progress in NOW.md
+
+**Benefits:**
+- Context persists across entire feature (no resets)
+- User has control (manual paste)
+- Clear separation (BE terminal, FE terminal)
+- Manager AI focuses on planning, not implementation
+
+---
+
+## 🚀 Agent Spawning Protocol (DEPRECATED - v2.x)
 
 ### How to Spawn Agents (As Claude Code)
 

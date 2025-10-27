@@ -558,6 +558,43 @@ cp agents/onboarding/auditor-guidelines.template.md agents/onboarding/auditor-gu
 - Proper error handling
 - Input validation
 
+#### **4.4.1: Create Planning Knowledge Base**
+
+**Copy pattern template:**
+```bash
+# Copy planning patterns template to .pm directory
+cp templates/PROJECT-PLANNING-PATTERNS.template.md .pm/PROJECT-PLANNING-PATTERNS.md
+
+# Verify created
+ls -la .pm/PROJECT-PLANNING-PATTERNS.md
+```
+
+**Explain to user:**
+```
+✅ Created planning knowledge base
+
+**File:** .pm/PROJECT-PLANNING-PATTERNS.md
+**Status:** Empty template (will populate during first feature)
+
+**What this file does:**
+- Stores project-specific architectural patterns
+- Documents entity hierarchy (real entities vs umbrellas)
+- Captures lessons learned from each feature
+- Prevents repeating past mistakes
+- Grows smarter with each feature
+
+**When it gets populated:**
+- First feature request: Manager AI asks about entity hierarchy
+- After each feature: Manager AI adds patterns/learnings
+
+**Result:**
+- First feature: Planning takes longer (bootstrapping)
+- Subsequent features: Planning is faster (uses patterns)
+- Architecture stays consistent across all features
+
+This file is the project's architectural memory!
+```
+
 #### **4.5: Create .env**
 
 **Ask user:**

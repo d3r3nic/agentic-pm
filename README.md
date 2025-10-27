@@ -1,47 +1,80 @@
 # Agentic PM
 
-> **AI agents that ship features autonomously**
+> **Planning-first AI project management framework**
 >
-> Powered by Claude Agent SDK • Build software 12x faster
+> Hours planning, minutes developing • Zero rework
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Framework](https://img.shields.io/badge/Framework-Claude%20Agent%20SDK-blue)](https://docs.claude.com/en/api/agent-sdk/overview)
-[![Version](https://img.shields.io/badge/Version-2.0.0-green)](https://github.com/d3r3nic/agentic-pm)
+[![Version](https://img.shields.io/badge/Version-3.0.0-green)](https://github.com/d3r3nic/agentic-pm)
 
 ---
 
 ## 🎯 What This Does
 
-**Agentic PM** coordinates 4 AI agents to build software projects autonomously:
+**Agentic PM v3.0** enforces systematic planning before any implementation:
 
-- **Manager AI** - Creates task files, spawns agents, tracks progress
-- **FE Implementor** - Builds frontend features in parallel
-- **BE Implementor** - Builds backend APIs in parallel
-- **FE/BE Auditors** - Enforce quality and security standards
+**Philosophy:** 100% planning → THEN implementation
 
-**You approve direction (1% effort). AI handles execution (99% effort).**
+### The Approach
+
+1. **Manager AI enters PLAN MODE** (mandatory for every feature)
+2. **Reads universal planning protocol** (7-step systematic analysis)
+3. **Reads project patterns** (accumulated architectural knowledge)
+4. **Creates complete master plan** (workflows, schemas, edge cases)
+5. **Updates pattern knowledge base** (learns from each feature)
+6. **Generates implementation prompts** (user pastes to terminals)
+7. **Implementation flows naturally** (plan is perfect)
+
+### Why v3.0?
+
+**Before (v2.x):**
+- Quick planning (30 min) → Long implementation (2-4 weeks) → Rework (1-2 weeks)
+- Context lost when agents closed
+- Architectural inconsistency
+
+**After (v3.0):**
+- Thorough planning (1-3 hours) → Fast implementation (2-5 days) → Zero rework
+- Context preserved in persistent terminals
+- Patterns compound over time
+
+**Real savings:** 3+ weeks per feature, zero technical debt
 
 ---
 
 ## ✨ Key Features
 
-### 🚀 Autonomous Execution
-- **Zero manual setup** - Agents defined programmatically
-- **Parallel execution** - 5-8 agents work simultaneously (3-4x faster)
-- **Week-long sessions** - Full context preserved across days
-- **Custom PM tools** - ReadTaskFile, WriteAgentReport, UpdateNOW, etc.
+### 🧠 Planning-First Architecture
+- **Mandatory PLAN MODE** - Every feature goes through 7-step planning protocol
+- **Quality gate** - 30+ checklist items before implementation allowed
+- **Pattern learning** - PROJECT-PLANNING-PATTERNS.md grows smarter with each feature
+- **Bootstrap support** - First feature populates entity hierarchy, subsequent features use patterns
+- **Zero rework** - Catch architectural issues in planning, not in production
 
-### 📊 Enterprise-Grade Tracking
-- **Automatic cost tracking** - Per task and weekly totals
-- **Performance metrics** - Duration, tokens, efficiency
-- **Complete audit trail** - Every decision and implementation logged
-- **Session management** - Resume exactly where you left off
+### 🎯 Universal Protocol
+- **MASTER-PLAN-PROTOCOL.ai.md** - Works for ANY project (SaaS, E-commerce, Healthcare, etc.)
+- **PROJECT-PLANNING-PATTERNS** - Project-specific knowledge base
+- **7-step systematic process** - Context loading, deep questions, analysis, master plan
+- **Continuous learning** - Each feature makes next feature easier
 
-### 🔧 100% Reusable
-- **Works with any tech stack** - React, Vue, Node, Python, Go, etc.
-- **Self-onboarding** - Update 3 template files, you're ready
-- **Template-based tasks** - Consistent structure across projects
-- **Multi-project friendly** - Use same framework for all projects
+### 🔄 Manual Workflow (v3.0)
+- **Persistent terminals** - Context preserved throughout entire feature
+- **Copy-paste prompts** - Manager AI generates, user pastes to BE/FE terminals
+- **Slash commands** - `/be-onboard`, `/fe-onboard` for context loading
+- **User control** - Manual paste gives oversight and debugging capability
+- **Clear separation** - BE work in BE terminal, FE work in FE terminal
+
+### 📊 Pattern Accumulation
+- **Architectural patterns** - Discovered and documented automatically
+- **Known pitfalls** - Mistakes avoided and recorded
+- **Decision log** - Why choices were made (reference for future)
+- **Lessons learned** - From actual project history
+- **Compounds over time** - Feature 10 is easier than Feature 1
+
+### 🔧 100% Universal
+- **Works with any tech stack** - React, Vue, Node, Python, Go, Rust, etc.
+- **Self-configuring** - Bootstrap process captures project specifics
+- **Template-based** - Consistent structure across all projects
+- **Multi-project friendly** - Same protocol for different domains
 
 ---
 
