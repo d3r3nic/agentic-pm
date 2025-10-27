@@ -38,7 +38,7 @@ It's 100% complete planning, THEN development starts.
 ### Why This Approach?
 
 **The Problem with Quick Implementation:**
-- ❌ Rush to code → wrong entity level (org vs facility)
+- ❌ Rush to code → wrong entity level (team vs department vs organization)
 - ❌ Miss edge cases → production bugs
 - ❌ Skip architecture → technical debt
 - ❌ Lose context → start from scratch next time
@@ -285,7 +285,7 @@ Estimated: 1-2 hours for thorough planning.
 ```
 
 **Then PM asks 30+ questions:**
-- Entity granularity: Where does work happen? (Global/Org/Team/User?)
+- Entity granularity: Where does work happen? (Global/Organization/Team/User?)
 - Workflows: Walk me through login flow entry to completion
 - Edge cases: What if email already exists? Password reset flow?
 - Integration: How does this connect to existing user profile?
@@ -492,7 +492,7 @@ Why no automatic agent spawning:
 **Without deep planning (v2.x):**
 - Planning: 30 minutes (rushed)
 - Implementation: 2 weeks
-- Debugging: Discovered "invitation should be at facility level, not org level"
+- Debugging: Discovered "feature should be at team level, not organization level"
 - Rework: 2 weeks (rebuild entire feature)
 - **Total: 4 weeks + technical debt**
 
