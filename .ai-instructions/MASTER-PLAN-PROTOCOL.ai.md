@@ -138,6 +138,94 @@ Estimated: 15-30 minutes for thorough planning.
 
 ---
 
+### Step 2.5: Bootstrap Project Patterns (First Feature Only)
+
+**Check PROJECT-PLANNING-PATTERNS.md status:**
+
+If the file contains template placeholders like `[Fill in]` or `[Document here]`, this is the **first feature for this project**. Before diving into feature-specific questions, populate project basics.
+
+**Detection:**
+```typescript
+// Pseudo-check
+if (PROJECT-PLANNING-PATTERNS.md contains "[Fill in]" or "[Document here]") {
+  // Empty template - first planning session
+  runBootstrap();
+} else {
+  // Already populated - skip to Step 3
+  continueNormally();
+}
+```
+
+**IF PROJECT-PLANNING-PATTERNS.md is empty template, ask user:**
+
+1. **Entity Hierarchy:**
+   ```
+   "What's your project's entity hierarchy?"
+
+   Examples for context:
+   - SaaS: Global → Organization → Team → Project → User
+   - E-commerce: Global → Vendor → Store → Product → Customer
+   - Healthcare: Global → Organization → Facility → User
+
+   What's yours?
+   ```
+
+2. **Real vs Umbrella Entities:**
+   ```
+   "Which entities are 'real' (where work happens) vs 'umbrella' (just containers)?"
+
+   Example: In healthcare, Facility is real (work happens there),
+   Organization is umbrella (just groups facilities)
+   ```
+
+3. **Tech Stack (if not in config):**
+   ```
+   "What's your tech stack?"
+   - Backend: [Framework, Database, ORM]
+   - Frontend: [Framework, State management, UI library]
+   ```
+
+4. **Domain:**
+   ```
+   "What's your domain/industry?"
+   (Helps understand terminology and common patterns)
+   ```
+
+**Then use Edit tool to populate PROJECT-PLANNING-PATTERNS.md:**
+
+```typescript
+Edit(
+  file_path: ".pm/PROJECT-PLANNING-PATTERNS.md",
+  old_string: "### Entity Levels\n[Document your hierarchy here]",
+  new_string: `### Entity Levels
+
+${userProvidedHierarchy}
+
+Real Entity: ${realEntity} (where work happens)
+Umbrella: ${umbrellaEntity} (just containers)`
+)
+```
+
+**Announce to user:**
+```
+✅ Bootstrapped PROJECT-PLANNING-PATTERNS.md
+
+Populated:
+- Entity hierarchy: [hierarchy]
+- Real entity: [entity]
+- Tech stack: [stack]
+
+This will guide all future feature planning!
+
+Now continuing with [Feature Name] planning...
+```
+
+**IF PROJECT-PLANNING-PATTERNS.md is already populated:**
+
+Skip bootstrap entirely. The patterns are already there - use them for planning.
+
+---
+
 ### Step 3: Deep Understanding Questions
 
 **Ask user these categories of questions:**
