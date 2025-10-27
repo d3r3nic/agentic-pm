@@ -35,24 +35,48 @@ It's 100% complete planning, THEN development starts.
 "Hours planning, minutes developing"
 ```
 
-### Why This Approach?
+### Why Use This Framework?
 
-**The Problem with Quick Implementation:**
-- ❌ Rush to code → wrong entity level (team vs department vs organization)
-- ❌ Miss edge cases → production bugs
-- ❌ Skip architecture → technical debt
-- ❌ Lose context → start from scratch next time
+**The Problem This Solves:**
 
-**The Solution with Deep Planning:**
-- ✅ Inspect codebase → map exact injection points
-- ✅ Validate architecture → catch issues early (entity granularity, conflicts)
-- ✅ Create surgical blueprints → reuse 50%+ existing code
-- ✅ Accumulate patterns → each feature easier than last
+When you ask AI to "build feature X" directly:
+- AI guesses where to inject code (often creates new files instead of reusing existing)
+- AI doesn't validate entity granularity (is this a user-level or team-level feature?)
+- AI can't see architectural conflicts (state management collisions, circular dependencies)
+- Each feature starts from scratch (no accumulated knowledge)
+- Context resets between sessions (repetitive questions, no continuity)
 
-**Real Impact:**
-- 3+ weeks saved per feature
-- Zero rework (correct from the start)
-- Zero technical debt
+**How This Framework Helps:**
+
+**1. Deep Codebase Inspection Before Design**
+- Maps exact locations (where to inject, what to reuse, what conflicts exist)
+- Identifies reuse opportunities (existing abstractions, shared components)
+- Detects conflicts early (naming collisions, state conflicts)
+- You get surgical blueprints, not generic "create component" tasks
+
+**2. Architectural Validation**
+- Forces entity granularity questions (where does work actually happen?)
+- Validates against established patterns (reads PROJECT-PLANNING-PATTERNS.md)
+- Catches architectural issues before coding (not during debugging)
+- Creates complete specs (workflows, schemas, edge cases documented)
+
+**3. Pattern Accumulation**
+- First feature: Bootstrap entity hierarchy, establish patterns
+- Each feature: Read patterns → Plan with context → Update patterns
+- Tenth feature: Rich knowledge base, consistent architecture, fast planning
+- Your architectural decisions are preserved (not lost between sessions)
+
+**4. Context Preservation**
+- Persistent terminals (context stays throughout entire feature)
+- Manual workflow (you control when to execute, can intervene)
+- No context resets (reference previous work, no repetitive questions)
+- Clear separation (BE terminal for BE, FE terminal for FE)
+
+**5. Quality Gate Enforcement**
+- Cannot implement without complete master plan
+- 30+ checklist items must be satisfied
+- User approval required before execution
+- Prevents rushing to code without thinking
 
 ---
 
@@ -487,22 +511,32 @@ Why no automatic agent spawning:
 
 ### Q: Does planning really save time?
 
-**A:** Real example from actual project:
+**A:** The framework's value isn't speed - it's correctness and consistency.
 
-**Without deep planning (v2.x):**
-- Planning: 30 minutes (rushed)
-- Implementation: 2 weeks
-- Debugging: Discovered "feature should be at team level, not organization level"
-- Rework: 2 weeks (rebuild entire feature)
-- **Total: 4 weeks + technical debt**
+**Time Investment:**
+- Planning: 1-2 hours (deep inspection, questions, validation)
+- Implementation: Depends on feature complexity
 
-**With deep planning (v3.0):**
-- Planning: 2 hours (deep questions, codebase inspection, caught entity level issue)
-- Implementation: 3 days (straightforward, plan was perfect)
-- Rework: 0 days
-- **Total: 5 days, zero technical debt**
+**What You Get:**
+- Architectural issues caught in planning (entity granularity, conflicts, integration points)
+- Surgical blueprints with exact locations (no guesswork during implementation)
+- Reuse opportunities identified (don't rebuild what exists)
+- Patterns accumulated (each feature makes next feature easier)
 
-**Savings: 3+ weeks per feature**
+**The Trade-off:**
+- More upfront time (planning phase)
+- Less rework time (correct architecture from start)
+- Better long-term velocity (patterns compound)
+
+**When This Matters:**
+- Complex codebases (where guessing injection points is expensive)
+- Team projects (where architectural consistency matters)
+- Long-term projects (where accumulated patterns pay off)
+
+**When This Doesn't Matter:**
+- Prototypes you'll throw away
+- Solo scripts with no reuse
+- Features in isolation with no integration
 
 ### Q: What's the learning curve?
 
