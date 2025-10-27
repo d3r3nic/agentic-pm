@@ -8,7 +8,7 @@
 
 ---
 
-## 🎯 PLAN MODE - 7 Step Protocol
+## 🎯 PLAN MODE - 8 Step Protocol
 
 ### Overview
 
@@ -16,12 +16,15 @@ When user requests a feature:
 1. Enter PLAN MODE (explicit state)
 2. Load context (project + universal patterns)
 3. Ask deep questions
+3.5. **Deep Codebase Inspection** ⭐ (NEW - surgical precision)
 4. Analyze architecture
 5. Present analysis for confirmation
 6. Create complete master plan
-7. Exit PLAN MODE
+7. Update patterns document
+8. Exit PLAN MODE
 
 **Principle:** "Implement Once" - Thorough upfront > Quick but wrong
+**NEW in v3.0:** Deep codebase inspection for surgical blueprints
 
 ---
 
@@ -300,9 +303,364 @@ Skip bootstrap entirely. The patterns are already there - use them for planning.
 
 ---
 
+### Step 3.5: Deep Codebase Inspection (CRITICAL! ⭐)
+
+**Purpose:** Map EXACT implementation locations, conflicts, and reuse opportunities BEFORE architectural design.
+
+**This is what separates generic planning from surgical blueprints!**
+
+---
+
+#### Why This Step Matters
+
+**Without deep inspection:**
+```
+❌ "Create user list component"
+❌ "Add API endpoint"
+❌ "Update state management"
+```
+
+**With deep inspection:**
+```
+✅ "Inject presentation component at [exact module],
+    reuse [specific existing abstraction] from [exact path],
+    integrate with state container at [exact location],
+    call data access methods [method1, method2] in parallel (Promise.all pattern),
+    ⚠️ Conflict warning: existing [specific code] at [location] has similar logic - merge instead"
+```
+
+---
+
+#### Inspection Techniques (Universal)
+
+**Use these tools systematically:**
+- **Glob**: Find all modules matching patterns (`**/*.{component,handler,service}`)
+- **Grep**: Search for specific patterns (`class.*Component`, `export.*function`)
+- **Read**: Read candidate files to understand structure
+
+---
+
+### 3.5.1 Presentation Layer Inspection
+
+**Objective:** Map component hierarchy, state management, and injection points
+
+**1. Component Hierarchy Mapping**
+```
+Technique: Traverse module imports and composition patterns
+Tools: Glob → Find all presentation components
+       Read → Parse imports and composition
+
+Output: Component tree showing parent-child relationships
+```
+
+**2. State Container Analysis**
+```
+Technique: Identify state management locations and patterns
+Tools: Grep → Search for state declarations
+       Read → Analyze state structure
+
+Questions to Answer:
+- Where is shared state defined?
+- What state management pattern is used? (Redux, MobX, Context, Zustand, etc.)
+- Are there existing state slices for similar features?
+- Where are state update actions defined?
+
+Output: State ownership map
+```
+
+**3. Injection Point Identification**
+```
+Technique: Find where new components will be composed
+
+Questions to Answer:
+- Which parent container will host this?
+- What's the exact module path?
+- What composition pattern is used? (props, slots, children, render props)
+- What data flow pattern exists? (props down, events up)
+
+Output: Exact module paths and integration points
+```
+
+**4. Reuse Opportunity Detection**
+```
+Technique: Find existing abstractions that can be reused
+
+Tools: Grep → Search for similar component names
+       Read → Analyze reusable components
+
+Questions to Answer:
+- Are there existing presentation components solving similar problems?
+- Can we compose existing components instead of building new?
+- What shared/common components exist?
+
+Target: 50%+ code reuse
+Output: List of reusable abstractions with exact paths
+```
+
+**5. Conflict Detection**
+```
+Technique: Identify naming collisions and overlapping logic
+
+Questions to Answer:
+- Does a component with this name already exist?
+- Is there existing logic that overlaps with this feature?
+- Will this create circular dependencies?
+
+Output: Conflict warnings with exact locations
+```
+
+---
+
+### 3.5.2 Business Logic Layer Inspection
+
+**Objective:** Map services, use cases, and business rules
+
+**1. Service Pattern Analysis**
+```
+Technique: Identify service layer organization
+
+Tools: Glob → Find service modules
+       Read → Understand service patterns
+
+Questions to Answer:
+- How are services organized? (by feature, by entity, by domain)
+- What dependency injection pattern is used?
+- Are there existing services handling similar logic?
+
+Output: Service architecture map
+```
+
+**2. Validation Pattern Discovery**
+```
+Technique: Find validation approaches
+
+Tools: Grep → Search for validation schemas
+       Read → Understand validation patterns
+
+Questions to Answer:
+- What validation library is used? (Zod, Joi, Yup, class-validator)
+- Where are schemas defined?
+- Can existing schemas be extended?
+
+Output: Validation pattern documentation
+```
+
+**3. Business Rule Location Mapping**
+```
+Technique: Identify where business logic resides
+
+Questions to Answer:
+- Are business rules in services or domain models?
+- How is business logic tested?
+- Can we reuse existing business logic?
+
+Output: Logic layer architecture map
+```
+
+---
+
+### 3.5.3 Data Access Layer Inspection
+
+**Objective:** Map data retrieval patterns, query optimization opportunities, schema conflicts
+
+**1. Query Pattern Analysis**
+```
+Technique: Analyze existing data fetching patterns
+
+Tools: Grep → Search for database queries
+       Read → Analyze query patterns
+
+Questions to Answer:
+- What ORM/query builder is used? (Prisma, TypeORM, Knex, Sequelize)
+- What's the pattern for data fetching? (Repository, Active Record, Query Builder)
+- Are there N+1 query antipatterns?
+
+Output: Data access pattern documentation
+```
+
+**2. Schema Conflict Detection**
+```
+Technique: Identify database schema overlaps and conflicts
+
+Tools: Read → Parse database schema file
+
+Questions to Answer:
+- Does a table/collection for this entity already exist?
+- Will new fields conflict with existing schema?
+- Are there foreign key relationships to consider?
+- Do indexes exist for planned queries?
+
+Output: Schema conflict warnings and required migrations
+```
+
+**3. Optimization Opportunity Detection**
+```
+Technique: Find parallel execution and batching opportunities
+
+Questions to Answer:
+- Can multiple queries run in parallel? (independent data sources)
+- Are there batching opportunities? (N queries → 1 batch query)
+- Where can caching be inserted?
+- Can we use lazy loading for deferred data?
+
+Output: Performance optimization recommendations
+```
+
+---
+
+### 3.5.4 Integration Layer Inspection
+
+**Objective:** Map external integrations, message queues, webhooks
+
+**1. API Client Analysis**
+```
+Technique: Find existing API integrations
+
+Tools: Grep → Search for HTTP clients, SDK usage
+       Read → Understand integration patterns
+
+Questions to Answer:
+- What external services are integrated?
+- What HTTP client library is used?
+- Are there existing clients that can be extended?
+- What error handling pattern is used?
+
+Output: Integration pattern documentation
+```
+
+**2. Event System Mapping**
+```
+Technique: Identify event-driven integration points
+
+Questions to Answer:
+- Is there an event bus or message queue?
+- What events are already defined?
+- Can this feature emit/consume events?
+
+Output: Event integration opportunities
+```
+
+---
+
+### 3.5.5 Cross-Layer Dependency Analysis
+
+**Objective:** Understand how layers communicate and identify coordination points
+
+**1. Dependency Flow Mapping**
+```
+Technique: Trace data flow from presentation → logic → data → integration
+
+Output: Complete dependency graph showing:
+- What presentation layer depends on from logic layer
+- What logic layer depends on from data layer
+- What data layer depends on from integration layer
+```
+
+**2. Cross-Layer Coordination Points**
+```
+When presentation needs data:
+→ Identify exact data access methods required
+→ Create data layer task if methods don't exist
+→ Document dependency in both layer blueprints
+
+When logic needs external data:
+→ Identify integration layer requirements
+→ Create integration task if client doesn't exist
+→ Document API contracts
+```
+
+---
+
+### 3.5.6 Inspection Output (Deliverable)
+
+**Create: CODEBASE-INSPECTION-REPORT.md**
+
+**Location:** `.pm/features/[feature-name]/planning/CODEBASE-INSPECTION-REPORT.md`
+
+**Structure:**
+```markdown
+# Codebase Inspection Report
+# [Feature Name]
+
+## Presentation Layer
+
+**Existing Component Hierarchy:**
+[Component tree]
+
+**State Management:**
+- Pattern: [Redux/MobX/Context/etc.]
+- Location: [Exact paths]
+- Existing slices: [List]
+
+**Injection Points:**
+- Parent container: [Exact module path]
+- Integration pattern: [Composition/props/slots]
+
+**Reusable Components:**
+- [Component A]: [Path] - [What it does]
+- [Component B]: [Path] - [What it does]
+
+**Conflicts Detected:**
+⚠️ [Warning 1]: [Description + location]
+
+## Business Logic Layer
+
+**Service Organization:**
+[Pattern description]
+
+**Validation Approach:**
+- Library: [Zod/Joi/etc.]
+- Schema location: [Path]
+- Reusable: [Yes/No - which schemas]
+
+## Data Access Layer
+
+**Query Patterns:**
+- ORM: [Prisma/TypeORM/etc.]
+- Pattern: [Repository/ActiveRecord/etc.]
+
+**Schema Analysis:**
+- Existing tables: [List]
+- Conflicts: [Any conflicts detected]
+- Required migrations: [List]
+
+**Optimization Opportunities:**
+- Parallel queries: [Query1 + Query2 can run together]
+- Batching: [N queries → 1 batch]
+- Caching: [Cache insertion points]
+
+## Integration Layer
+
+**Existing Clients:**
+- [Service A]: [Path] - [Reusable: Yes/No]
+
+**Event System:**
+- [Events available for integration]
+
+## Cross-Layer Coordination
+
+**Presentation → Logic:**
+[Required services/methods]
+
+**Logic → Data:**
+[Required repository methods]
+
+**Data → Integration:**
+[Required external API calls]
+
+## Summary
+
+**Reuse Percentage:** X% (target 50%+)
+**Conflicts Detected:** X warnings
+**New Code Required:** Y modules
+**Optimization Opportunities:** Z identified
+```
+
+---
+
 ### Step 4: Architectural Analysis
 
-**After understanding requirements, analyze:**
+**After deep codebase inspection, now analyze architecture:**
 
 #### A. Schema Impact Analysis
 

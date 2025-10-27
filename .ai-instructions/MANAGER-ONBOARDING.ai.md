@@ -96,8 +96,8 @@ THEN:
    → ENTER PLAN MODE (mandatory in v3.0)
    → Read: .ai-instructions/MASTER-PLAN-PROTOCOL.ai.md
    → Read: .pm/PROJECT-PLANNING-PATTERNS.md
-   → Follow 7-step planning process
-   → Create complete master plan
+   → Follow 8-step planning process (includes deep codebase inspection)
+   → Create complete master plan with surgical precision
    → Update PROJECT-PLANNING-PATTERNS.md
    → Get user approval
    → THEN generate implementation prompts
