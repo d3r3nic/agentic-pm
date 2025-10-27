@@ -1,427 +1,563 @@
 # Agentic PM
 
-> **Planning-first AI project management framework**
+> **Architect-First, Planning-First AI Framework**
 >
-> Hours planning, minutes developing • Zero rework
+> Deep inspection → Surgical blueprints → Effortless implementation
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/Version-3.0.0-green)](https://github.com/d3r3nic/agentic-pm)
 
 ---
 
-## 🎯 What This Does
+## 🎯 What This Is
 
-**Agentic PM v3.0** enforces systematic planning before any implementation:
+**Agentic PM v3.0** is an AI framework where Manager AI acts as a **Software Architect** who:
 
-**Philosophy:** 100% planning → THEN implementation
+1. **Inspects your codebase deeply** (exact locations, reuse opportunities, conflicts)
+2. **Creates surgical blueprints** (not generic tasks, but "inject at [exact path], reuse [specific abstraction]")
+3. **Generates copy-paste prompts** (you paste to persistent terminals, context preserved)
+4. **Learns from every feature** (patterns accumulate, future features get easier)
 
-### The Approach
+**NOT a coding assistant.** An architect who plans deeply, then creates blueprints so detailed that implementation is effortless.
 
-1. **Manager AI enters PLAN MODE** (mandatory for every feature)
-2. **Reads universal planning protocol** (7-step systematic analysis)
-3. **Reads project patterns** (accumulated architectural knowledge)
-4. **Creates complete master plan** (workflows, schemas, edge cases)
-5. **Updates pattern knowledge base** (learns from each feature)
-6. **Generates implementation prompts** (user pastes to terminals)
-7. **Implementation flows naturally** (plan is perfect)
+---
 
-### Why v3.0?
+## 🧠 The Philosophy
 
-**Before (v2.x):**
-- Quick planning (30 min) → Long implementation (2-4 weeks) → Rework (1-2 weeks)
-- Context lost when agents closed
-- Architectural inconsistency
+### Planning-First (100% Rule)
 
-**After (v3.0):**
-- Thorough planning (1-3 hours) → Fast implementation (2-5 days) → Zero rework
-- Context preserved in persistent terminals
-- Patterns compound over time
+```
+100% planning → THEN implementation
 
-**Real savings:** 3+ weeks per feature, zero technical debt
+Not 90/10. Not 80/20.
+It's 100% complete planning, THEN development starts.
+
+"Hours planning, minutes developing"
+```
+
+### Why This Approach?
+
+**The Problem with Quick Implementation:**
+- ❌ Rush to code → wrong entity level (org vs facility)
+- ❌ Miss edge cases → production bugs
+- ❌ Skip architecture → technical debt
+- ❌ Lose context → start from scratch next time
+
+**The Solution with Deep Planning:**
+- ✅ Inspect codebase → map exact injection points
+- ✅ Validate architecture → catch issues early (entity granularity, conflicts)
+- ✅ Create surgical blueprints → reuse 50%+ existing code
+- ✅ Accumulate patterns → each feature easier than last
+
+**Real Impact:**
+- 3+ weeks saved per feature
+- Zero rework (correct from the start)
+- Zero technical debt
+
+---
+
+## 🔍 What Makes This Different
+
+### 1. **Architect Identity (Not Just PM)**
+
+**Manager AI is a Software Architect:**
+- 🔍 Inspects codebase like inspecting a building
+- 📍 Maps exact injection points (not "create component" but "inject at [exact module path]")
+- ⚠️ Detects conflicts early (naming collisions, state conflicts, circular dependencies)
+- ♻️ Identifies reuse opportunities (target: 50%+ code reuse)
+- 🔗 Finds integration hookpoints (exact methods to call, data flow patterns)
+
+**Manager AI never writes code.** Creates blueprints. Developers execute.
+
+### 2. **Deep Codebase Inspection (Step 3.5)**
+
+**Before designing anything, PM inspects 4 layers:**
+
+**Presentation Layer:**
+- Component hierarchy mapping
+- State container analysis
+- Injection point identification
+- Reuse opportunity detection
+- Conflict detection
+
+**Business Logic Layer:**
+- Service pattern analysis
+- Validation approach discovery
+- Business rule location mapping
+
+**Data Access Layer:**
+- Query pattern analysis
+- Schema conflict detection
+- Optimization opportunities (parallel queries, batching, caching)
+
+**Integration Layer:**
+- API client analysis
+- Event system mapping
+
+**Output:** `CODEBASE-INSPECTION-REPORT.md` with:
+- Exact module paths
+- Reusable abstractions with locations
+- Conflict warnings with specific code
+- Optimization recommendations
+- Cross-layer coordination requirements
+
+### 3. **Surgical Blueprints (Not Generic Tasks)**
+
+**Generic approach (v2.x):**
+```
+❌ "Create user list component"
+❌ "Add API endpoint"
+❌ "Update state management"
+```
+
+**Surgical approach (v3.0):**
+```
+✅ "Inject presentation component at src/features/users/UserList.tsx,
+    reuse DataTable abstraction from shared/components/DataTable.tsx,
+    integrate with Redux store at store/users/usersSlice.ts,
+    call data access methods getUsersByFacility() + getFacilityRoles() in parallel (Promise.all),
+    ⚠️ Conflict warning: existing UserGrid.tsx at src/pages/UserGrid.tsx has similar logic -
+    consider merging or renaming to avoid confusion"
+```
+
+**The difference:**
+- Generic = developer guesses where to inject
+- Surgical = developer executes exact instructions
+
+### 4. **Manual Workflow (Why No Agent Spawning)**
+
+**v2.x Problems (Automatic Agent Spawning):**
+- ❌ Context lost when agent closes
+- ❌ No continuity between tasks
+- ❌ Can't intervene if issues arise
+- ❌ Repetitive context loading
+
+**v3.0 Solution (Manual Copy-Paste):**
+- ✅ Persistent terminals preserve context throughout entire feature
+- ✅ User has full oversight and control
+- ✅ Can debug and intervene anytime
+- ✅ Clear separation (BE terminal, FE terminal)
+- ✅ Reference previous work easily
+
+**The Workflow:**
+```
+Manager AI: Generates prompts
+  ↓
+User: Copies backend prompt
+  ↓
+User: Pastes in persistent BE terminal
+  ↓
+BE Terminal: Loads context (/be-onboard), implements feature
+  ↓
+User: Copies frontend prompt
+  ↓
+User: Pastes in persistent FE terminal
+  ↓
+FE Terminal: Loads context (/fe-onboard), implements feature
+  ↓
+Manager AI: Tracks progress
+```
+
+**Slash Commands:**
+- `/manager-onboard` - Manager AI onboarding (after context reset)
+- `/be-onboard` - Backend developer context loading
+- `/fe-onboard` - Frontend developer context loading
+
+### 5. **Pattern Learning (Compounds Over Time)**
+
+**PROJECT-PLANNING-PATTERNS.md grows with each feature:**
+
+**First Feature:**
+- Bootstrap: PM asks entity hierarchy questions
+- Populates: Entity levels, real vs umbrella entities
+- Documents: First patterns from this feature
+
+**Second Feature:**
+- PM reads existing patterns
+- No repeat questions (already knows entity hierarchy)
+- References: Patterns from Feature 1
+- Adds: New patterns from Feature 2
+
+**Tenth Feature:**
+- PM has 10 features worth of patterns
+- Planning is FAST (already knows architecture)
+- Implementation is CONSISTENT (follows established patterns)
+- Quality is HIGH (avoids documented pitfalls)
+
+**Contains:**
+- Entity hierarchy (which entities are real vs containers)
+- Architectural patterns (factory-first, repository pattern, etc.)
+- Known pitfalls (mistakes to avoid with reasons)
+- Lessons learned (from actual project history)
+- Decision log (why approach A chosen over B)
 
 ---
 
 ## ✨ Key Features
 
-### 🧠 Planning-First Architecture
-- **Mandatory PLAN MODE** - Every feature goes through 7-step planning protocol
-- **Quality gate** - 30+ checklist items before implementation allowed
-- **Pattern learning** - PROJECT-PLANNING-PATTERNS.md grows smarter with each feature
-- **Bootstrap support** - First feature populates entity hierarchy, subsequent features use patterns
-- **Zero rework** - Catch architectural issues in planning, not in production
+### 🏗️ 8-Step Planning Protocol
 
-### 🎯 Universal Protocol
-- **MASTER-PLAN-PROTOCOL.ai.md** - Works for ANY project (SaaS, E-commerce, Healthcare, etc.)
-- **PROJECT-PLANNING-PATTERNS** - Project-specific knowledge base
-- **7-step systematic process** - Context loading, deep questions, analysis, master plan
-- **Continuous learning** - Each feature makes next feature easier
+1. **Enter PLAN MODE** (explicit state, mandatory)
+2. **Load context** (13+ files: config, patterns, schemas, docs)
+3. **Ask deep questions** (30+ questions: entity granularity, edge cases, workflows)
+4. **Deep codebase inspection** (4 layers, exact locations, reuse opportunities) ⭐ **NEW**
+5. **Architectural analysis** (schema impact, state management, integration points)
+6. **Present analysis** (user confirms understanding before detailed work)
+7. **Create complete master plan** (workflows, schemas, APIs, edge cases, 30+ checklist)
+8. **Update patterns** (document learnings for future features)
 
-### 🔄 Manual Workflow (v3.0)
-- **Persistent terminals** - Context preserved throughout entire feature
-- **Copy-paste prompts** - Manager AI generates, user pastes to BE/FE terminals
-- **Slash commands** - `/be-onboard`, `/fe-onboard` for context loading
-- **User control** - Manual paste gives oversight and debugging capability
-- **Clear separation** - BE work in BE terminal, FE work in FE terminal
+### 🎯 Quality Gate (Enforcement)
 
-### 📊 Pattern Accumulation
-- **Architectural patterns** - Discovered and documented automatically
-- **Known pitfalls** - Mistakes avoided and recorded
-- **Decision log** - Why choices were made (reference for future)
-- **Lessons learned** - From actual project history
-- **Compounds over time** - Feature 10 is easier than Feature 1
+**Cannot generate implementation prompts without:**
+- ✅ Master plan exists at `.pm/features/[feature]/planning/MASTER-PLAN.md`
+- ✅ Master plan status: `READY FOR IMPLEMENTATION`
+- ✅ Quality checklist: All 30+ items marked with ✅
+- ✅ User approval documented in master plan
 
-### 🔧 100% Universal
-- **Works with any tech stack** - React, Vue, Node, Python, Go, Rust, etc.
-- **Self-configuring** - Bootstrap process captures project specifics
-- **Template-based** - Consistent structure across all projects
-- **Multi-project friendly** - Same protocol for different domains
+**If any fails:**
+```
+❌ CANNOT GENERATE IMPLEMENTATION PROMPTS
+
+Missing requirements:
+- [Specific items missing]
+
+You must complete PLAN MODE first.
+This gate ensures quality and prevents rework.
+```
+
+### 📊 Universal & Project-Specific
+
+**Universal (Framework):**
+- `MASTER-PLAN-PROTOCOL.ai.md` - Works for ANY project (SaaS, E-commerce, Healthcare)
+- `MANAGER-ONBOARDING.ai.md` - Architect identity and responsibilities
+- `Claude.md` - Planning-first mandate
+
+**Project-Specific (Created per project):**
+- `.pm/PROJECT-PLANNING-PATTERNS.md` - THIS project's architectural knowledge
+- Bootstrap on first feature (entity hierarchy)
+- Grows with each feature (patterns, pitfalls, lessons)
+
+### 🔧 Works with ANY Tech Stack
+
+- **Frontend:** React, Vue, Angular, Svelte, Next.js, Remix, etc.
+- **Backend:** Node.js, Python, Go, Rust, Java, etc.
+- **Database:** PostgreSQL, MySQL, MongoDB, Prisma, TypeORM, etc.
+
+Bootstrap process captures YOUR project specifics. Protocol is universal.
 
 ---
 
-## 🚀 Quick Start - TWO Simple Steps!
+## 🚀 Quick Start
 
-**Works with BOTH new AND existing projects!**
-
-### For New Projects (Empty Folder)
-
-**From nothing → working full-stack app in 5 minutes:**
+### Setup (5 minutes)
 
 ```bash
-# Step 1: Clone the framework
+# 1. Clone framework
 git clone https://github.com/d3r3nic/agentic-pm.git
 cd agentic-pm
 
-# Step 2: Open Claude Code and say:
+# 2. Open in Claude Code
 claude
+
+# 3. Run setup (in Claude Code)
+# Follow prompts to configure for your project
 ```
 
-**Then just type:**
+### First Feature (Your First Experience)
+
+**You say:**
 ```
-start
+"Build user authentication system"
 ```
 
-**That's it!** Claude will automatically:
-1. ✅ Ask you 4 questions (what to build, tech stack, first feature, git strategy)
-2. ✅ Create frontend + backend boilerplate
-3. ✅ Configure the framework for your project
-4. ✅ Implement your first feature with AI agents
+**Manager AI:**
+```
+I'm entering PLAN MODE to design this feature properly.
 
-**Time:** 5-10 minutes from empty folder to working app.
+This will involve:
+- Loading project context
+- Asking detailed questions
+- Deep codebase inspection
+- Analyzing architecture
+- Creating complete master plan
+
+Estimated: 1-2 hours for thorough planning.
+```
+
+**Then PM asks 30+ questions:**
+- Entity granularity: Where does work happen? (Global/Org/Team/User?)
+- Workflows: Walk me through login flow entry to completion
+- Edge cases: What if email already exists? Password reset flow?
+- Integration: How does this connect to existing user profile?
+
+**Then PM inspects your codebase:**
+- Scans components (finds reusable Form abstractions)
+- Analyzes state (identifies Redux store structure)
+- Checks database (finds existing User table, detects conflicts)
+- Maps integration (identifies auth middleware locations)
+
+**Then PM creates:**
+- `.pm/features/user-auth/planning/MASTER-PLAN.md` (complete spec, 30+ checklist ✅)
+- `.pm/features/user-auth/planning/CODEBASE-INSPECTION-REPORT.md` (exact locations)
+- Updates `.pm/PROJECT-PLANNING-PATTERNS.md` (adds auth patterns)
+
+**Then PM generates prompts:**
+```
+Master plan approved! Here are your implementation prompts:
+
+📋 Backend Prompt (copy to BE terminal):
+
+/be-onboard
+
+Implement User Authentication backend.
+
+**Context:**
+Read complete master plan: .pm/features/user-auth/planning/MASTER-PLAN.md
+Read inspection report: .pm/features/user-auth/planning/CODEBASE-INSPECTION-REPORT.md
+
+**Tasks:**
+1. Create auth middleware at src/middleware/auth.ts
+2. Implement POST /api/auth/login endpoint at src/routes/auth.ts
+3. Reuse validation schema from src/schemas/user.ts (extend with password field)
+4. Integrate with existing User model at src/models/User.ts
+
+**Deliverables:**
+- Working login endpoint
+- JWT token generation
+- Auth middleware for protected routes
+
+Report back when complete.
 
 ---
 
-### For Existing Projects (You Already Have Code)
+📋 Frontend Prompt (copy to FE terminal):
 
-**Add AI superpowers to your existing codebase:**
+/fe-onboard
 
-```bash
-cd your-existing-project  # Your project with frontend/ and backend/
+Implement User Authentication frontend.
 
-# Clone framework
-git clone https://github.com/d3r3nic/agentic-pm.git
-cd agentic-pm
+**Context:**
+Read master plan: .pm/features/user-auth/planning/MASTER-PLAN.md
+Read inspection: .pm/features/user-auth/planning/CODEBASE-INSPECTION-REPORT.md
 
-# Open Claude Code
-claude
+**Tasks:**
+1. Inject LoginForm component at src/pages/LoginPage.tsx
+2. Reuse FormInput from shared/components/FormInput.tsx
+3. Integrate with Redux auth slice at store/auth/authSlice.ts
+4. Call login API and handle success/error states
+
+**Deliverables:**
+- Working login page
+- Form validation
+- Success/error handling
+
+Report back when complete.
 ```
 
-**Then just type:**
-```
-start
-```
+**You do:**
+1. Open two Claude Code terminals (BE + FE)
+2. Paste backend prompt in BE terminal
+3. Paste frontend prompt in FE terminal
+4. Both implement (context preserved)
+5. Report back: "Done"
 
-**That's it!** Claude will intelligently:
-1. ✅ **Auto-detect your tech stack** (React? Vue? Express? FastAPI?)
-2. ✅ **Find your documentation** (Claude.md, architecture docs, docs/ folder)
-3. ✅ **Analyze your code structure** (components, routes, patterns)
-4. ✅ **Infer your project purpose** (E-commerce? Healthcare? Analytics?)
-5. ✅ **Extract coding conventions** (from docs, eslint, prettier)
-6. ✅ **Synthesize architecture understanding** (reads multiple docs, builds mental model)
-7. ✅ **Create backlog for missing docs** (gaps become tasks, not blockers!)
-8. ✅ **Ask only what it can't detect** (2-3 questions max)
-
-**What makes it intelligent:**
-- 🧠 Reads `frontend/Claude.md` and `backend/Claude.md` if they exist
-- 🧠 Analyzes dependencies to infer project type (Stripe → E-commerce)
-- 🧠 Smart doc filtering (reads architecture, skips user guides)
-- 🧠 **Infers architecture** from existing docs (no rigid ARCHITECTURE.md requirement)
-- 🧠 **Logs missing docs as tasks** in `agents/backlog/documentation-tasks.md`
-- 🧠 Presents findings and asks you to confirm
-- 🧠 No redundant questions about things in package.json
-
-**The Onboarding-as-Discovery approach:**
-- 📋 Onboarding itself is the first PM task
-- 📋 Analyzes project, identifies gaps, creates actionable backlog
-- 📋 Missing Claude.md files? → Logged as tasks with effort estimates
-- 📋 Incomplete architecture docs? → Logged as tasks for later
-- 📋 **Nothing blocks progress** - you decide: "docs first" or "build first"
-
-**Time:** 5 minutes from existing code to AI-ready framework + prioritized backlog.
+**Result:**
+- ✅ Feature implemented in 2-5 days (perfect plan)
+- ✅ Zero rework (architecture validated upfront)
+- ✅ 50%+ code reused (inspection found abstractions)
+- ✅ Patterns documented (next feature easier)
 
 ---
 
-## 🔄 Getting Framework Updates
+## 📊 How It Works
 
-After cloning the framework, set up dual remotes to pull future updates:
-
-```bash
-# 1. Change origin to YOUR project repo
-git remote rename origin framework
-git remote add origin git@github.com:YOUR-USERNAME/your-project.git
-
-# 2. Verify setup
-git remote -v
-# framework → agentic-pm.git (pull updates from here)
-# origin    → your-project.git (push your changes here)
-
-# 3. Push to your repo
-git push -u origin main
-```
-
-**When framework updates are released:**
-
-```bash
-# Pull framework improvements
-git pull framework main
-
-# Push to your project
-git push origin main
-```
-
-**The `.template.md` system protects your work:**
-- Framework updates: `NOW.template.md`, `fe-agent.template.md` (templates)
-- Your configs: `NOW.md`, `fe-agent.md` (created from templates)
-- Framework updates templates → Your files stay safe!
-
----
-
-## 🎯 What You Get
-
-### New Project Setup
+### The Complete Flow
 
 ```
-my-awesome-project/
-├── frontend/                     ← YOUR app (React/Vue/Svelte + TypeScript)
-│   └── src/components/
-│       └── YourFirstFeature.tsx  ← ✅ AI built this!
-├── backend/                      ← YOUR API (Express/Fastify/NestJS)
-│   └── src/routes/
-│       └── yourRoute.ts          ← ✅ AI built this!
-├── agentic-pm/                   ← Framework (configured for your stack)
-│   ├── agents/onboarding/        ← Your project rules
-│   ├── agents/tasks/             ← Completed tasks
-│   ├── docs/                     ← Project tracking
-│   └── sdk/                      ← SDK tools
-└── .env                          ← API key configured
-```
-
-### Existing Project Setup
-
-```
-your-existing-project/
-├── frontend-dashboard/           ← YOUR existing React app
-│   ├── src/                      ← Unchanged (AI analyzed it!)
-│   └── claude.md                 ← AI found and read this!
-├── backend/                      ← YOUR existing Express API
-│   ├── src/                      ← Unchanged (AI analyzed it!)
-│   └── claude.md                 ← AI found and read this!
-├── docs/                         ← AI read architecture docs!
-│   └── architecture.md
-├── agentic-pm/                   ← Framework (NEW - configured to YOUR codebase)
-│   ├── agents/onboarding/
-│   │   ├── fe-agent.md           ← Configured with YOUR React patterns
-│   │   └── be-agent.md           ← Configured with YOUR Express patterns
-│   ├── config.json               ← Points to YOUR frontend/ and backend/
-│   └── docs/                     ← NOW.md, ROADMAP.md for YOUR project
-└── .env                          ← ANTHROPIC_API_KEY added
-```
-
----
-
-## 📚 Documentation
-
-### **🧭 Start Here**
-- **[NAVIGATION.md](NAVIGATION.md)** - Master documentation map (AI reads this first!)
-
-### **Getting Started (Phase 1: Onboarding)**
-- **[setup/START.ai.md](setup/START.ai.md)** - Auto-bootstrap guide (for AI)
-- **[setup/QUICKSTART.human.md](setup/QUICKSTART.human.md)** - Quick reference (for humans)
-- **[setup/README.human.md](setup/README.human.md)** - Setup folder guide
-
-### **Daily Operations (Phase 2: After Setup)**
-- **[docs/START-HERE.human.md](docs/START-HERE.human.md)** - Main navigation hub
-- **[docs/guides/](docs/guides/)** - How-to guides
-- **[docs/reference/](docs/reference/)** - Technical reference
-
-### **For AI Agents**
-- **[.ai-instructions/README.ai.md](.ai-instructions/README.ai.md)** - What AI instructions are
-- **[setup/NEW-PROJECT.ai.md](setup/NEW-PROJECT.ai.md)** - Create new projects (one-time setup)
-- **[setup/EXISTING-PROJECT.ai.md](setup/EXISTING-PROJECT.ai.md)** - Add to existing projects (one-time setup)
-- **[.ai-instructions/MANAGER-ONBOARDING.ai.md](.ai-instructions/MANAGER-ONBOARDING.ai.md)** - Manager AI behavior
-
-### **For Developers**
-- **[.dev/](.dev/)** - Framework development docs
-
----
-
-## 💡 How It Works
-
-### 1. **You Define High-Level Plan**
-Fill out `docs/ROADMAP.md`:
-```markdown
-## Phase 1: User Management (Week 1-2)
-**Backend:** User database, auth APIs, invitation system
-**Frontend:** Login page, user list, invitation dialog
-**Success:** Users can register, login, and invite others
-```
-
-### 2. **Manager AI Creates Tasks**
-```bash
-npm run manager "Start Week 1: User Management implementation"
-```
-
-Manager AI:
-- Reads ROADMAP.md
-- Creates 8 task files (5 frontend + 3 backend)
-- Spawns all agents simultaneously
-
-### 3. **Agents Execute in Parallel**
-- `fe-implementor` × 5 (login page, user list, invitation dialog, state, tests)
-- `be-implementor` × 3 (database schema, auth APIs, invitation APIs)
-
-**Time:** 15-20 minutes (vs. 60+ minutes sequential)
-
-### 4. **Progress Tracked Automatically**
-Manager AI updates `docs/NOW.md`:
-```markdown
-## Week 1 Progress
-- Tasks Completed: 8/8 ✅
-- Total Cost: $1.24
-- Average Duration: 11.5 minutes
+User: "Build feature X"
+  ↓
+Manager AI: Reads /manager-onboard
+  ├─ Loads framework context (protocols, rules)
+  ├─ Loads project context (status, patterns)
+  └─ Announces readiness
+  ↓
+Manager AI: ENTERS PLAN MODE (mandatory)
+  ├─ Step 1: Acknowledges planning phase
+  ├─ Step 2: Loads 13+ context files
+  ├─ Step 2.5: Bootstrap if first feature (entity hierarchy)
+  ├─ Step 3: Asks 30+ deep questions
+  ├─ Step 3.5: DEEP CODEBASE INSPECTION ⭐
+  │   ├─ Presentation layer (components, state, injection points)
+  │   ├─ Business logic (services, validation)
+  │   ├─ Data access (queries, schema, optimization)
+  │   ├─ Integration (APIs, events)
+  │   └─ Creates: CODEBASE-INSPECTION-REPORT.md
+  ├─ Step 4: Architectural analysis
+  ├─ Step 5: Presents analysis → User confirms
+  ├─ Step 6: Creates master plan
+  ├─ Step 7: Updates PROJECT-PLANNING-PATTERNS.md
+  └─ Step 8: EXITS PLAN MODE
+  ↓
+Manager AI: Checks Quality Gate
+  ├─ Master plan exists? ✅
+  ├─ Status: READY FOR IMPLEMENTATION? ✅
+  ├─ Checklist complete (30+ items)? ✅
+  └─ User approved? ✅
+  ↓
+Manager AI: Generates Implementation Prompts
+  ├─ Backend prompt (/be-onboard + surgical instructions)
+  └─ Frontend prompt (/fe-onboard + surgical instructions)
+  ↓
+User: Manual Execution
+  ├─ Pastes BE prompt → BE terminal (persistent context)
+  ├─ Pastes FE prompt → FE terminal (persistent context)
+  └─ Reports back: "Done"
+  ↓
+Manager AI: Tracks Progress
+  └─ Updates .pm/NOW.md
 ```
 
 ---
 
-## 🔧 Tech Stack Support
+## 🎓 Key Concepts
 
-Works with **any** tech stack:
+### 1. **PLAN MODE** (Explicit State)
 
-**Frontend:** React, Vue, Angular, Svelte, Next.js, Nuxt, SvelteKit, etc.
-**Backend:** Node.js (Express, Fastify, NestJS), Python (FastAPI, Django), Go, etc.
-**Database:** PostgreSQL, MySQL, MongoDB, Prisma, TypeORM, etc.
+Planning is not just "thinking about it" - it's a formal mode with rules:
+- Announced at entry ("Entering PLAN MODE...")
+- Follows 8-step protocol (no skipping steps)
+- Cannot exit until quality checklist complete
+- Announced at exit ("PLAN MODE complete, ready for implementation")
 
-Just update 3 template files in `agents/onboarding/` with your project details!
+### 2. **Quality Gate** (Enforcement)
 
----
+Not a suggestion. A hard gate that blocks implementation:
+- Master plan file must exist
+- Quality checklist must be 100% complete (not 90%, ALL items)
+- User approval must be documented
+- If gate fails, implementation prompts are NOT generated
 
-## 📊 Architecture
+### 3. **Surgical Blueprints** (Not Generic Tasks)
 
-```
-User Request
-     ↓
-Manager AI (sdk/manager.ts)
-     ├─→ Reads: NOW.md, ROADMAP.md, integration.md
-     ├─→ Creates: Task files
-     ├─→ Spawns: Agents (programmatic)
-     ↓
-┌────────────────────────────────┐
-│  Parallel Agent Execution      │
-│  (Isolated Contexts)           │
-├────────────────────────────────┤
-│  fe-implementor × 5            │ ─→ Write AGENT REPORTS
-│  be-implementor × 3            │ ─→ Write AGENT REPORTS
-│  fe-auditor × 1                │ ─→ Write AUDIT REPORTS
-│  be-auditor × 1                │ ─→ Write AUDIT REPORTS
-└────────────────────────────────┘
-     ↓
-Manager AI Aggregates Results
-     ├─→ Updates: NOW.md
-     ├─→ Tracks: Cost, duration, progress
-     └─→ Reports: Summary to user
-```
+The difference between "do this" and "inject exactly here, reuse exactly that":
+- Generic: "Create list component" (developer guesses location, misses reuse)
+- Surgical: "Inject at [path], reuse [abstraction from path], integrate [method]"
 
----
+Result: Implementation is mechanical execution, not creative exploration.
 
-## 🌟 Real-World Example
+### 4. **Pattern Accumulation** (Continuous Learning)
 
-**Project:** Healthcare platform MVP (7 weeks)
+PROJECT-PLANNING-PATTERNS.md is the project's architectural memory:
+- First feature: Empty → Bootstrap → Populate basics
+- Each feature: Read patterns → Plan feature → Update patterns
+- Tenth feature: Rich knowledge base, fast planning, consistent architecture
 
-**Week 1 Results:**
-- **Tasks:** 12 (5 FE + 3 BE + 4 audits)
-- **Duration:** 2.3 hours (agent time)
-- **Cost:** $1.24
-- **Quality:** All tasks passed audit
+### 5. **Manual Workflow** (User Control)
 
-**Without this framework:**
-- **Time:** ~40 human hours
-- **Cost:** Same
-- **Improvement:** **17x time savings**, zero context loss, better quality
-
----
-
-## 🔮 Future Enhancements
-
-Planned features and improvements are documented in the **[`.future/`](.future/)** folder:
-
-- **[Usage Analytics](.future/USAGE-ANALYTICS.md)** - Optional anonymous telemetry to understand how people use the framework
-- **[Community Features](.future/COMMUNITY-FEATURES.md)** - Showcase projects, GitHub Discussions, recognition program
-- **[Distribution Strategy](.future/DISTRIBUTION-STRATEGY.md)** - Growth plan, marketing channels, launch strategy
-
-These are detailed specifications ready for implementation when needed. Check them out to see what's coming!
+Why no automatic agent spawning:
+- Context preservation (persistent terminals vs closing agents)
+- User oversight (manual paste gives control)
+- Debugging capability (can intervene anytime)
+- Clear separation (BE work in BE terminal, FE in FE terminal)
 
 ---
 
 ## 🤔 FAQ
 
-### Q: How is this different from just using Claude Code?
-**A:** This is Claude Code on steroids:
-- Multiple agents working in parallel (not one at a time)
-- Week-long context preservation (not lost between sessions)
-- Custom PM tools (not just generic tools)
-- Automatic progress tracking and cost monitoring
+### Q: How is this different from just asking Claude Code to build features?
 
-### Q: How much does it cost?
-**A:** Typical costs:
-- Simple task (button component): $0.03-0.05
-- Complex task (full page with API integration): $0.10-0.20
-- Full week of development (8-12 tasks): $1.00-2.00
+**A:** Three fundamental differences:
 
-SDK tracks costs automatically per task.
+1. **Planning Depth:** We spend 1-2 hours planning with codebase inspection. Direct prompts skip this.
+2. **Surgical Precision:** We map exact locations and reuse opportunities. Direct prompts create new code.
+3. **Pattern Learning:** We accumulate knowledge. Each feature makes next feature easier.
+
+**Analogy:** This is the difference between asking an architect to design a building extension (deep analysis, structural plans, building codes) vs asking a contractor to "add a room" (might work, might collapse).
+
+### Q: Why manual copy-paste instead of automatic agent spawning?
+
+**A:** Four reasons:
+
+1. **Context Preservation:** Persistent terminals keep context throughout entire feature. Agents close and lose context.
+2. **User Control:** Manual paste lets you review before execution. Automatic gives no oversight.
+3. **Debugging:** You can intervene if issues arise. Automatic agents fail silently.
+4. **Separation:** BE terminal for BE work, FE terminal for FE work. Clear boundaries.
+
+**Real scenario:** In v2.x, agent would close after 10 minutes. Next task started from scratch, asked same questions. In v3.0, terminal stays open for entire feature (days), references previous work easily.
+
+### Q: Does planning really save time?
+
+**A:** Real example from actual project:
+
+**Without deep planning (v2.x):**
+- Planning: 30 minutes (rushed)
+- Implementation: 2 weeks
+- Debugging: Discovered "invitation should be at facility level, not org level"
+- Rework: 2 weeks (rebuild entire feature)
+- **Total: 4 weeks + technical debt**
+
+**With deep planning (v3.0):**
+- Planning: 2 hours (deep questions, codebase inspection, caught entity level issue)
+- Implementation: 3 days (straightforward, plan was perfect)
+- Rework: 0 days
+- **Total: 5 days, zero technical debt**
+
+**Savings: 3+ weeks per feature**
+
+### Q: What's the learning curve?
+
+**A:** For users: 10 minutes.
+
+1. Say "Build feature X"
+2. Answer PM's questions (trust the process, they're catching issues)
+3. Copy-paste prompts to terminals
+4. Report back when done
+
+For PM AI: Zero learning curve (protocols are self-contained).
 
 ### Q: Can I use this for solo projects?
-**A:** Absolutely! Even better for solo devs:
-- No context loss when you return after days/weeks
-- Parallel execution means features ship faster
-- Audit trail helps you remember decisions
+
+**A:** Especially good for solo projects:
+- No context loss when you return after weeks
+- Patterns document your own decisions (your future self thanks you)
+- Surgical blueprints mean you're not re-exploring codebase each time
+
+---
+
+## 📚 Documentation
+
+- **[FRAMEWORK-DEVELOPER-ONBOARDING.md](FRAMEWORK-DEVELOPER-ONBOARDING.md)** - Philosophy and principles
+- **[CHANGELOG.md](CHANGELOG.md)** - Version history and breaking changes
+- **[.ai-instructions/MASTER-PLAN-PROTOCOL.ai.md](.ai-instructions/MASTER-PLAN-PROTOCOL.ai.md)** - Universal 8-step planning process
+- **[.ai-instructions/MANAGER-ONBOARDING.ai.md](.ai-instructions/MANAGER-ONBOARDING.ai.md)** - Architect identity and responsibilities
 
 ---
 
 ## 🤝 Contributing
 
-This is an open framework! Contributions welcome:
-- Add new custom tools
-- Improve agent prompts
-- Create example templates for specific tech stacks
-- Share your success stories
+Framework improvements welcome:
+- Enhanced inspection techniques
+- New architectural patterns
+- Real project case studies
 
-Fork, modify, share!
+Fork, improve, share!
 
 ---
 
 ## 📜 License
 
-MIT License - Fork and use freely for any project.
+MIT License - Use freely for any project.
 
 ---
 
 ## 🙏 Acknowledgments
 
-Built with:
-- [Claude Agent SDK](https://docs.claude.com/en/api/agent-sdk/overview) by Anthropic
-- [Claude Code](https://github.com/anthropics/claude-code)
-- Task-driven architecture principles
+Built on:
+- [Claude Code](https://github.com/anthropics/claude-code) by Anthropic
+- Planning-first software engineering principles
+- Deep architectural analysis patterns
 
-Inspired by: The need for AI agents that actually ship features end-to-end.
+Inspired by: The need for AI that thinks before it codes.
 
 ---
 
@@ -429,17 +565,15 @@ Inspired by: The need for AI agents that actually ship features end-to-end.
 
 - **Issues:** [GitHub Issues](https://github.com/d3r3nic/agentic-pm/issues)
 - **Discussions:** [GitHub Discussions](https://github.com/d3r3nic/agentic-pm/discussions)
-- **Documentation:** See [docs/](docs/) for detailed guides
 
 ---
 
-**Ready to build?** 🚀
+**Ready to build with architectural rigor?** 🏗️
 
 ```bash
 git clone https://github.com/d3r3nic/agentic-pm.git
 cd agentic-pm
-cat NAVIGATION.md  # Read navigation guide
-cat setup/START.ai.md  # Read setup guide
+# Follow setup instructions
 ```
 
-**Ship features 12x faster. Start now.**
+**Hours planning, minutes developing. Zero rework.**
